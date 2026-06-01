@@ -1,0 +1,6 @@
+#ifndef _DEVICE_FEATURES_FC4150F2M__EIM_COMMON_H_
+#define _DEVICE_FEATURES_FC4150F2M__EIM_COMMON_H_
+
+#define EIM_MAXCHANNEL          (7u)
+
+#endif

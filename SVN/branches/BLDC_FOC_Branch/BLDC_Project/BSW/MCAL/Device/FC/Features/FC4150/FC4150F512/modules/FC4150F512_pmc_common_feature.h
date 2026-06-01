@@ -1,0 +1,10 @@
+#ifndef _DEVICE_FEATURES_FC4150F512__PMC_COMMON_H_
+#define _DEVICE_FEATURES_FC4150F512__PMC_COMMON_H_
+
+#define PMC_V5_SUPPORT         (1u)
+#define PMC_V3_SUPPORT         (0u)
+#define PMC_V25_SUPPORT        (1u)
+#define PMC_LVD_SUPPORT        PMC_V5_SUPPORT
+#define PMC_BUFVREF10_SUPPORT  (0u)
+
+#endif

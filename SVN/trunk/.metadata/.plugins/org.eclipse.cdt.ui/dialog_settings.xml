@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<section name="Workbench">
+	<section name="completion_proposal_size">
+	</section>
+	<section name="org.eclipse.cdt.ui.text.hover.CMacroExpansionExploration">
+	</section>
+	<section name="PDOMSearchPage">
+		<item key="caseSensitive" value="false"/>
+		<item key="searchFlags" value="227191"/>
+		<list key="previousPatterns">
+			<item value="induc"/>
+			<item value="motor_pid_iqout_max"/>
+			<item value="motor_pid_speedout_max"/>
+			<item value="out_max"/>
+			<item value="motor_foc_struct"/>
+			<item value="SENSOR_ENCODER"/>
+			<item value="SENSOR_HALL"/>
+			<item value="MOTOR_SENSOR_USE_HALL"/>
+			<item value="speed_startup_mode"/>
+			<item value="MOTOR_FOC_LOOP_CLOSED"/>
+			<item value="loop_state"/>
+			<item value="MotorFocStruct"/>
+			<item value="kMotorFoc_CloseLoop"/>
+			<item value="Motor_SetCtrlStatus"/>
+			<item value="Motor_CtrlInit"/>
+			<item value="debugStartFlag"/>
+			<item value="MOTOR_STATUS_OFF"/>
+			<item value="MOTOR_STATUS_ON"/>
+		</list>
+	</section>
+	<section name="org.eclipse.cdt.ui.OPEN_ACTION_SELECTION_DIALOG_SECTION">
+		<item key="DIALOG_X_ORIGIN" value="738"/>
+		<item key="DIALOG_Y_ORIGIN" value="166"/>
+		<item key="DIALOG_WIDTH" value="912"/>
+		<item key="DIALOG_HEIGHT" value="575"/>
+		<item key="DIALOG_FONT_NAME" value="1|Microsoft YaHei UI|9.0|0|WINDOWS|1|-15|0|0|0|400|0|0|0|1|0|0|0|0|Microsoft YaHei UI"/>
+	</section>
+</section>

@@ -1,0 +1,4 @@
+architecture=SVD(CMSIS)
+chip=FC4150F1MBSxXxxxT1B
+eclipse.preferences.version=1
+vendor=Flagchip

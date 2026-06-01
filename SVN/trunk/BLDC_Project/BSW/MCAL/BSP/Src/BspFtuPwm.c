@@ -1,0 +1,294 @@
+#include "BspFtuPwm.h"
+#include "BspGpio.h"
+#include "string.h"
+#include <IoHwAb_Dio.h>
+uint64_t period_us_plus_1k = 50000;
+
+
+#define USEC(clk, us)					(uint32_t)((uint64_t)(clk) * (uint64_t)(us) / 1000000u)
+#define MSEC(clk, ms)					(uint32_t)((uint64_t)(clk) * (uint64_t)(ms) / 1000u)
+
+#define FTU_PWM_PWM_CHANNEL_NUM_MAX		(3U)
+
+FTU_HandleType	g_tFtuPwmHandle;				//only use one PWM instance, so only define one Handle
+void Bsp_Ftu_UpdateDuty(struct FtuPwmDriverIf_t *pDev, uint8_t channelCnt, uint16_t duty);
+void Bsp_Ftu_UpdatePeriod(struct FtuPwmDriverIf_t *pDev, uint32 PeriodCnt);
+
+static FtuPwmPrivateData_t st_FtuPrivateDataBuf[PWM_INSTANCE_NUM] =
+{
+#ifndef ECU_ADDRESS_BLDC
+		{
+				.eInstance 						= FTU_INSTANCE_3,
+				.ePrescaler 					= FTU_DIV_4,	 				/*!< Ftu prescaler */  //use
+				/* FTU instance clock = (96,000,000 / 4) = 24,000,000
+				 * PWM Period = 62.5us
+				 * Duty = 0 */
+				.u32PwmPeriod 					= USEC(25000000, 1000u)/16, 	//16KHZ
+				.eAlignedMode 					= FTU_CENTER_ALIGNED_PWM,		/**< Center-Aligned PWM */
+				.u32ChannelCount 				= FTU3_ChannelCount,
+				.eUpdateMode 					= FTU_PWM_UPDATE_HALF_PERIOD,
+
+				.aPwmChannel[0]={
+						.u8Channel						= FTU_CHANNEL_2,
+						.ePinMode						= FTU_PWM_HIGH_TRUE_PULSE,
+						.u32PwmDuty 					= 0,							/*!< pwm duty (timer ticks) */
+						.u32ChannelDeadtime 			= 0,							/*!< pwm deadtime (source clock ticks) */
+						.bDeadtimeEnable				= false,
+						.bLinkMode 						= false,						/*!< pwm channel link mode enable, channel num must be even,and the linked channel is current_channel+1*/
+						.bLinkChannelComplement 		= false,					 	/*!< pwm link channel output complement*/
+						.u32PhaseShift					= USEC(25000000, PHASE_SHIFT_US),},
+
+
+		},
+		{
+				.eInstance 						= FTU_INSTANCE_0,
+				.ePrescaler 					= FTU_DIV_4,	 				/*!< Ftu prescaler */  //use
+				/* FTU instance clock = (96,000,000 / 4) = 24,000,000
+				 * PWM Period = 62.5us
+				 * Duty = 0 */
+				.u32PwmPeriod 					= USEC(25000000, 1000u)/16, 	//16KHZ
+				.eAlignedMode 					= FTU_CENTER_ALIGNED_PWM,		/**< Center-Aligned PWM */
+				.u32ChannelCount 				= FTU0_ChannelCount,
+				.eUpdateMode 					= FTU_PWM_UPDATE_HALF_PERIOD,
+
+				.aPwmChannel[0]					={
+						.u8Channel 						= FTU_CHANNEL_0,
+						.ePinMode						= FTU_PWM_HIGH_TRUE_PULSE,
+						.u32PwmDuty 					= 0,							/*!< pwm duty (timer ticks) */
+						.u32ChannelDeadtime 			= 0,							/*!< pwm deadtime (source clock ticks) */
+						.bDeadtimeEnable				= false,
+						.bLinkMode 						= false,						/*!< pwm channel link mode enable, channel num must be even,and the linked channel is current_channel+1*/
+						.bLinkChannelComplement 		= false,					 	/*!< pwm link channel output complement*/
+						.u32PhaseShift					= USEC(25000000, PHASE_SHIFT_US),
+													},
+
+				.aPwmChannel[1]={
+						.u8Channel 						= FTU_CHANNEL_1,
+						.ePinMode						= FTU_PWM_HIGH_TRUE_PULSE,
+						.u32PwmDuty 					= 0,							/*!< pwm duty (timer ticks) */
+						.u32ChannelDeadtime 			= 0,							/*!< pwm deadtime (source clock ticks) */
+						.bDeadtimeEnable				= false,
+						.bLinkMode 						= false,						/*!< pwm channel link mode enable, channel num must be even,and the linked channel is current_channel+1*/
+						.bLinkChannelComplement 		= false,					   	/*!< pwm link channel output complement*/
+						.u32PhaseShift					= USEC(25000000, PHASE_SHIFT_US),},
+
+		}
+#else
+		{
+				.eInstance 						= FTU_INSTANCE_0,
+				.ePrescaler 					= FTU_DIV_2,	 				/*!< Ftu prescaler */  //use
+
+				/* FTU instance clock = (120,000,000 / 2) = 60,000,000
+				 * PWM Period = 50us
+				 * Duty = 0 */
+
+				.u32PwmPeriod 					= USEC(60000000, 1000u)/20, 	//20KHZ
+				.eAlignedMode 					= FTU_CENTER_ALIGNED_PWM,		/**< Center-Aligned PWM */
+				.u32ChannelCount 				= FTU0_ChannelCount,
+				.eUpdateMode 					= FTU_PWM_UPDATE_END_PERIOD,
+
+				.aPwmChannel[0]					={
+						.u8Channel 						= FTU_CHANNEL_2,
+						.ePinMode						= FTU_PWM_HIGH_TRUE_PULSE,
+						.u32PwmDuty 					= 0,							/*!< pwm duty (timer ticks) */
+						.u32ChannelDeadtime 			= 0,							/*!< pwm deadtime (source clock ticks) */
+						.bDeadtimeEnable				= false,
+						.bLinkMode 						= false,						/*!< pwm channel link mode enable, channel num must be even,and the linked channel is current_channel+1*/
+						.bLinkChannelComplement 		= false,					 	/*!< pwm link channel output complement*/
+						.u32PhaseShift					= USEC(60000000, PHASE_SHIFT_US),
+													},
+
+				.aPwmChannel[1]={
+						.u8Channel 						= FTU_CHANNEL_4,
+						.ePinMode						= FTU_PWM_HIGH_TRUE_PULSE,
+						.u32PwmDuty 					= 0,							/*!< pwm duty (timer ticks) */
+						.u32ChannelDeadtime 			= 0,							/*!< pwm deadtime (source clock ticks) */
+						.bDeadtimeEnable				= false,
+						.bLinkMode 						= false,						/*!< pwm channel link mode enable, channel num must be even,and the linked channel is current_channel+1*/
+						.bLinkChannelComplement 		= false,					   	/*!< pwm link channel output complement*/
+						.u32PhaseShift					= USEC(60000000, PHASE_SHIFT_US),},
+
+				.aPwmChannel[2]={
+						.u8Channel 						= FTU_CHANNEL_6,
+						.ePinMode						= FTU_PWM_HIGH_TRUE_PULSE,
+						.u32PwmDuty 					= 0,							/*!< pwm duty (timer ticks) */
+						.u32ChannelDeadtime 			= 0,							/*!< pwm deadtime (source clock ticks) */
+						.bDeadtimeEnable				= false,
+						.bLinkMode 						= false,						/*!< pwm channel link mode enable, channel num must be even,and the linked channel is current_channel+1*/
+						.bLinkChannelComplement 		= false,					   	/*!< pwm link channel output complement*/
+						.u32PhaseShift					= USEC(60000000, PHASE_SHIFT_US),},
+
+		}
+#endif /*ECU_ADDRESS_BLDC*/
+};
+
+
+void Bsp_FTU0_OverflowCallback(FTU_HandleType *pHandle);
+//
+void Bsp_FTU0_OverflowCallback(FTU_HandleType *pHandle)
+{
+	(void)pHandle;
+////	IoHwAb_Dio_FlipChannel(VBAT_HALL_CTRL_IDX);
+//	Adc_StartGroupConversion(ADC_INSTANCE_1);
+//	IoHwAb_Dio_FlipChannel(VBAT_ENCODER_CTRL_IDX);
+}
+
+
+static void Bsp_Ftu_Init(struct FtuPwmDriverIf_t *pDev)
+{
+	FTU_CommonType 				tInitConfig;
+	FTU_PwmModeType 			tPwmModeStruct = {0};
+
+	FTU_GetDefaultInitCfg(&tInitConfig);
+	tInitConfig.ePrescaler 		= pDev->ftuPriData->ePrescaler;
+
+//	tInitConfig.u32InterruptMask = FTU_INTR_MASK_OVERFLOW;
+
+//	tInitConfig.u32OverflowValue = (pDev->ftuPriData->u32PwmPeriod);
+
+//	tInitConfig.pOverflowCallback = Bsp_FTU0_OverflowCallback;
+
+
+	g_tFtuPwmHandle.eInstance 		= pDev->ftuPriData->eInstance;
+
+
+	FTU_CommonInit(&g_tFtuPwmHandle, &tInitConfig);
+
+	/* FTU instance clock = (100,000,000 / 4) = 25,000,000
+	 * PWM Period = 1ms
+	 * Duty = 300us */
+	tPwmModeStruct.u32PwmPeriod 			= pDev->ftuPriData->u32PwmPeriod;
+	tPwmModeStruct.eAlignedMode				= pDev->ftuPriData->eAlignedMode;
+	tPwmModeStruct.u32ChannelCount 			= pDev->ftuPriData->u32ChannelCount;
+	tPwmModeStruct.eUpdateMode				= pDev->ftuPriData->eUpdateMode;
+	tPwmModeStruct.pPwmChannels				= pDev->ftuPriData->aPwmChannel;
+
+//
+//	aPwmChannel[0].u8Channel					= pDev->ftuPriData->u8Channel;
+//	aPwmChannel[0].ePinMode					= pDev->ftuPriData->ePinMode;
+//	aPwmChannel[0].u32PwmDuty					= pDev->ftuPriData->u32PwmDuty;
+//	aPwmChannel[0].u32ChannelDeadtime			= pDev->ftuPriData->u16Deadtime;
+//	aPwmChannel[0].bDeadtimeEnable				= pDev->ftuPriData->bDeadtimeEnable;
+//	aPwmChannel[0].bLinkMode                	= pDev->ftuPriData->bLinkMode;
+//	aPwmChannel[0].bLinkChannelComplement   	= pDev->ftuPriData->bLinkChannelComplement;
+//	aPwmChannel[0].u32PhaseShift		    	= pDev->ftuPriData->u32PhaseShift;
+
+	FTU_PwmModeInit(&g_tFtuPwmHandle, &tPwmModeStruct);
+
+	TRGSEL_SetTargetTriggerSource(TRGSEL_INSTANCE_0, TRGSEL0_TARGET_PTIMER1_TRG0, TRGSEL0_SRC_FTU0_RELOAD_TRG);
+	FTU_EnableTriggerOutput(&g_tFtuPwmHandle, FTU_TRIG_OUTPUT_MASK_RELOAD);
+
+
+
+}
+
+
+//void Bsp_Ftu_UpdateDuty(struct FtuPwmDriverIf_t *pDev, uint8_t channelCnt, uint16_t duty)
+//{
+//	FTU_PwmDutyUpdateType tConfig;
+//
+//
+//	//DUTY = (CV - CNTIN)/MOD
+//	//when CNTIN = 0
+//	//CV = MOD * DUTY
+//	pDev->ftuPriData->aPwmChannel[channelCnt].u32PwmDuty = duty;
+//
+//	tConfig.u8Channel 			= pDev->ftuPriData->aPwmChannel[channelCnt].u8Channel;
+//	tConfig.u32Duty				= pDev->ftuPriData->aPwmChannel[channelCnt].u32PwmDuty;
+//	tConfig.u32PhaseShift		= pDev->ftuPriData->aPwmChannel[channelCnt].u32PhaseShift;
+//	tConfig.bUpdate				= true;
+//	FTU_PwmUpdateDuty(&g_tFtuPwmHandle, &tConfig);
+//}
+
+void Bsp_Ftu_UpdateDuty(struct FtuPwmDriverIf_t *pDev, uint8_t channelCnt, uint16_t duty)
+{
+	FTU_PwmDutyUpdateType tConfig;
+
+
+	//DUTY = (CV - CNTIN)/MOD
+	//when CNTIN = 0
+	//CV = MOD * DUTY
+	pDev->ftuPriData->aPwmChannel[channelCnt].u32PwmDuty = duty;
+
+	tConfig.u8Channel 			= pDev->ftuPriData->aPwmChannel[channelCnt].u8Channel;
+	tConfig.u32Duty				= duty;
+	tConfig.u32PhaseShift		= pDev->ftuPriData->aPwmChannel[channelCnt].u32PhaseShift;
+	tConfig.bUpdate				= true;
+
+	FTU_PwmUpdateDuty(&g_tFtuPwmHandle, &tConfig);
+
+}
+
+void Bsp_Ftu_SetDuty(uint8_t channelCnt, uint16_t duty)
+{
+	FTU_PwmDutyUpdateType tConfig;
+
+	switch(channelCnt)
+	{
+		case 0:
+			tConfig.u8Channel = FTU_CHANNEL_2;
+			break;
+		case 1:
+			tConfig.u8Channel = FTU_CHANNEL_4;
+			break;
+		case 2:
+			tConfig.u8Channel = FTU_CHANNEL_6;
+			break;
+		default:
+			break;
+	}
+
+//	tConfig.u8Channel 			= pDev->ftuPriData->aPwmChannel[channelCnt].u8Channel;
+	tConfig.u32Duty				= duty;
+	tConfig.u32PhaseShift		= 0;//pDev->ftuPriData->aPwmChannel[channelCnt].u32PhaseShift;
+	tConfig.bUpdate				= true;
+
+	FTU_PwmUpdateDuty(&g_tFtuPwmHandle, &tConfig);
+}
+
+void Bsp_Ftu_UpdatePeriod(struct FtuPwmDriverIf_t *pDev, uint32 PeriodCnt)
+{
+
+	FTU_PwmUpdatePeriod(&g_tFtuPwmHandle, PeriodCnt, true);
+	pDev->ftuPriData->u32PwmPeriod = PeriodCnt;
+
+}
+
+static void Bsp_Ftu_Start(void)
+{
+    FTU_StartTimer(&g_tFtuPwmHandle);
+}
+
+static void Bsp_Ftu_Stop(void)
+{
+    FTU_StopTimer(&g_tFtuPwmHandle);
+}
+
+static struct FtuPwmDriverIf_t st_FtuPwmDriverBuff=
+{
+	.name = "FTU0",
+#ifndef ECU_ADDRESS_BLDC
+	.ftuPriData = &st_FtuPrivateDataBuf[1],
+#else
+	.ftuPriData = &st_FtuPrivateDataBuf[0],
+#endif
+	.GPIO_Init = FCFtuPwmGpioInit,
+	.FtuPwmInit = Bsp_Ftu_Init,
+	.FtuPwmTimerStart = Bsp_Ftu_Start,
+	.FtuPwmTimerStop = Bsp_Ftu_Stop,
+	.FtuPwmDutySet = Bsp_Ftu_UpdateDuty,
+	.FtuPwmPeriodSet = Bsp_Ftu_UpdatePeriod
+};
+
+struct FtuPwmDriverIf_t * BSP_PwmGetDevice(char *name)
+{
+	(void)name;
+	return &st_FtuPwmDriverBuff;
+}
+
+void Bsp_FtuPWM_DeInit(void)
+{
+	FTU_StopTimer(&g_tFtuPwmHandle);
+	FTU_DeInit(&g_tFtuPwmHandle);
+}
+
