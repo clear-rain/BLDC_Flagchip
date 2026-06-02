@@ -13,8 +13,8 @@ volatile float testArrayIb[MOTOR_DEBUG_CAPTURE_LEN];
 #endif
 void motor_adc_IrqHandler(uint32_t ia, uint32_t ib)
 {
-    motor_current_0_before.ia = ia;
-    motor_current_0_before.ib = ib;
+    motor_current_0_before.ia = ia;//U
+    motor_current_0_before.ib = ib;//V
 
 
     static uint8_t flag1 =0;

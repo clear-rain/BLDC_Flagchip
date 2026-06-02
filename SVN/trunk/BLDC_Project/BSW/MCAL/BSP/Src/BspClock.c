@@ -207,6 +207,14 @@ static void Bsp_SMISC_SetSysCgc(void)
     tSmiscSysCgc.bEnableErm = false;
     tSmiscSysCgc.bEnableDma = true;
     tSmiscSysCgc.bEnableMap = true;
+
+//    tSmiscSysCgc.bEnableIsm = true;
+//    tSmiscSysCgc.bEnableSec = true;
+//    tSmiscSysCgc.bEnableIntm = true;
+//    tSmiscSysCgc.bEnableEim = true;
+//    tSmiscSysCgc.bEnableErm = true;
+//    tSmiscSysCgc.bEnableDma = true;
+//    tSmiscSysCgc.bEnableMap = true;
     SMISC_SetClockGate(&tSmiscSysCgc);
 }
 

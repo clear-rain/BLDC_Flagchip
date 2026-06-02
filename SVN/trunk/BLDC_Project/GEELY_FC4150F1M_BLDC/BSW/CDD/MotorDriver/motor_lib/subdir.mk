@@ -16,7 +16,8 @@ C_SRCS += \
 ../BSW/CDD/MotorDriver/motor_lib/motor_misc.c \
 ../BSW/CDD/MotorDriver/motor_lib/motor_pid.c \
 ../BSW/CDD/MotorDriver/motor_lib/motor_protect.c \
-../BSW/CDD/MotorDriver/motor_lib/motor_svpwm.c 
+../BSW/CDD/MotorDriver/motor_lib/motor_svpwm.c \
+../BSW/CDD/MotorDriver/motor_lib/motor_voltage_injection_inductance.c 
 
 OBJS += \
 ./BSW/CDD/MotorDriver/motor_lib/motor_adc.o \
@@ -31,7 +32,8 @@ OBJS += \
 ./BSW/CDD/MotorDriver/motor_lib/motor_misc.o \
 ./BSW/CDD/MotorDriver/motor_lib/motor_pid.o \
 ./BSW/CDD/MotorDriver/motor_lib/motor_protect.o \
-./BSW/CDD/MotorDriver/motor_lib/motor_svpwm.o 
+./BSW/CDD/MotorDriver/motor_lib/motor_svpwm.o \
+./BSW/CDD/MotorDriver/motor_lib/motor_voltage_injection_inductance.o 
 
 C_DEPS += \
 ./BSW/CDD/MotorDriver/motor_lib/motor_adc.d \
@@ -46,7 +48,8 @@ C_DEPS += \
 ./BSW/CDD/MotorDriver/motor_lib/motor_misc.d \
 ./BSW/CDD/MotorDriver/motor_lib/motor_pid.d \
 ./BSW/CDD/MotorDriver/motor_lib/motor_protect.d \
-./BSW/CDD/MotorDriver/motor_lib/motor_svpwm.d 
+./BSW/CDD/MotorDriver/motor_lib/motor_svpwm.d \
+./BSW/CDD/MotorDriver/motor_lib/motor_voltage_injection_inductance.d 
 
 
 # Each subdirectory must supply rules for building sources it contributes

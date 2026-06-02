@@ -3199,3 +3199,175 @@ Binding(CTRL+7,
 
 !ENTRY org.eclipse.update.configurator 4 0 2026-06-01 16:45:39.101
 !MESSAGE Can't find bundle for base name feature, locale zh_CN
+!SESSION 2026-06-02 09:17:22.741 -----------------------------------------------
+eclipse.buildId=4.20.0.I20210611-1600
+java.version=19.0.1
+java.vendor=Eclipse Adoptium
+BootLoader constants: OS=win32, ARCH=x86_64, WS=win32, NL=zh_CN
+Framework arguments:  -product org.eclipse.epp.package.cpp.product
+Command-line arguments:  -os win32 -ws win32 -arch x86_64 -product org.eclipse.epp.package.cpp.product
+
+!ENTRY br.ufal.ic.colligens 4 0 2026-06-02 09:17:25.062
+!MESSAGE FrameworkEvent ERROR
+!STACK 0
+org.osgi.framework.BundleException: Could not resolve module: br.ufal.ic.colligens [3]
+  Unresolved requirement: Require-Bundle: de.ovgu.featureide.fm.core
+
+	at org.eclipse.osgi.container.Module.start(Module.java:463)
+	at org.eclipse.osgi.container.ModuleContainer$ContainerStartLevel$2.run(ModuleContainer.java:1849)
+	at org.eclipse.osgi.internal.framework.EquinoxContainerAdaptor$1$1.execute(EquinoxContainerAdaptor.java:136)
+	at org.eclipse.osgi.container.ModuleContainer$ContainerStartLevel.incStartLevel(ModuleContainer.java:1842)
+	at org.eclipse.osgi.container.ModuleContainer$ContainerStartLevel.incStartLevel(ModuleContainer.java:1783)
+	at org.eclipse.osgi.container.ModuleContainer$ContainerStartLevel.doContainerStartLevel(ModuleContainer.java:1747)
+	at org.eclipse.osgi.container.ModuleContainer$ContainerStartLevel.dispatchEvent(ModuleContainer.java:1669)
+	at org.eclipse.osgi.container.ModuleContainer$ContainerStartLevel.dispatchEvent(ModuleContainer.java:1)
+	at org.eclipse.osgi.framework.eventmgr.EventManager.dispatchEvent(EventManager.java:234)
+	at org.eclipse.osgi.framework.eventmgr.EventManager$EventThread.run(EventManager.java:345)
+
+!ENTRY org.eclipse.ui 2 0 2026-06-02 09:21:10.886
+!MESSAGE Warnings while parsing the key bindings from the 'org.eclipse.ui.commands' and 'org.eclipse.ui.bindings' extension point
+!SUBENTRY 1 org.eclipse.ui 2 0 2026-06-02 09:21:10.886
+!MESSAGE Cannot bind to an undefined command: plug-in='cn.com.flagchip.menu.ui', id='cn.com.flagchip.commands.runUnlock'
+
+!ENTRY org.eclipse.jface 2 0 2026-06-02 09:21:57.437
+!MESSAGE Keybinding conflicts occurred.  They may interfere with normal accelerator operation.
+!SUBENTRY 1 org.eclipse.jface 2 0 2026-06-02 09:21:57.437
+!MESSAGE A conflict occurred for CTRL+7:
+Binding(CTRL+7,
+	ParameterizedCommand(Command(cn.com.flagchip.commands.runExt,Run External Tools,
+		,
+		Category(cn.com.flagchip.commands.category,FC Category,null,true),
+		org.eclipse.ui.internal.WorkbenchHandlerServiceHandler@5c9b5e62,
+		[Parameter(cn.com.flagchip.runExt.msg,Message,null,true)],,true),null),
+	org.eclipse.ui.defaultAcceleratorConfiguration,
+	org.eclipse.ui.contexts.window,,,system)
+Binding(CTRL+7,
+	ParameterizedCommand(Command(cn.com.flagchip.commands.runAstyle,Run A-Style,
+		,
+		Category(cn.com.flagchip.commands.category,FC Category,null,true),
+		org.eclipse.ui.internal.WorkbenchHandlerServiceHandler@3c826498,
+		[Parameter(cn.com.flagchip.runAstyle.msg,Message,null,true)],,true),null),
+	org.eclipse.ui.defaultAcceleratorConfiguration,
+	org.eclipse.ui.contexts.window,,,system)
+Binding(CTRL+7,
+	ParameterizedCommand(Command(cn.com.flagchip.commands.jlinkLoadBin,Jlink Load Bin,
+		,
+		Category(cn.com.flagchip.commands.category,FC Category,null,true),
+		org.eclipse.ui.internal.WorkbenchHandlerServiceHandler@2633d09c,
+		,,true),null),
+	org.eclipse.ui.defaultAcceleratorConfiguration,
+	org.eclipse.ui.contexts.window,,,system)
+
+!ENTRY org.eclipse.ui 4 4 2026-06-02 09:21:57.512
+!MESSAGE Plugin cn.com.flagchip.editor.ui, extension org.eclipse.ui.editors: Unknown editor with id: net.sourceforge.ehep.editors.HexEditor
+
+!ENTRY org.eclipse.update.configurator 4 0 2026-06-02 09:22:05.328
+!MESSAGE Can't find bundle for base name feature, locale zh_CN
+
+!ENTRY org.eclipse.update.configurator 4 0 2026-06-02 09:22:05.803
+!MESSAGE Can't find bundle for base name feature, locale zh_CN
+
+!ENTRY org.eclipse.debug.ui 4 0 2026-06-02 14:39:27.200
+!MESSAGE Tab group extension: org.eclipse.embedcdt.debug.gdbjtag.jlink.ui.launchConfigurationTabGroup for type ilg.gnumcueclipse.debug.gdbjtag.jlink.launchConfigurationType for the [*] mode has been replaced by extension: cn.com.flagchip.cdt.debug.ui.jlink.launchConfigurationTabGroup
+
+!ENTRY org.eclipse.debug.ui 4 0 2026-06-02 14:39:27.200
+!MESSAGE Tab group extension: ilg.gnumcueclipse.debug.gdbjtag.openocd.launchConfigurationTabGroup for type ilg.gnumcueclipse.debug.gdbjtag.openocd.launchConfigurationType for the [*] mode has been replaced by extension: cn.com.flagchip.cdt.debug.ui.openocd.launchConfigurationTabGroup
+
+!ENTRY org.eclipse.embedcdt.debug.gdbjtag.openocd.core 4 1 2026-06-02 14:39:42.082
+!MESSAGE D:\Project\all_IDE\Flagchip_FC_IDE_4.2.1\Flagchip_FC_IDE_4.2.1\Jlink/JLinkGDBServerCL.exe -if swd -device FC4150F1MBSxXxxxT1B -endian little -speed 4000 -port 2331 -swoport 2332 -telnetport 2333 -vd -ir -localhostonly 1 -singlerun -strict -timeout 0 -nogui
+
+!ENTRY org.eclipse.embedcdt.debug.gdbjtag.core 4 0 2026-06-02 14:39:43.292
+!MESSAGE J-Link GDB Server failed: 
+Could not connect to J-Link. Please check if plugged into USB port or Ethernet switch.
+
+For more details, see the JLinkGDBServerCL.exe console.
+
+!ENTRY org.eclipse.embedcdt.debug.gdbjtag.openocd.core 4 1 2026-06-02 14:40:04.317
+!MESSAGE D:\Project\all_IDE\Flagchip_FC_IDE_4.2.1\Flagchip_FC_IDE_4.2.1\Jlink/JLinkGDBServerCL.exe -if swd -device FC4150F1MBSxXxxxT1B -endian little -speed 4000 -port 2331 -swoport 2332 -telnetport 2333 -vd -ir -localhostonly 1 -singlerun -strict -timeout 0 -nogui
+
+!ENTRY org.eclipse.embedcdt.debug.gdbjtag.core 4 0 2026-06-02 14:40:09.141
+!MESSAGE J-Link GDB Server failed: 
+Could not connect to target. Please check if target is powered and if ribbon cable is plugged properly.
+
+For more details, see the JLinkGDBServerCL.exe console.
+
+!ENTRY org.eclipse.embedcdt.debug.gdbjtag.openocd.core 4 1 2026-06-02 14:40:24.818
+!MESSAGE D:\Project\all_IDE\Flagchip_FC_IDE_4.2.1\Flagchip_FC_IDE_4.2.1\Jlink/JLinkGDBServerCL.exe -if swd -device FC4150F1MBSxXxxxT1B -endian little -speed 4000 -port 2331 -swoport 2332 -telnetport 2333 -vd -ir -localhostonly 1 -singlerun -strict -timeout 0 -nogui
+
+!ENTRY org.eclipse.embedcdt.debug.gdbjtag.openocd.core 4 1 2026-06-02 14:40:25.251
+!MESSAGE arm-none-eabi-gdb --interpreter=mi2 --nx
+
+!ENTRY org.eclipse.embedcdt.packs.core 4 1 2026-06-02 15:37:25.417
+!MESSAGE D:\Project\all_IDE\Flagchip_FC_IDE_4.2.1\Flagchip_FC_IDE_4.2.1\Jlink/JLinkGDBServerCL.exe -if swd -device FC4150F1MBSxXxxxT1B -endian little -speed 4000 -port 2331 -swoport 2332 -telnetport 2333 -vd -ir -localhostonly 1 -singlerun -strict -timeout 0 -nogui
+
+!ENTRY org.eclipse.embedcdt.packs.core 4 1 2026-06-02 15:37:25.845
+!MESSAGE arm-none-eabi-gdb --interpreter=mi2 --nx
+
+!ENTRY org.eclipse.embedcdt.packs.core 4 1 2026-06-02 15:39:07.262
+!MESSAGE D:\Project\all_IDE\Flagchip_FC_IDE_4.2.1\Flagchip_FC_IDE_4.2.1\Jlink/JLinkGDBServerCL.exe -if swd -device FC4150F1MBSxXxxxT1B -endian little -speed 4000 -port 2331 -swoport 2332 -telnetport 2333 -vd -ir -localhostonly 1 -singlerun -strict -timeout 0 -nogui
+
+!ENTRY org.eclipse.embedcdt.packs.core 4 1 2026-06-02 15:39:07.814
+!MESSAGE arm-none-eabi-gdb --interpreter=mi2 --nx
+
+!ENTRY org.eclipse.embedcdt.debug.gdbjtag.core 4 0 2026-06-02 15:40:04.356
+!MESSAGE Debug session 'BLDC_Project GEELY_FC4150F1M_BLDC' already started. Terminate the first one before restarting.
+
+!ENTRY org.eclipse.embedcdt.packs.core 4 1 2026-06-02 15:40:16.359
+!MESSAGE D:\Project\all_IDE\Flagchip_FC_IDE_4.2.1\Flagchip_FC_IDE_4.2.1\Jlink/JLinkGDBServerCL.exe -if swd -device FC4150F1MBSxXxxxT1B -endian little -speed 4000 -port 2331 -swoport 2332 -telnetport 2333 -vd -ir -localhostonly 1 -singlerun -strict -timeout 0 -nogui
+
+!ENTRY org.eclipse.embedcdt.packs.core 4 1 2026-06-02 15:40:16.755
+!MESSAGE arm-none-eabi-gdb --interpreter=mi2 --nx
+
+!ENTRY org.eclipse.embedcdt.debug.gdbjtag.core 4 5012 2026-06-02 15:50:38.404
+!MESSAGE Could not determine GDB version after sending: arm-none-eabi-gdb --version, response: 
+
+!ENTRY org.eclipse.embedcdt.packs.core 4 1 2026-06-02 15:50:54.628
+!MESSAGE D:\Project\all_IDE\Flagchip_FC_IDE_4.2.1\Flagchip_FC_IDE_4.2.1\Jlink/JLinkGDBServerCL.exe -if swd -device FC4150F1MBSxXxxxT1B -endian little -speed 4000 -port 2331 -swoport 2332 -telnetport 2333 -vd -ir -localhostonly 1 -singlerun -strict -timeout 0 -nogui
+
+!ENTRY org.eclipse.embedcdt.packs.core 4 1 2026-06-02 15:50:55.194
+!MESSAGE arm-none-eabi-gdb --interpreter=mi2 --nx
+
+!ENTRY org.eclipse.embedcdt.packs.core 4 1 2026-06-02 15:51:59.643
+!MESSAGE D:\Project\all_IDE\Flagchip_FC_IDE_4.2.1\Flagchip_FC_IDE_4.2.1\Jlink/JLinkGDBServerCL.exe -if swd -device FC4150F1MBSxXxxxT1B -endian little -speed 4000 -port 2331 -swoport 2332 -telnetport 2333 -vd -ir -localhostonly 1 -singlerun -strict -timeout 0 -nogui
+
+!ENTRY org.eclipse.embedcdt.packs.core 4 1 2026-06-02 15:52:00.102
+!MESSAGE arm-none-eabi-gdb --interpreter=mi2 --nx
+
+!ENTRY org.eclipse.embedcdt.packs.core 4 1 2026-06-02 15:52:31.903
+!MESSAGE D:\Project\all_IDE\Flagchip_FC_IDE_4.2.1\Flagchip_FC_IDE_4.2.1\Jlink/JLinkGDBServerCL.exe -if swd -device FC4150F1MBSxXxxxT1B -endian little -speed 4000 -port 2331 -swoport 2332 -telnetport 2333 -vd -ir -localhostonly 1 -singlerun -strict -timeout 0 -nogui
+
+!ENTRY org.eclipse.embedcdt.packs.core 4 1 2026-06-02 15:52:32.321
+!MESSAGE arm-none-eabi-gdb --interpreter=mi2 --nx
+
+!ENTRY org.eclipse.embedcdt.packs.core 4 1 2026-06-02 15:53:06.454
+!MESSAGE D:\Project\all_IDE\Flagchip_FC_IDE_4.2.1\Flagchip_FC_IDE_4.2.1\Jlink/JLinkGDBServerCL.exe -if swd -device FC4150F1MBSxXxxxT1B -endian little -speed 4000 -port 2331 -swoport 2332 -telnetport 2333 -vd -ir -localhostonly 1 -singlerun -strict -timeout 0 -nogui
+
+!ENTRY org.eclipse.embedcdt.packs.core 4 1 2026-06-02 15:53:06.875
+!MESSAGE arm-none-eabi-gdb --interpreter=mi2 --nx
+
+!ENTRY org.eclipse.embedcdt.packs.core 4 1 2026-06-02 15:58:30.590
+!MESSAGE D:\Project\all_IDE\Flagchip_FC_IDE_4.2.1\Flagchip_FC_IDE_4.2.1\Jlink/JLinkGDBServerCL.exe -if swd -device FC4150F1MBSxXxxxT1B -endian little -speed 4000 -port 2331 -swoport 2332 -telnetport 2333 -vd -ir -localhostonly 1 -singlerun -strict -timeout 0 -nogui
+
+!ENTRY org.eclipse.embedcdt.packs.core 4 1 2026-06-02 15:58:31.029
+!MESSAGE arm-none-eabi-gdb --interpreter=mi2 --nx
+
+!ENTRY org.eclipse.embedcdt.packs.core 4 1 2026-06-02 15:59:25.020
+!MESSAGE D:\Project\all_IDE\Flagchip_FC_IDE_4.2.1\Flagchip_FC_IDE_4.2.1\Jlink/JLinkGDBServerCL.exe -if swd -device FC4150F1MBSxXxxxT1B -endian little -speed 4000 -port 2331 -swoport 2332 -telnetport 2333 -vd -ir -localhostonly 1 -singlerun -strict -timeout 0 -nogui
+
+!ENTRY org.eclipse.embedcdt.packs.core 4 1 2026-06-02 15:59:25.466
+!MESSAGE arm-none-eabi-gdb --interpreter=mi2 --nx
+
+!ENTRY org.eclipse.embedcdt.packs.core 4 1 2026-06-02 17:14:41.044
+!MESSAGE D:\Project\all_IDE\Flagchip_FC_IDE_4.2.1\Flagchip_FC_IDE_4.2.1\Jlink/JLinkGDBServerCL.exe -if swd -device FC4150F1MBSxXxxxT1B -endian little -speed 4000 -port 2331 -swoport 2332 -telnetport 2333 -vd -ir -localhostonly 1 -singlerun -strict -timeout 0 -nogui
+
+!ENTRY org.eclipse.embedcdt.packs.core 4 1 2026-06-02 17:14:41.701
+!MESSAGE arm-none-eabi-gdb --interpreter=mi2 --nx
+
+!ENTRY org.eclipse.embedcdt.packs.ui 4 1 2026-06-02 17:14:55.504
+!MESSAGE Assign a device to the project.
+
+!ENTRY org.eclipse.cdt.dsf 4 10005 2026-06-02 17:16:04.477
+!MESSAGE Request for monitor: 'RequestMonitor (org.eclipse.cdt.dsf.concurrent.RequestMonitor@6b6c2ea8): Status OK: unknown code=0 OK null' resulted in a rejected execution exception.
+
+!ENTRY org.eclipse.cdt.dsf 4 10005 2026-06-02 17:42:11.901
+!MESSAGE Request for monitor: 'RequestMonitor (org.eclipse.cdt.dsf.concurrent.RequestMonitor@7a780913): Status OK: unknown code=0 OK null' resulted in a rejected execution exception.

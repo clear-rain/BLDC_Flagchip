@@ -97,6 +97,7 @@ g_ui8CanRxBuffer    0x58              ./BSW/MCAL/BSP/Src/BspCan.o
 view_delta_e_filter
                     0x4               ./BSW/CDD/MotorDriver/motor_lib/motor_estimator.o
 testViewAngle       0x4               ./BSW/CDD/MotorDriver/motor_lib/motor_foc.o
+gIPMInitPos         0x70              ./BSW/CDD/MotorDriver/motor_lib/motor_voltage_injection_inductance.o
 g_ui16CanRxTimeoutCnt
                     0x16              ./BSW/MCAL/BSP/Src/BspCan.o
 testArrayPwmC       0xfa0             ./BSW/CDD/MotorDriver/motor_lib/motor_svpwm.o
@@ -33039,6 +33040,427 @@ Discarded input sections
  .debug_macro   0x00000000      0x440 ./BSW/CDD/MotorDriver/motor_lib/motor_svpwm.o
  .debug_macro   0x00000000       0x10 ./BSW/CDD/MotorDriver/motor_lib/motor_svpwm.o
  .debug_macro   0x00000000       0x1c ./BSW/CDD/MotorDriver/motor_lib/motor_svpwm.o
+ .group         0x00000000        0xc ./BSW/CDD/MotorDriver/motor_lib/motor_voltage_injection_inductance.o
+ .group         0x00000000        0xc ./BSW/CDD/MotorDriver/motor_lib/motor_voltage_injection_inductance.o
+ .group         0x00000000        0xc ./BSW/CDD/MotorDriver/motor_lib/motor_voltage_injection_inductance.o
+ .group         0x00000000        0xc ./BSW/CDD/MotorDriver/motor_lib/motor_voltage_injection_inductance.o
+ .group         0x00000000        0xc ./BSW/CDD/MotorDriver/motor_lib/motor_voltage_injection_inductance.o
+ .group         0x00000000        0xc ./BSW/CDD/MotorDriver/motor_lib/motor_voltage_injection_inductance.o
+ .group         0x00000000        0xc ./BSW/CDD/MotorDriver/motor_lib/motor_voltage_injection_inductance.o
+ .group         0x00000000        0xc ./BSW/CDD/MotorDriver/motor_lib/motor_voltage_injection_inductance.o
+ .group         0x00000000        0xc ./BSW/CDD/MotorDriver/motor_lib/motor_voltage_injection_inductance.o
+ .group         0x00000000        0xc ./BSW/CDD/MotorDriver/motor_lib/motor_voltage_injection_inductance.o
+ .group         0x00000000        0xc ./BSW/CDD/MotorDriver/motor_lib/motor_voltage_injection_inductance.o
+ .group         0x00000000        0xc ./BSW/CDD/MotorDriver/motor_lib/motor_voltage_injection_inductance.o
+ .group         0x00000000        0xc ./BSW/CDD/MotorDriver/motor_lib/motor_voltage_injection_inductance.o
+ .group         0x00000000        0xc ./BSW/CDD/MotorDriver/motor_lib/motor_voltage_injection_inductance.o
+ .group         0x00000000        0xc ./BSW/CDD/MotorDriver/motor_lib/motor_voltage_injection_inductance.o
+ .group         0x00000000        0xc ./BSW/CDD/MotorDriver/motor_lib/motor_voltage_injection_inductance.o
+ .group         0x00000000        0xc ./BSW/CDD/MotorDriver/motor_lib/motor_voltage_injection_inductance.o
+ .group         0x00000000        0xc ./BSW/CDD/MotorDriver/motor_lib/motor_voltage_injection_inductance.o
+ .group         0x00000000        0xc ./BSW/CDD/MotorDriver/motor_lib/motor_voltage_injection_inductance.o
+ .group         0x00000000        0xc ./BSW/CDD/MotorDriver/motor_lib/motor_voltage_injection_inductance.o
+ .group         0x00000000        0xc ./BSW/CDD/MotorDriver/motor_lib/motor_voltage_injection_inductance.o
+ .group         0x00000000        0xc ./BSW/CDD/MotorDriver/motor_lib/motor_voltage_injection_inductance.o
+ .group         0x00000000        0xc ./BSW/CDD/MotorDriver/motor_lib/motor_voltage_injection_inductance.o
+ .group         0x00000000        0xc ./BSW/CDD/MotorDriver/motor_lib/motor_voltage_injection_inductance.o
+ .group         0x00000000        0xc ./BSW/CDD/MotorDriver/motor_lib/motor_voltage_injection_inductance.o
+ .group         0x00000000        0xc ./BSW/CDD/MotorDriver/motor_lib/motor_voltage_injection_inductance.o
+ .group         0x00000000        0xc ./BSW/CDD/MotorDriver/motor_lib/motor_voltage_injection_inductance.o
+ .group         0x00000000        0xc ./BSW/CDD/MotorDriver/motor_lib/motor_voltage_injection_inductance.o
+ .group         0x00000000        0xc ./BSW/CDD/MotorDriver/motor_lib/motor_voltage_injection_inductance.o
+ .group         0x00000000        0xc ./BSW/CDD/MotorDriver/motor_lib/motor_voltage_injection_inductance.o
+ .group         0x00000000        0xc ./BSW/CDD/MotorDriver/motor_lib/motor_voltage_injection_inductance.o
+ .group         0x00000000        0xc ./BSW/CDD/MotorDriver/motor_lib/motor_voltage_injection_inductance.o
+ .group         0x00000000        0xc ./BSW/CDD/MotorDriver/motor_lib/motor_voltage_injection_inductance.o
+ .group         0x00000000        0xc ./BSW/CDD/MotorDriver/motor_lib/motor_voltage_injection_inductance.o
+ .group         0x00000000        0xc ./BSW/CDD/MotorDriver/motor_lib/motor_voltage_injection_inductance.o
+ .group         0x00000000        0xc ./BSW/CDD/MotorDriver/motor_lib/motor_voltage_injection_inductance.o
+ .group         0x00000000        0xc ./BSW/CDD/MotorDriver/motor_lib/motor_voltage_injection_inductance.o
+ .group         0x00000000        0xc ./BSW/CDD/MotorDriver/motor_lib/motor_voltage_injection_inductance.o
+ .group         0x00000000        0xc ./BSW/CDD/MotorDriver/motor_lib/motor_voltage_injection_inductance.o
+ .group         0x00000000        0xc ./BSW/CDD/MotorDriver/motor_lib/motor_voltage_injection_inductance.o
+ .group         0x00000000        0xc ./BSW/CDD/MotorDriver/motor_lib/motor_voltage_injection_inductance.o
+ .group         0x00000000        0xc ./BSW/CDD/MotorDriver/motor_lib/motor_voltage_injection_inductance.o
+ .group         0x00000000        0xc ./BSW/CDD/MotorDriver/motor_lib/motor_voltage_injection_inductance.o
+ .group         0x00000000        0xc ./BSW/CDD/MotorDriver/motor_lib/motor_voltage_injection_inductance.o
+ .group         0x00000000        0xc ./BSW/CDD/MotorDriver/motor_lib/motor_voltage_injection_inductance.o
+ .group         0x00000000        0xc ./BSW/CDD/MotorDriver/motor_lib/motor_voltage_injection_inductance.o
+ .group         0x00000000        0xc ./BSW/CDD/MotorDriver/motor_lib/motor_voltage_injection_inductance.o
+ .group         0x00000000        0xc ./BSW/CDD/MotorDriver/motor_lib/motor_voltage_injection_inductance.o
+ .group         0x00000000        0xc ./BSW/CDD/MotorDriver/motor_lib/motor_voltage_injection_inductance.o
+ .group         0x00000000        0xc ./BSW/CDD/MotorDriver/motor_lib/motor_voltage_injection_inductance.o
+ .group         0x00000000        0xc ./BSW/CDD/MotorDriver/motor_lib/motor_voltage_injection_inductance.o
+ .group         0x00000000        0xc ./BSW/CDD/MotorDriver/motor_lib/motor_voltage_injection_inductance.o
+ .group         0x00000000        0xc ./BSW/CDD/MotorDriver/motor_lib/motor_voltage_injection_inductance.o
+ .group         0x00000000        0xc ./BSW/CDD/MotorDriver/motor_lib/motor_voltage_injection_inductance.o
+ .group         0x00000000        0xc ./BSW/CDD/MotorDriver/motor_lib/motor_voltage_injection_inductance.o
+ .group         0x00000000        0xc ./BSW/CDD/MotorDriver/motor_lib/motor_voltage_injection_inductance.o
+ .group         0x00000000        0xc ./BSW/CDD/MotorDriver/motor_lib/motor_voltage_injection_inductance.o
+ .group         0x00000000        0xc ./BSW/CDD/MotorDriver/motor_lib/motor_voltage_injection_inductance.o
+ .group         0x00000000        0xc ./BSW/CDD/MotorDriver/motor_lib/motor_voltage_injection_inductance.o
+ .group         0x00000000        0xc ./BSW/CDD/MotorDriver/motor_lib/motor_voltage_injection_inductance.o
+ .group         0x00000000        0xc ./BSW/CDD/MotorDriver/motor_lib/motor_voltage_injection_inductance.o
+ .group         0x00000000        0xc ./BSW/CDD/MotorDriver/motor_lib/motor_voltage_injection_inductance.o
+ .group         0x00000000        0xc ./BSW/CDD/MotorDriver/motor_lib/motor_voltage_injection_inductance.o
+ .group         0x00000000        0xc ./BSW/CDD/MotorDriver/motor_lib/motor_voltage_injection_inductance.o
+ .group         0x00000000        0xc ./BSW/CDD/MotorDriver/motor_lib/motor_voltage_injection_inductance.o
+ .group         0x00000000        0xc ./BSW/CDD/MotorDriver/motor_lib/motor_voltage_injection_inductance.o
+ .group         0x00000000        0xc ./BSW/CDD/MotorDriver/motor_lib/motor_voltage_injection_inductance.o
+ .group         0x00000000        0xc ./BSW/CDD/MotorDriver/motor_lib/motor_voltage_injection_inductance.o
+ .group         0x00000000        0xc ./BSW/CDD/MotorDriver/motor_lib/motor_voltage_injection_inductance.o
+ .group         0x00000000        0xc ./BSW/CDD/MotorDriver/motor_lib/motor_voltage_injection_inductance.o
+ .group         0x00000000        0xc ./BSW/CDD/MotorDriver/motor_lib/motor_voltage_injection_inductance.o
+ .group         0x00000000        0xc ./BSW/CDD/MotorDriver/motor_lib/motor_voltage_injection_inductance.o
+ .group         0x00000000        0xc ./BSW/CDD/MotorDriver/motor_lib/motor_voltage_injection_inductance.o
+ .group         0x00000000        0xc ./BSW/CDD/MotorDriver/motor_lib/motor_voltage_injection_inductance.o
+ .group         0x00000000        0xc ./BSW/CDD/MotorDriver/motor_lib/motor_voltage_injection_inductance.o
+ .group         0x00000000        0xc ./BSW/CDD/MotorDriver/motor_lib/motor_voltage_injection_inductance.o
+ .group         0x00000000        0xc ./BSW/CDD/MotorDriver/motor_lib/motor_voltage_injection_inductance.o
+ .group         0x00000000        0xc ./BSW/CDD/MotorDriver/motor_lib/motor_voltage_injection_inductance.o
+ .group         0x00000000        0xc ./BSW/CDD/MotorDriver/motor_lib/motor_voltage_injection_inductance.o
+ .group         0x00000000        0xc ./BSW/CDD/MotorDriver/motor_lib/motor_voltage_injection_inductance.o
+ .group         0x00000000        0xc ./BSW/CDD/MotorDriver/motor_lib/motor_voltage_injection_inductance.o
+ .group         0x00000000        0xc ./BSW/CDD/MotorDriver/motor_lib/motor_voltage_injection_inductance.o
+ .group         0x00000000        0xc ./BSW/CDD/MotorDriver/motor_lib/motor_voltage_injection_inductance.o
+ .group         0x00000000        0xc ./BSW/CDD/MotorDriver/motor_lib/motor_voltage_injection_inductance.o
+ .group         0x00000000        0xc ./BSW/CDD/MotorDriver/motor_lib/motor_voltage_injection_inductance.o
+ .group         0x00000000        0xc ./BSW/CDD/MotorDriver/motor_lib/motor_voltage_injection_inductance.o
+ .group         0x00000000        0xc ./BSW/CDD/MotorDriver/motor_lib/motor_voltage_injection_inductance.o
+ .group         0x00000000        0xc ./BSW/CDD/MotorDriver/motor_lib/motor_voltage_injection_inductance.o
+ .group         0x00000000        0xc ./BSW/CDD/MotorDriver/motor_lib/motor_voltage_injection_inductance.o
+ .group         0x00000000        0xc ./BSW/CDD/MotorDriver/motor_lib/motor_voltage_injection_inductance.o
+ .group         0x00000000        0xc ./BSW/CDD/MotorDriver/motor_lib/motor_voltage_injection_inductance.o
+ .group         0x00000000        0xc ./BSW/CDD/MotorDriver/motor_lib/motor_voltage_injection_inductance.o
+ .group         0x00000000        0xc ./BSW/CDD/MotorDriver/motor_lib/motor_voltage_injection_inductance.o
+ .group         0x00000000        0xc ./BSW/CDD/MotorDriver/motor_lib/motor_voltage_injection_inductance.o
+ .group         0x00000000        0xc ./BSW/CDD/MotorDriver/motor_lib/motor_voltage_injection_inductance.o
+ .group         0x00000000        0xc ./BSW/CDD/MotorDriver/motor_lib/motor_voltage_injection_inductance.o
+ .group         0x00000000        0xc ./BSW/CDD/MotorDriver/motor_lib/motor_voltage_injection_inductance.o
+ .group         0x00000000        0xc ./BSW/CDD/MotorDriver/motor_lib/motor_voltage_injection_inductance.o
+ .group         0x00000000        0xc ./BSW/CDD/MotorDriver/motor_lib/motor_voltage_injection_inductance.o
+ .group         0x00000000        0xc ./BSW/CDD/MotorDriver/motor_lib/motor_voltage_injection_inductance.o
+ .group         0x00000000        0xc ./BSW/CDD/MotorDriver/motor_lib/motor_voltage_injection_inductance.o
+ .group         0x00000000        0xc ./BSW/CDD/MotorDriver/motor_lib/motor_voltage_injection_inductance.o
+ .group         0x00000000        0xc ./BSW/CDD/MotorDriver/motor_lib/motor_voltage_injection_inductance.o
+ .group         0x00000000        0xc ./BSW/CDD/MotorDriver/motor_lib/motor_voltage_injection_inductance.o
+ .group         0x00000000        0xc ./BSW/CDD/MotorDriver/motor_lib/motor_voltage_injection_inductance.o
+ .group         0x00000000        0xc ./BSW/CDD/MotorDriver/motor_lib/motor_voltage_injection_inductance.o
+ .group         0x00000000        0xc ./BSW/CDD/MotorDriver/motor_lib/motor_voltage_injection_inductance.o
+ .group         0x00000000        0xc ./BSW/CDD/MotorDriver/motor_lib/motor_voltage_injection_inductance.o
+ .group         0x00000000        0xc ./BSW/CDD/MotorDriver/motor_lib/motor_voltage_injection_inductance.o
+ .group         0x00000000        0xc ./BSW/CDD/MotorDriver/motor_lib/motor_voltage_injection_inductance.o
+ .group         0x00000000        0xc ./BSW/CDD/MotorDriver/motor_lib/motor_voltage_injection_inductance.o
+ .group         0x00000000        0xc ./BSW/CDD/MotorDriver/motor_lib/motor_voltage_injection_inductance.o
+ .group         0x00000000        0xc ./BSW/CDD/MotorDriver/motor_lib/motor_voltage_injection_inductance.o
+ .group         0x00000000        0xc ./BSW/CDD/MotorDriver/motor_lib/motor_voltage_injection_inductance.o
+ .group         0x00000000        0xc ./BSW/CDD/MotorDriver/motor_lib/motor_voltage_injection_inductance.o
+ .group         0x00000000        0xc ./BSW/CDD/MotorDriver/motor_lib/motor_voltage_injection_inductance.o
+ .group         0x00000000        0xc ./BSW/CDD/MotorDriver/motor_lib/motor_voltage_injection_inductance.o
+ .group         0x00000000        0xc ./BSW/CDD/MotorDriver/motor_lib/motor_voltage_injection_inductance.o
+ .group         0x00000000        0xc ./BSW/CDD/MotorDriver/motor_lib/motor_voltage_injection_inductance.o
+ .group         0x00000000        0xc ./BSW/CDD/MotorDriver/motor_lib/motor_voltage_injection_inductance.o
+ .group         0x00000000        0xc ./BSW/CDD/MotorDriver/motor_lib/motor_voltage_injection_inductance.o
+ .group         0x00000000        0xc ./BSW/CDD/MotorDriver/motor_lib/motor_voltage_injection_inductance.o
+ .group         0x00000000        0xc ./BSW/CDD/MotorDriver/motor_lib/motor_voltage_injection_inductance.o
+ .group         0x00000000        0xc ./BSW/CDD/MotorDriver/motor_lib/motor_voltage_injection_inductance.o
+ .group         0x00000000        0xc ./BSW/CDD/MotorDriver/motor_lib/motor_voltage_injection_inductance.o
+ .group         0x00000000        0xc ./BSW/CDD/MotorDriver/motor_lib/motor_voltage_injection_inductance.o
+ .group         0x00000000        0xc ./BSW/CDD/MotorDriver/motor_lib/motor_voltage_injection_inductance.o
+ .group         0x00000000        0xc ./BSW/CDD/MotorDriver/motor_lib/motor_voltage_injection_inductance.o
+ .group         0x00000000        0xc ./BSW/CDD/MotorDriver/motor_lib/motor_voltage_injection_inductance.o
+ .group         0x00000000        0xc ./BSW/CDD/MotorDriver/motor_lib/motor_voltage_injection_inductance.o
+ .group         0x00000000        0xc ./BSW/CDD/MotorDriver/motor_lib/motor_voltage_injection_inductance.o
+ .group         0x00000000        0xc ./BSW/CDD/MotorDriver/motor_lib/motor_voltage_injection_inductance.o
+ .group         0x00000000        0xc ./BSW/CDD/MotorDriver/motor_lib/motor_voltage_injection_inductance.o
+ .group         0x00000000        0xc ./BSW/CDD/MotorDriver/motor_lib/motor_voltage_injection_inductance.o
+ .group         0x00000000        0xc ./BSW/CDD/MotorDriver/motor_lib/motor_voltage_injection_inductance.o
+ .group         0x00000000        0xc ./BSW/CDD/MotorDriver/motor_lib/motor_voltage_injection_inductance.o
+ .group         0x00000000        0xc ./BSW/CDD/MotorDriver/motor_lib/motor_voltage_injection_inductance.o
+ .group         0x00000000        0xc ./BSW/CDD/MotorDriver/motor_lib/motor_voltage_injection_inductance.o
+ .group         0x00000000        0xc ./BSW/CDD/MotorDriver/motor_lib/motor_voltage_injection_inductance.o
+ .group         0x00000000        0xc ./BSW/CDD/MotorDriver/motor_lib/motor_voltage_injection_inductance.o
+ .group         0x00000000        0xc ./BSW/CDD/MotorDriver/motor_lib/motor_voltage_injection_inductance.o
+ .group         0x00000000        0xc ./BSW/CDD/MotorDriver/motor_lib/motor_voltage_injection_inductance.o
+ .group         0x00000000        0xc ./BSW/CDD/MotorDriver/motor_lib/motor_voltage_injection_inductance.o
+ .group         0x00000000        0xc ./BSW/CDD/MotorDriver/motor_lib/motor_voltage_injection_inductance.o
+ .group         0x00000000        0xc ./BSW/CDD/MotorDriver/motor_lib/motor_voltage_injection_inductance.o
+ .group         0x00000000        0xc ./BSW/CDD/MotorDriver/motor_lib/motor_voltage_injection_inductance.o
+ .group         0x00000000        0xc ./BSW/CDD/MotorDriver/motor_lib/motor_voltage_injection_inductance.o
+ .group         0x00000000        0xc ./BSW/CDD/MotorDriver/motor_lib/motor_voltage_injection_inductance.o
+ .group         0x00000000        0xc ./BSW/CDD/MotorDriver/motor_lib/motor_voltage_injection_inductance.o
+ .group         0x00000000        0xc ./BSW/CDD/MotorDriver/motor_lib/motor_voltage_injection_inductance.o
+ .group         0x00000000        0xc ./BSW/CDD/MotorDriver/motor_lib/motor_voltage_injection_inductance.o
+ .group         0x00000000        0xc ./BSW/CDD/MotorDriver/motor_lib/motor_voltage_injection_inductance.o
+ .group         0x00000000        0xc ./BSW/CDD/MotorDriver/motor_lib/motor_voltage_injection_inductance.o
+ .group         0x00000000        0xc ./BSW/CDD/MotorDriver/motor_lib/motor_voltage_injection_inductance.o
+ .group         0x00000000        0xc ./BSW/CDD/MotorDriver/motor_lib/motor_voltage_injection_inductance.o
+ .group         0x00000000        0xc ./BSW/CDD/MotorDriver/motor_lib/motor_voltage_injection_inductance.o
+ .group         0x00000000        0xc ./BSW/CDD/MotorDriver/motor_lib/motor_voltage_injection_inductance.o
+ .group         0x00000000        0xc ./BSW/CDD/MotorDriver/motor_lib/motor_voltage_injection_inductance.o
+ .group         0x00000000        0xc ./BSW/CDD/MotorDriver/motor_lib/motor_voltage_injection_inductance.o
+ .group         0x00000000        0xc ./BSW/CDD/MotorDriver/motor_lib/motor_voltage_injection_inductance.o
+ .group         0x00000000        0xc ./BSW/CDD/MotorDriver/motor_lib/motor_voltage_injection_inductance.o
+ .group         0x00000000        0xc ./BSW/CDD/MotorDriver/motor_lib/motor_voltage_injection_inductance.o
+ .group         0x00000000        0xc ./BSW/CDD/MotorDriver/motor_lib/motor_voltage_injection_inductance.o
+ .group         0x00000000        0xc ./BSW/CDD/MotorDriver/motor_lib/motor_voltage_injection_inductance.o
+ .group         0x00000000        0xc ./BSW/CDD/MotorDriver/motor_lib/motor_voltage_injection_inductance.o
+ .group         0x00000000        0xc ./BSW/CDD/MotorDriver/motor_lib/motor_voltage_injection_inductance.o
+ .group         0x00000000        0xc ./BSW/CDD/MotorDriver/motor_lib/motor_voltage_injection_inductance.o
+ .group         0x00000000        0xc ./BSW/CDD/MotorDriver/motor_lib/motor_voltage_injection_inductance.o
+ .group         0x00000000        0xc ./BSW/CDD/MotorDriver/motor_lib/motor_voltage_injection_inductance.o
+ .group         0x00000000        0xc ./BSW/CDD/MotorDriver/motor_lib/motor_voltage_injection_inductance.o
+ .group         0x00000000        0xc ./BSW/CDD/MotorDriver/motor_lib/motor_voltage_injection_inductance.o
+ .group         0x00000000        0xc ./BSW/CDD/MotorDriver/motor_lib/motor_voltage_injection_inductance.o
+ .group         0x00000000        0xc ./BSW/CDD/MotorDriver/motor_lib/motor_voltage_injection_inductance.o
+ .group         0x00000000        0xc ./BSW/CDD/MotorDriver/motor_lib/motor_voltage_injection_inductance.o
+ .group         0x00000000        0xc ./BSW/CDD/MotorDriver/motor_lib/motor_voltage_injection_inductance.o
+ .group         0x00000000        0xc ./BSW/CDD/MotorDriver/motor_lib/motor_voltage_injection_inductance.o
+ .group         0x00000000        0xc ./BSW/CDD/MotorDriver/motor_lib/motor_voltage_injection_inductance.o
+ .group         0x00000000        0xc ./BSW/CDD/MotorDriver/motor_lib/motor_voltage_injection_inductance.o
+ .group         0x00000000        0xc ./BSW/CDD/MotorDriver/motor_lib/motor_voltage_injection_inductance.o
+ .group         0x00000000        0xc ./BSW/CDD/MotorDriver/motor_lib/motor_voltage_injection_inductance.o
+ .group         0x00000000        0xc ./BSW/CDD/MotorDriver/motor_lib/motor_voltage_injection_inductance.o
+ .group         0x00000000        0xc ./BSW/CDD/MotorDriver/motor_lib/motor_voltage_injection_inductance.o
+ .group         0x00000000        0xc ./BSW/CDD/MotorDriver/motor_lib/motor_voltage_injection_inductance.o
+ .group         0x00000000        0xc ./BSW/CDD/MotorDriver/motor_lib/motor_voltage_injection_inductance.o
+ .group         0x00000000        0xc ./BSW/CDD/MotorDriver/motor_lib/motor_voltage_injection_inductance.o
+ .text          0x00000000        0x0 ./BSW/CDD/MotorDriver/motor_lib/motor_voltage_injection_inductance.o
+ .data          0x00000000        0x0 ./BSW/CDD/MotorDriver/motor_lib/motor_voltage_injection_inductance.o
+ .bss           0x00000000        0x0 ./BSW/CDD/MotorDriver/motor_lib/motor_voltage_injection_inductance.o
+ .text.SynFloatToCurQ12
+                0x00000000       0x44 ./BSW/CDD/MotorDriver/motor_lib/motor_voltage_injection_inductance.o
+ .text.SynUserPortReady
+                0x00000000        0x4 ./BSW/CDD/MotorDriver/motor_lib/motor_voltage_injection_inductance.o
+ .text.EnableDrive
+                0x00000000        0x2 ./BSW/CDD/MotorDriver/motor_lib/motor_voltage_injection_inductance.o
+ .text.DisableDrive
+                0x00000000        0x2 ./BSW/CDD/MotorDriver/motor_lib/motor_voltage_injection_inductance.o
+ .text.SynUserPortSetPulseWidthUs
+                0x00000000        0x2 ./BSW/CDD/MotorDriver/motor_lib/motor_voltage_injection_inductance.o
+ .text.SynUserPortSetBridgeSection
+                0x00000000       0x4a ./BSW/CDD/MotorDriver/motor_lib/motor_voltage_injection_inductance.o
+ .text.SynUserPortReadIUVW
+                0x00000000       0x16 ./BSW/CDD/MotorDriver/motor_lib/motor_voltage_injection_inductance.o
+ .text.SynReadCurBySection
+                0x00000000       0x36 ./BSW/CDD/MotorDriver/motor_lib/motor_voltage_injection_inductance.o
+ .text.SynUserPortReadUDC
+                0x00000000        0xc ./BSW/CDD/MotorDriver/motor_lib/motor_voltage_injection_inductance.o
+ .text.SynUserPortReportFault
+                0x00000000        0x2 ./BSW/CDD/MotorDriver/motor_lib/motor_voltage_injection_inductance.o
+ .text.SynInitPosParDefault
+                0x00000000       0x6c ./BSW/CDD/MotorDriver/motor_lib/motor_voltage_injection_inductance.o
+ .text.SynInitPosDetSetTs
+                0x00000000       0x18 ./BSW/CDD/MotorDriver/motor_lib/motor_voltage_injection_inductance.o
+ .text.SynInitPosDetSetPwm
+                0x00000000       0x52 ./BSW/CDD/MotorDriver/motor_lib/motor_voltage_injection_inductance.o
+ .text.SynInitPosDetFault
+                0x00000000       0x2c ./BSW/CDD/MotorDriver/motor_lib/motor_voltage_injection_inductance.o
+ .text.SynInitPosStart
+                0x00000000       0x48 ./BSW/CDD/MotorDriver/motor_lib/motor_voltage_injection_inductance.o
+ .text.SynCalLabAndLbc
+                0x00000000       0xf4 ./BSW/CDD/MotorDriver/motor_lib/motor_voltage_injection_inductance.o
+ .text.SynInitPosDetect
+                0x00000000      0x200 ./BSW/CDD/MotorDriver/motor_lib/motor_voltage_injection_inductance.o
+ .debug_info    0x00000000     0x1343 ./BSW/CDD/MotorDriver/motor_lib/motor_voltage_injection_inductance.o
+ .debug_abbrev  0x00000000      0x3c5 ./BSW/CDD/MotorDriver/motor_lib/motor_voltage_injection_inductance.o
+ .debug_loc     0x00000000      0x855 ./BSW/CDD/MotorDriver/motor_lib/motor_voltage_injection_inductance.o
+ .debug_aranges
+                0x00000000       0xa0 ./BSW/CDD/MotorDriver/motor_lib/motor_voltage_injection_inductance.o
+ .debug_ranges  0x00000000       0xc0 ./BSW/CDD/MotorDriver/motor_lib/motor_voltage_injection_inductance.o
+ .debug_macro   0x00000000      0xcda ./BSW/CDD/MotorDriver/motor_lib/motor_voltage_injection_inductance.o
+ .debug_macro   0x00000000      0xad8 ./BSW/CDD/MotorDriver/motor_lib/motor_voltage_injection_inductance.o
+ .debug_macro   0x00000000      0x34e ./BSW/CDD/MotorDriver/motor_lib/motor_voltage_injection_inductance.o
+ .debug_macro   0x00000000      0x1f0 ./BSW/CDD/MotorDriver/motor_lib/motor_voltage_injection_inductance.o
+ .debug_macro   0x00000000       0x22 ./BSW/CDD/MotorDriver/motor_lib/motor_voltage_injection_inductance.o
+ .debug_macro   0x00000000      0x174 ./BSW/CDD/MotorDriver/motor_lib/motor_voltage_injection_inductance.o
+ .debug_macro   0x00000000       0x1c ./BSW/CDD/MotorDriver/motor_lib/motor_voltage_injection_inductance.o
+ .debug_macro   0x00000000       0x3a ./BSW/CDD/MotorDriver/motor_lib/motor_voltage_injection_inductance.o
+ .debug_macro   0x00000000       0x16 ./BSW/CDD/MotorDriver/motor_lib/motor_voltage_injection_inductance.o
+ .debug_macro   0x00000000       0x1c ./BSW/CDD/MotorDriver/motor_lib/motor_voltage_injection_inductance.o
+ .debug_macro   0x00000000       0x10 ./BSW/CDD/MotorDriver/motor_lib/motor_voltage_injection_inductance.o
+ .debug_macro   0x00000000       0x94 ./BSW/CDD/MotorDriver/motor_lib/motor_voltage_injection_inductance.o
+ .debug_macro   0x00000000       0x22 ./BSW/CDD/MotorDriver/motor_lib/motor_voltage_injection_inductance.o
+ .debug_macro   0x00000000       0x40 ./BSW/CDD/MotorDriver/motor_lib/motor_voltage_injection_inductance.o
+ .debug_macro   0x00000000       0x34 ./BSW/CDD/MotorDriver/motor_lib/motor_voltage_injection_inductance.o
+ .debug_macro   0x00000000       0x28 ./BSW/CDD/MotorDriver/motor_lib/motor_voltage_injection_inductance.o
+ .debug_macro   0x00000000       0x28 ./BSW/CDD/MotorDriver/motor_lib/motor_voltage_injection_inductance.o
+ .debug_macro   0x00000000       0x4c ./BSW/CDD/MotorDriver/motor_lib/motor_voltage_injection_inductance.o
+ .debug_macro   0x00000000       0x28 ./BSW/CDD/MotorDriver/motor_lib/motor_voltage_injection_inductance.o
+ .debug_macro   0x00000000       0x28 ./BSW/CDD/MotorDriver/motor_lib/motor_voltage_injection_inductance.o
+ .debug_macro   0x00000000       0x28 ./BSW/CDD/MotorDriver/motor_lib/motor_voltage_injection_inductance.o
+ .debug_macro   0x00000000       0x28 ./BSW/CDD/MotorDriver/motor_lib/motor_voltage_injection_inductance.o
+ .debug_macro   0x00000000       0x28 ./BSW/CDD/MotorDriver/motor_lib/motor_voltage_injection_inductance.o
+ .debug_macro   0x00000000       0x34 ./BSW/CDD/MotorDriver/motor_lib/motor_voltage_injection_inductance.o
+ .debug_macro   0x00000000       0x28 ./BSW/CDD/MotorDriver/motor_lib/motor_voltage_injection_inductance.o
+ .debug_macro   0x00000000       0x4c ./BSW/CDD/MotorDriver/motor_lib/motor_voltage_injection_inductance.o
+ .debug_macro   0x00000000       0x76 ./BSW/CDD/MotorDriver/motor_lib/motor_voltage_injection_inductance.o
+ .debug_macro   0x00000000       0x1c ./BSW/CDD/MotorDriver/motor_lib/motor_voltage_injection_inductance.o
+ .debug_macro   0x00000000       0x28 ./BSW/CDD/MotorDriver/motor_lib/motor_voltage_injection_inductance.o
+ .debug_macro   0x00000000       0x58 ./BSW/CDD/MotorDriver/motor_lib/motor_voltage_injection_inductance.o
+ .debug_macro   0x00000000       0x28 ./BSW/CDD/MotorDriver/motor_lib/motor_voltage_injection_inductance.o
+ .debug_macro   0x00000000       0x58 ./BSW/CDD/MotorDriver/motor_lib/motor_voltage_injection_inductance.o
+ .debug_macro   0x00000000       0x28 ./BSW/CDD/MotorDriver/motor_lib/motor_voltage_injection_inductance.o
+ .debug_macro   0x00000000       0x22 ./BSW/CDD/MotorDriver/motor_lib/motor_voltage_injection_inductance.o
+ .debug_macro   0x00000000       0x2e ./BSW/CDD/MotorDriver/motor_lib/motor_voltage_injection_inductance.o
+ .debug_macro   0x00000000       0x28 ./BSW/CDD/MotorDriver/motor_lib/motor_voltage_injection_inductance.o
+ .debug_macro   0x00000000       0x28 ./BSW/CDD/MotorDriver/motor_lib/motor_voltage_injection_inductance.o
+ .debug_macro   0x00000000       0x28 ./BSW/CDD/MotorDriver/motor_lib/motor_voltage_injection_inductance.o
+ .debug_macro   0x00000000       0x28 ./BSW/CDD/MotorDriver/motor_lib/motor_voltage_injection_inductance.o
+ .debug_macro   0x00000000       0x5e ./BSW/CDD/MotorDriver/motor_lib/motor_voltage_injection_inductance.o
+ .debug_macro   0x00000000       0x34 ./BSW/CDD/MotorDriver/motor_lib/motor_voltage_injection_inductance.o
+ .debug_macro   0x00000000       0x28 ./BSW/CDD/MotorDriver/motor_lib/motor_voltage_injection_inductance.o
+ .debug_macro   0x00000000       0x28 ./BSW/CDD/MotorDriver/motor_lib/motor_voltage_injection_inductance.o
+ .debug_macro   0x00000000       0xb8 ./BSW/CDD/MotorDriver/motor_lib/motor_voltage_injection_inductance.o
+ .debug_macro   0x00000000       0x28 ./BSW/CDD/MotorDriver/motor_lib/motor_voltage_injection_inductance.o
+ .debug_macro   0x00000000       0x28 ./BSW/CDD/MotorDriver/motor_lib/motor_voltage_injection_inductance.o
+ .debug_macro   0x00000000       0x28 ./BSW/CDD/MotorDriver/motor_lib/motor_voltage_injection_inductance.o
+ .debug_macro   0x00000000       0x5e ./BSW/CDD/MotorDriver/motor_lib/motor_voltage_injection_inductance.o
+ .debug_macro   0x00000000       0x34 ./BSW/CDD/MotorDriver/motor_lib/motor_voltage_injection_inductance.o
+ .debug_macro   0x00000000       0x28 ./BSW/CDD/MotorDriver/motor_lib/motor_voltage_injection_inductance.o
+ .debug_macro   0x00000000       0x22 ./BSW/CDD/MotorDriver/motor_lib/motor_voltage_injection_inductance.o
+ .debug_macro   0x00000000       0x10 ./BSW/CDD/MotorDriver/motor_lib/motor_voltage_injection_inductance.o
+ .debug_macro   0x00000000       0xa6 ./BSW/CDD/MotorDriver/motor_lib/motor_voltage_injection_inductance.o
+ .debug_macro   0x00000000       0x2e ./BSW/CDD/MotorDriver/motor_lib/motor_voltage_injection_inductance.o
+ .debug_macro   0x00000000       0x28 ./BSW/CDD/MotorDriver/motor_lib/motor_voltage_injection_inductance.o
+ .debug_macro   0x00000000       0x10 ./BSW/CDD/MotorDriver/motor_lib/motor_voltage_injection_inductance.o
+ .debug_macro   0x00000000       0x10 ./BSW/CDD/MotorDriver/motor_lib/motor_voltage_injection_inductance.o
+ .debug_macro   0x00000000       0x10 ./BSW/CDD/MotorDriver/motor_lib/motor_voltage_injection_inductance.o
+ .debug_macro   0x00000000       0x10 ./BSW/CDD/MotorDriver/motor_lib/motor_voltage_injection_inductance.o
+ .debug_macro   0x00000000       0x10 ./BSW/CDD/MotorDriver/motor_lib/motor_voltage_injection_inductance.o
+ .debug_macro   0x00000000       0x10 ./BSW/CDD/MotorDriver/motor_lib/motor_voltage_injection_inductance.o
+ .debug_macro   0x00000000       0x10 ./BSW/CDD/MotorDriver/motor_lib/motor_voltage_injection_inductance.o
+ .debug_macro   0x00000000      0x2d9 ./BSW/CDD/MotorDriver/motor_lib/motor_voltage_injection_inductance.o
+ .debug_macro   0x00000000       0xfa ./BSW/CDD/MotorDriver/motor_lib/motor_voltage_injection_inductance.o
+ .debug_macro   0x00000000       0x2e ./BSW/CDD/MotorDriver/motor_lib/motor_voltage_injection_inductance.o
+ .debug_macro   0x00000000       0x10 ./BSW/CDD/MotorDriver/motor_lib/motor_voltage_injection_inductance.o
+ .debug_macro   0x00000000       0x10 ./BSW/CDD/MotorDriver/motor_lib/motor_voltage_injection_inductance.o
+ .debug_macro   0x00000000       0x10 ./BSW/CDD/MotorDriver/motor_lib/motor_voltage_injection_inductance.o
+ .debug_macro   0x00000000       0x40 ./BSW/CDD/MotorDriver/motor_lib/motor_voltage_injection_inductance.o
+ .debug_macro   0x00000000       0x6a ./BSW/CDD/MotorDriver/motor_lib/motor_voltage_injection_inductance.o
+ .debug_macro   0x00000000       0x28 ./BSW/CDD/MotorDriver/motor_lib/motor_voltage_injection_inductance.o
+ .debug_macro   0x00000000       0x10 ./BSW/CDD/MotorDriver/motor_lib/motor_voltage_injection_inductance.o
+ .debug_macro   0x00000000       0x1c ./BSW/CDD/MotorDriver/motor_lib/motor_voltage_injection_inductance.o
+ .debug_macro   0x00000000       0x3a ./BSW/CDD/MotorDriver/motor_lib/motor_voltage_injection_inductance.o
+ .debug_macro   0x00000000       0x10 ./BSW/CDD/MotorDriver/motor_lib/motor_voltage_injection_inductance.o
+ .debug_macro   0x00000000       0x16 ./BSW/CDD/MotorDriver/motor_lib/motor_voltage_injection_inductance.o
+ .debug_macro   0x00000000       0x28 ./BSW/CDD/MotorDriver/motor_lib/motor_voltage_injection_inductance.o
+ .debug_macro   0x00000000       0x3a ./BSW/CDD/MotorDriver/motor_lib/motor_voltage_injection_inductance.o
+ .debug_macro   0x00000000       0x10 ./BSW/CDD/MotorDriver/motor_lib/motor_voltage_injection_inductance.o
+ .debug_macro   0x00000000       0x1c ./BSW/CDD/MotorDriver/motor_lib/motor_voltage_injection_inductance.o
+ .debug_macro   0x00000000       0xa0 ./BSW/CDD/MotorDriver/motor_lib/motor_voltage_injection_inductance.o
+ .debug_macro   0x00000000       0x1c ./BSW/CDD/MotorDriver/motor_lib/motor_voltage_injection_inductance.o
+ .debug_macro   0x00000000       0x22 ./BSW/CDD/MotorDriver/motor_lib/motor_voltage_injection_inductance.o
+ .debug_macro   0x00000000      0x101 ./BSW/CDD/MotorDriver/motor_lib/motor_voltage_injection_inductance.o
+ .debug_macro   0x00000000     0x1018 ./BSW/CDD/MotorDriver/motor_lib/motor_voltage_injection_inductance.o
+ .debug_macro   0x00000000      0x11f ./BSW/CDD/MotorDriver/motor_lib/motor_voltage_injection_inductance.o
+ .debug_macro   0x00000000       0x8a ./BSW/CDD/MotorDriver/motor_lib/motor_voltage_injection_inductance.o
+ .debug_macro   0x00000000      0x679 ./BSW/CDD/MotorDriver/motor_lib/motor_voltage_injection_inductance.o
+ .debug_macro   0x00000000     0x25ff ./BSW/CDD/MotorDriver/motor_lib/motor_voltage_injection_inductance.o
+ .debug_macro   0x00000000      0x172 ./BSW/CDD/MotorDriver/motor_lib/motor_voltage_injection_inductance.o
+ .debug_macro   0x00000000       0x4c ./BSW/CDD/MotorDriver/motor_lib/motor_voltage_injection_inductance.o
+ .debug_macro   0x00000000      0x6fe ./BSW/CDD/MotorDriver/motor_lib/motor_voltage_injection_inductance.o
+ .debug_macro   0x00000000      0x184 ./BSW/CDD/MotorDriver/motor_lib/motor_voltage_injection_inductance.o
+ .debug_macro   0x00000000      0x142 ./BSW/CDD/MotorDriver/motor_lib/motor_voltage_injection_inductance.o
+ .debug_macro   0x00000000      0x16c ./BSW/CDD/MotorDriver/motor_lib/motor_voltage_injection_inductance.o
+ .debug_macro   0x00000000       0x5e ./BSW/CDD/MotorDriver/motor_lib/motor_voltage_injection_inductance.o
+ .debug_macro   0x00000000     0x1910 ./BSW/CDD/MotorDriver/motor_lib/motor_voltage_injection_inductance.o
+ .debug_macro   0x00000000      0x12a ./BSW/CDD/MotorDriver/motor_lib/motor_voltage_injection_inductance.o
+ .debug_macro   0x00000000      0x219 ./BSW/CDD/MotorDriver/motor_lib/motor_voltage_injection_inductance.o
+ .debug_macro   0x00000000       0x8c ./BSW/CDD/MotorDriver/motor_lib/motor_voltage_injection_inductance.o
+ .debug_macro   0x00000000      0xc67 ./BSW/CDD/MotorDriver/motor_lib/motor_voltage_injection_inductance.o
+ .debug_macro   0x00000000      0x346 ./BSW/CDD/MotorDriver/motor_lib/motor_voltage_injection_inductance.o
+ .debug_macro   0x00000000      0x7f5 ./BSW/CDD/MotorDriver/motor_lib/motor_voltage_injection_inductance.o
+ .debug_macro   0x00000000      0xb64 ./BSW/CDD/MotorDriver/motor_lib/motor_voltage_injection_inductance.o
+ .debug_macro   0x00000000     0x1ab4 ./BSW/CDD/MotorDriver/motor_lib/motor_voltage_injection_inductance.o
+ .debug_macro   0x00000000      0x205 ./BSW/CDD/MotorDriver/motor_lib/motor_voltage_injection_inductance.o
+ .debug_macro   0x00000000      0x154 ./BSW/CDD/MotorDriver/motor_lib/motor_voltage_injection_inductance.o
+ .debug_macro   0x00000000      0xdc8 ./BSW/CDD/MotorDriver/motor_lib/motor_voltage_injection_inductance.o
+ .debug_macro   0x00000000       0xe8 ./BSW/CDD/MotorDriver/motor_lib/motor_voltage_injection_inductance.o
+ .debug_macro   0x00000000       0xdc ./BSW/CDD/MotorDriver/motor_lib/motor_voltage_injection_inductance.o
+ .debug_macro   0x00000000      0x11e ./BSW/CDD/MotorDriver/motor_lib/motor_voltage_injection_inductance.o
+ .debug_macro   0x00000000      0x4e1 ./BSW/CDD/MotorDriver/motor_lib/motor_voltage_injection_inductance.o
+ .debug_macro   0x00000000      0x462 ./BSW/CDD/MotorDriver/motor_lib/motor_voltage_injection_inductance.o
+ .debug_macro   0x00000000      0x2f7 ./BSW/CDD/MotorDriver/motor_lib/motor_voltage_injection_inductance.o
+ .debug_macro   0x00000000      0x330 ./BSW/CDD/MotorDriver/motor_lib/motor_voltage_injection_inductance.o
+ .debug_macro   0x00000000      0x8d3 ./BSW/CDD/MotorDriver/motor_lib/motor_voltage_injection_inductance.o
+ .debug_macro   0x00000000      0xcf2 ./BSW/CDD/MotorDriver/motor_lib/motor_voltage_injection_inductance.o
+ .debug_macro   0x00000000      0x1d0 ./BSW/CDD/MotorDriver/motor_lib/motor_voltage_injection_inductance.o
+ .debug_macro   0x00000000      0x26a ./BSW/CDD/MotorDriver/motor_lib/motor_voltage_injection_inductance.o
+ .debug_macro   0x00000000      0x3a3 ./BSW/CDD/MotorDriver/motor_lib/motor_voltage_injection_inductance.o
+ .debug_macro   0x00000000      0x4b7 ./BSW/CDD/MotorDriver/motor_lib/motor_voltage_injection_inductance.o
+ .debug_macro   0x00000000      0x25b ./BSW/CDD/MotorDriver/motor_lib/motor_voltage_injection_inductance.o
+ .debug_macro   0x00000000      0xd32 ./BSW/CDD/MotorDriver/motor_lib/motor_voltage_injection_inductance.o
+ .debug_macro   0x00000000      0x1c5 ./BSW/CDD/MotorDriver/motor_lib/motor_voltage_injection_inductance.o
+ .debug_macro   0x00000000       0x46 ./BSW/CDD/MotorDriver/motor_lib/motor_voltage_injection_inductance.o
+ .debug_macro   0x00000000      0xc7e ./BSW/CDD/MotorDriver/motor_lib/motor_voltage_injection_inductance.o
+ .debug_macro   0x00000000       0x88 ./BSW/CDD/MotorDriver/motor_lib/motor_voltage_injection_inductance.o
+ .debug_macro   0x00000000      0x18a ./BSW/CDD/MotorDriver/motor_lib/motor_voltage_injection_inductance.o
+ .debug_macro   0x00000000      0x202 ./BSW/CDD/MotorDriver/motor_lib/motor_voltage_injection_inductance.o
+ .debug_macro   0x00000000      0x262 ./BSW/CDD/MotorDriver/motor_lib/motor_voltage_injection_inductance.o
+ .debug_macro   0x00000000       0x10 ./BSW/CDD/MotorDriver/motor_lib/motor_voltage_injection_inductance.o
+ .debug_macro   0x00000000       0x9c ./BSW/CDD/MotorDriver/motor_lib/motor_voltage_injection_inductance.o
+ .debug_macro   0x00000000      0x286 ./BSW/CDD/MotorDriver/motor_lib/motor_voltage_injection_inductance.o
+ .debug_macro   0x00000000       0xa0 ./BSW/CDD/MotorDriver/motor_lib/motor_voltage_injection_inductance.o
+ .debug_macro   0x00000000       0xca ./BSW/CDD/MotorDriver/motor_lib/motor_voltage_injection_inductance.o
+ .debug_macro   0x00000000       0xd6 ./BSW/CDD/MotorDriver/motor_lib/motor_voltage_injection_inductance.o
+ .debug_macro   0x00000000       0x22 ./BSW/CDD/MotorDriver/motor_lib/motor_voltage_injection_inductance.o
+ .debug_macro   0x00000000       0x4c ./BSW/CDD/MotorDriver/motor_lib/motor_voltage_injection_inductance.o
+ .debug_macro   0x00000000      0x13c ./BSW/CDD/MotorDriver/motor_lib/motor_voltage_injection_inductance.o
+ .debug_macro   0x00000000       0x2e ./BSW/CDD/MotorDriver/motor_lib/motor_voltage_injection_inductance.o
+ .debug_macro   0x00000000      0x15e ./BSW/CDD/MotorDriver/motor_lib/motor_voltage_injection_inductance.o
+ .debug_macro   0x00000000       0x46 ./BSW/CDD/MotorDriver/motor_lib/motor_voltage_injection_inductance.o
+ .debug_macro   0x00000000       0x94 ./BSW/CDD/MotorDriver/motor_lib/motor_voltage_injection_inductance.o
+ .debug_macro   0x00000000       0x16 ./BSW/CDD/MotorDriver/motor_lib/motor_voltage_injection_inductance.o
+ .debug_macro   0x00000000      0x1db ./BSW/CDD/MotorDriver/motor_lib/motor_voltage_injection_inductance.o
+ .debug_macro   0x00000000      0x19e ./BSW/CDD/MotorDriver/motor_lib/motor_voltage_injection_inductance.o
+ .debug_macro   0x00000000       0xfa ./BSW/CDD/MotorDriver/motor_lib/motor_voltage_injection_inductance.o
+ .debug_macro   0x00000000      0x24e ./BSW/CDD/MotorDriver/motor_lib/motor_voltage_injection_inductance.o
+ .debug_macro   0x00000000       0x8e ./BSW/CDD/MotorDriver/motor_lib/motor_voltage_injection_inductance.o
+ .debug_macro   0x00000000       0x76 ./BSW/CDD/MotorDriver/motor_lib/motor_voltage_injection_inductance.o
+ .debug_macro   0x00000000       0x16 ./BSW/CDD/MotorDriver/motor_lib/motor_voltage_injection_inductance.o
+ .debug_macro   0x00000000       0xa0 ./BSW/CDD/MotorDriver/motor_lib/motor_voltage_injection_inductance.o
+ .debug_macro   0x00000000       0x16 ./BSW/CDD/MotorDriver/motor_lib/motor_voltage_injection_inductance.o
+ .debug_macro   0x00000000       0x16 ./BSW/CDD/MotorDriver/motor_lib/motor_voltage_injection_inductance.o
+ .debug_macro   0x00000000       0x3a ./BSW/CDD/MotorDriver/motor_lib/motor_voltage_injection_inductance.o
+ .debug_macro   0x00000000       0x22 ./BSW/CDD/MotorDriver/motor_lib/motor_voltage_injection_inductance.o
+ .debug_macro   0x00000000       0x58 ./BSW/CDD/MotorDriver/motor_lib/motor_voltage_injection_inductance.o
+ .debug_macro   0x00000000       0x18 ./BSW/CDD/MotorDriver/motor_lib/motor_voltage_injection_inductance.o
+ .debug_macro   0x00000000       0x94 ./BSW/CDD/MotorDriver/motor_lib/motor_voltage_injection_inductance.o
+ .debug_macro   0x00000000       0x35 ./BSW/CDD/MotorDriver/motor_lib/motor_voltage_injection_inductance.o
+ .debug_macro   0x00000000       0x34 ./BSW/CDD/MotorDriver/motor_lib/motor_voltage_injection_inductance.o
+ .debug_macro   0x00000000       0x16 ./BSW/CDD/MotorDriver/motor_lib/motor_voltage_injection_inductance.o
+ .debug_macro   0x00000000       0x57 ./BSW/CDD/MotorDriver/motor_lib/motor_voltage_injection_inductance.o
+ .debug_macro   0x00000000       0x35 ./BSW/CDD/MotorDriver/motor_lib/motor_voltage_injection_inductance.o
+ .debug_macro   0x00000000      0x333 ./BSW/CDD/MotorDriver/motor_lib/motor_voltage_injection_inductance.o
+ .debug_macro   0x00000000       0x10 ./BSW/CDD/MotorDriver/motor_lib/motor_voltage_injection_inductance.o
+ .debug_macro   0x00000000       0x58 ./BSW/CDD/MotorDriver/motor_lib/motor_voltage_injection_inductance.o
+ .debug_macro   0x00000000       0x1f ./BSW/CDD/MotorDriver/motor_lib/motor_voltage_injection_inductance.o
+ .debug_macro   0x00000000       0x43 ./BSW/CDD/MotorDriver/motor_lib/motor_voltage_injection_inductance.o
+ .debug_macro   0x00000000       0x20 ./BSW/CDD/MotorDriver/motor_lib/motor_voltage_injection_inductance.o
+ .debug_macro   0x00000000      0x18e ./BSW/CDD/MotorDriver/motor_lib/motor_voltage_injection_inductance.o
+ .debug_macro   0x00000000       0x10 ./BSW/CDD/MotorDriver/motor_lib/motor_voltage_injection_inductance.o
+ .debug_macro   0x00000000       0x6a ./BSW/CDD/MotorDriver/motor_lib/motor_voltage_injection_inductance.o
+ .debug_macro   0x00000000       0x1c ./BSW/CDD/MotorDriver/motor_lib/motor_voltage_injection_inductance.o
+ .debug_macro   0x00000000       0x52 ./BSW/CDD/MotorDriver/motor_lib/motor_voltage_injection_inductance.o
+ .debug_macro   0x00000000       0x40 ./BSW/CDD/MotorDriver/motor_lib/motor_voltage_injection_inductance.o
+ .debug_macro   0x00000000       0x10 ./BSW/CDD/MotorDriver/motor_lib/motor_voltage_injection_inductance.o
+ .debug_macro   0x00000000       0x40 ./BSW/CDD/MotorDriver/motor_lib/motor_voltage_injection_inductance.o
+ .debug_macro   0x00000000       0xd7 ./BSW/CDD/MotorDriver/motor_lib/motor_voltage_injection_inductance.o
+ .debug_macro   0x00000000       0x1c ./BSW/CDD/MotorDriver/motor_lib/motor_voltage_injection_inductance.o
+ .debug_macro   0x00000000       0x3d ./BSW/CDD/MotorDriver/motor_lib/motor_voltage_injection_inductance.o
+ .debug_macro   0x00000000       0x16 ./BSW/CDD/MotorDriver/motor_lib/motor_voltage_injection_inductance.o
+ .debug_macro   0x00000000      0x16f ./BSW/CDD/MotorDriver/motor_lib/motor_voltage_injection_inductance.o
+ .debug_macro   0x00000000      0x43a ./BSW/CDD/MotorDriver/motor_lib/motor_voltage_injection_inductance.o
+ .debug_macro   0x00000000       0x52 ./BSW/CDD/MotorDriver/motor_lib/motor_voltage_injection_inductance.o
+ .debug_macro   0x00000000       0x16 ./BSW/CDD/MotorDriver/motor_lib/motor_voltage_injection_inductance.o
+ .debug_line    0x00000000     0x2b35 ./BSW/CDD/MotorDriver/motor_lib/motor_voltage_injection_inductance.o
+ .debug_str     0x00000000    0x8c870 ./BSW/CDD/MotorDriver/motor_lib/motor_voltage_injection_inductance.o
+ .comment       0x00000000       0x7a ./BSW/CDD/MotorDriver/motor_lib/motor_voltage_injection_inductance.o
+ .debug_frame   0x00000000      0x18c ./BSW/CDD/MotorDriver/motor_lib/motor_voltage_injection_inductance.o
+ .ARM.attributes
+                0x00000000       0x34 ./BSW/CDD/MotorDriver/motor_lib/motor_voltage_injection_inductance.o
+ COMMON         0x00000000       0x70 ./BSW/CDD/MotorDriver/motor_lib/motor_voltage_injection_inductance.o
  .group         0x00000000        0xc ./BSW/CDD/MotorDriver/MPQ6533/Src/MotorControl.o
  .group         0x00000000        0xc ./BSW/CDD/MotorDriver/MPQ6533/Src/MotorControl.o
  .group         0x00000000        0xc ./BSW/CDD/MotorDriver/MPQ6533/Src/MotorControl.o
@@ -37167,6 +37589,7 @@ LOAD ./BSW/CDD/MotorDriver/motor_lib/motor_misc.o
 LOAD ./BSW/CDD/MotorDriver/motor_lib/motor_pid.o
 LOAD ./BSW/CDD/MotorDriver/motor_lib/motor_protect.o
 LOAD ./BSW/CDD/MotorDriver/motor_lib/motor_svpwm.o
+LOAD ./BSW/CDD/MotorDriver/motor_lib/motor_voltage_injection_inductance.o
 LOAD ./BSW/CDD/MotorDriver/MPQ6533/Src/MotorControl.o
 LOAD ./BSW/CDD/MotorDriver/MPQ6533/Src/MotorDriver_Cfg.o
 LOAD ./BSW/CDD/MotorDriver/MPQ6533/Src/MotorDriver_Driver.o
@@ -39711,7 +40134,7 @@ END GROUP
                 0x00000001                ASSERT ((__StackLimit >= __HeapLimit), region RAM overflowed with STACK)
 OUTPUT(BLDC_Project_PDM_BLDC.elf elf32-littlearm)
 
-.debug_info     0x00000000    0x7bb79
+.debug_info     0x00000000    0x7bb7b
  .debug_info    0x00000000     0x297a ./RTE/AllTask.o
  .debug_info    0x0000297a     0x1a8d ./RTE/rte.o
  .debug_info    0x00004407     0x1e13 ./BSW/XCP/XcpBasic.o
@@ -39748,49 +40171,49 @@ OUTPUT(BLDC_Project_PDM_BLDC.elf elf32-littlearm)
  .debug_info    0x0004043b      0x80c ./BSW/MCAL/Driver/Source/module_driver_trgsel.o
  .debug_info    0x00040c47      0x97e ./BSW/MCAL/Driver/Source/module_driver_wdog.o
  .debug_info    0x000415c5      0x2b4 ./BSW/MCAL/Device/FC/fclib/fcfunc.o
- .debug_info    0x00041879     0x160b ./BSW/MCAL/BSP/Src/BspAdc.o
- .debug_info    0x00042e84      0xcce ./BSW/MCAL/BSP/Src/BspAontimer.o
- .debug_info    0x00043b52     0x31cf ./BSW/MCAL/BSP/Src/BspCan.o
- .debug_info    0x00046d21     0x195b ./BSW/MCAL/BSP/Src/BspClock.o
- .debug_info    0x0004867c      0xc3b ./BSW/MCAL/BSP/Src/BspDma.o
- .debug_info    0x000492b7     0x14c0 ./BSW/MCAL/BSP/Src/BspFlash.o
- .debug_info    0x0004a777     0x1473 ./BSW/MCAL/BSP/Src/BspFtuCounter.o
- .debug_info    0x0004bbea     0x14c8 ./BSW/MCAL/BSP/Src/BspFtuHallCounter.o
- .debug_info    0x0004d0b2     0x1837 ./BSW/MCAL/BSP/Src/BspFtuPwm.o
- .debug_info    0x0004e8e9     0x35f7 ./BSW/MCAL/BSP/Src/BspGpio.o
- .debug_info    0x00051ee0     0x293f ./BSW/MCAL/BSP/Src/BspInterrupt.o
- .debug_info    0x0005481f      0xfaa ./BSW/MCAL/BSP/Src/BspPtimer.o
- .debug_info    0x000557c9      0xc52 ./BSW/MCAL/BSP/Src/BspRtc.o
- .debug_info    0x0005641b     0x1c9b ./BSW/MCAL/BSP/Src/BspSpi.o
- .debug_info    0x000580b6      0xdaa ./BSW/MCAL/BSP/Src/BspWdg.o
- .debug_info    0x00058e60     0x197e ./BSW/ECAL/IoHwAb/Src/IoHwAb_Adc.o
- .debug_info    0x0005a7de      0xe02 ./BSW/ECAL/IoHwAb/Src/IoHwAb_Counter.o
- .debug_info    0x0005b5e0      0xb90 ./BSW/ECAL/IoHwAb/Src/IoHwAb_Dio.o
- .debug_info    0x0005c170      0xe8e ./BSW/ECAL/IoHwAb/Src/IoHwAb_HallCounter.o
- .debug_info    0x0005cffe      0xdf9 ./BSW/ECAL/IoHwAb/Src/IoHwAb_Pwm.o
- .debug_info    0x0005ddf7      0x198 ./BSW/CompatibleInfo/CompatibleInfo.o
- .debug_info    0x0005df8f     0x2401 ./BSW/Com/Source/Com.o
- .debug_info    0x00060390     0x2001 ./BSW/Com/Source/Com_cfg.o
- .debug_info    0x00062391      0xac3 ./BSW/CDD/SBC/Src/SBC.o
- .debug_info    0x00062e54     0x1575 ./BSW/CDD/SBC/Src/SBC_Cfg.o
- .debug_info    0x000643c9      0xc1b ./BSW/CDD/SBC/Src/SBC_Diag.o
- .debug_info    0x00064fe4     0x1945 ./BSW/CDD/SBC/Src/SBC_Driver.o
- .debug_info    0x00066929     0x163b ./BSW/CDD/MotorDriver/motor_lib/motor_adc.o
- .debug_info    0x00067f64     0x1e09 ./BSW/CDD/MotorDriver/motor_lib/motor_api.o
- .debug_info    0x00069d6d     0x18ab ./BSW/CDD/MotorDriver/motor_lib/motor_app.o
- .debug_info    0x0006b618       0xa4 ./BSW/CDD/MotorDriver/motor_lib/motor_arm_math.o
- .debug_info    0x0006b6bc      0xb0e ./BSW/CDD/MotorDriver/motor_lib/motor_current.o
- .debug_info    0x0006c1ca     0x1ac5 ./BSW/CDD/MotorDriver/motor_lib/motor_encoder.o
- .debug_info    0x0006dc8f     0x205d ./BSW/CDD/MotorDriver/motor_lib/motor_estimator.o
- .debug_info    0x0006fcec     0x27a0 ./BSW/CDD/MotorDriver/motor_lib/motor_foc.o
- .debug_info    0x0007248c     0x29f5 ./BSW/CDD/MotorDriver/motor_lib/motor_hall.o
- .debug_info    0x00074e81     0x10cb ./BSW/CDD/MotorDriver/motor_lib/motor_misc.o
- .debug_info    0x00075f4c      0x2b6 ./BSW/CDD/MotorDriver/motor_lib/motor_pid.o
- .debug_info    0x00076202     0x2486 ./BSW/CDD/MotorDriver/motor_lib/motor_svpwm.o
- .debug_info    0x00078688     0x132d ./ASW/Spindle_Control.o
- .debug_info    0x000799b5     0x21c4 ./ASW/main.o
+ .debug_info    0x00041879     0x160d ./BSW/MCAL/BSP/Src/BspAdc.o
+ .debug_info    0x00042e86      0xcce ./BSW/MCAL/BSP/Src/BspAontimer.o
+ .debug_info    0x00043b54     0x31cf ./BSW/MCAL/BSP/Src/BspCan.o
+ .debug_info    0x00046d23     0x195b ./BSW/MCAL/BSP/Src/BspClock.o
+ .debug_info    0x0004867e      0xc3b ./BSW/MCAL/BSP/Src/BspDma.o
+ .debug_info    0x000492b9     0x14c0 ./BSW/MCAL/BSP/Src/BspFlash.o
+ .debug_info    0x0004a779     0x1473 ./BSW/MCAL/BSP/Src/BspFtuCounter.o
+ .debug_info    0x0004bbec     0x14c8 ./BSW/MCAL/BSP/Src/BspFtuHallCounter.o
+ .debug_info    0x0004d0b4     0x1837 ./BSW/MCAL/BSP/Src/BspFtuPwm.o
+ .debug_info    0x0004e8eb     0x35f7 ./BSW/MCAL/BSP/Src/BspGpio.o
+ .debug_info    0x00051ee2     0x293f ./BSW/MCAL/BSP/Src/BspInterrupt.o
+ .debug_info    0x00054821      0xfaa ./BSW/MCAL/BSP/Src/BspPtimer.o
+ .debug_info    0x000557cb      0xc52 ./BSW/MCAL/BSP/Src/BspRtc.o
+ .debug_info    0x0005641d     0x1c9b ./BSW/MCAL/BSP/Src/BspSpi.o
+ .debug_info    0x000580b8      0xdaa ./BSW/MCAL/BSP/Src/BspWdg.o
+ .debug_info    0x00058e62     0x197e ./BSW/ECAL/IoHwAb/Src/IoHwAb_Adc.o
+ .debug_info    0x0005a7e0      0xe02 ./BSW/ECAL/IoHwAb/Src/IoHwAb_Counter.o
+ .debug_info    0x0005b5e2      0xb90 ./BSW/ECAL/IoHwAb/Src/IoHwAb_Dio.o
+ .debug_info    0x0005c172      0xe8e ./BSW/ECAL/IoHwAb/Src/IoHwAb_HallCounter.o
+ .debug_info    0x0005d000      0xdf9 ./BSW/ECAL/IoHwAb/Src/IoHwAb_Pwm.o
+ .debug_info    0x0005ddf9      0x198 ./BSW/CompatibleInfo/CompatibleInfo.o
+ .debug_info    0x0005df91     0x2401 ./BSW/Com/Source/Com.o
+ .debug_info    0x00060392     0x2001 ./BSW/Com/Source/Com_cfg.o
+ .debug_info    0x00062393      0xac3 ./BSW/CDD/SBC/Src/SBC.o
+ .debug_info    0x00062e56     0x1575 ./BSW/CDD/SBC/Src/SBC_Cfg.o
+ .debug_info    0x000643cb      0xc1b ./BSW/CDD/SBC/Src/SBC_Diag.o
+ .debug_info    0x00064fe6     0x1945 ./BSW/CDD/SBC/Src/SBC_Driver.o
+ .debug_info    0x0006692b     0x163b ./BSW/CDD/MotorDriver/motor_lib/motor_adc.o
+ .debug_info    0x00067f66     0x1e09 ./BSW/CDD/MotorDriver/motor_lib/motor_api.o
+ .debug_info    0x00069d6f     0x18ab ./BSW/CDD/MotorDriver/motor_lib/motor_app.o
+ .debug_info    0x0006b61a       0xa4 ./BSW/CDD/MotorDriver/motor_lib/motor_arm_math.o
+ .debug_info    0x0006b6be      0xb0e ./BSW/CDD/MotorDriver/motor_lib/motor_current.o
+ .debug_info    0x0006c1cc     0x1ac5 ./BSW/CDD/MotorDriver/motor_lib/motor_encoder.o
+ .debug_info    0x0006dc91     0x205d ./BSW/CDD/MotorDriver/motor_lib/motor_estimator.o
+ .debug_info    0x0006fcee     0x27a0 ./BSW/CDD/MotorDriver/motor_lib/motor_foc.o
+ .debug_info    0x0007248e     0x29f5 ./BSW/CDD/MotorDriver/motor_lib/motor_hall.o
+ .debug_info    0x00074e83     0x10cb ./BSW/CDD/MotorDriver/motor_lib/motor_misc.o
+ .debug_info    0x00075f4e      0x2b6 ./BSW/CDD/MotorDriver/motor_lib/motor_pid.o
+ .debug_info    0x00076204     0x2486 ./BSW/CDD/MotorDriver/motor_lib/motor_svpwm.o
+ .debug_info    0x0007868a     0x132d ./ASW/Spindle_Control.o
+ .debug_info    0x000799b7     0x21c4 ./ASW/main.o
 
-.debug_abbrev   0x00000000     0xe781
+.debug_abbrev   0x00000000     0xe795
  .debug_abbrev  0x00000000      0x450 ./RTE/AllTask.o
  .debug_abbrev  0x00000450      0x2a4 ./RTE/rte.o
  .debug_abbrev  0x000006f4      0x542 ./BSW/XCP/XcpBasic.o
@@ -39827,47 +40250,47 @@ OUTPUT(BLDC_Project_PDM_BLDC.elf elf32-littlearm)
  .debug_abbrev  0x000064ab      0x1f8 ./BSW/MCAL/Driver/Source/module_driver_trgsel.o
  .debug_abbrev  0x000066a3      0x24f ./BSW/MCAL/Driver/Source/module_driver_wdog.o
  .debug_abbrev  0x000068f2       0xf2 ./BSW/MCAL/Device/FC/fclib/fcfunc.o
- .debug_abbrev  0x000069e4      0x2e4 ./BSW/MCAL/BSP/Src/BspAdc.o
- .debug_abbrev  0x00006cc8      0x25d ./BSW/MCAL/BSP/Src/BspAontimer.o
- .debug_abbrev  0x00006f25      0x4f5 ./BSW/MCAL/BSP/Src/BspCan.o
- .debug_abbrev  0x0000741a      0x312 ./BSW/MCAL/BSP/Src/BspClock.o
- .debug_abbrev  0x0000772c      0x239 ./BSW/MCAL/BSP/Src/BspDma.o
- .debug_abbrev  0x00007965      0x3d8 ./BSW/MCAL/BSP/Src/BspFlash.o
- .debug_abbrev  0x00007d3d      0x335 ./BSW/MCAL/BSP/Src/BspFtuCounter.o
- .debug_abbrev  0x00008072      0x36b ./BSW/MCAL/BSP/Src/BspFtuHallCounter.o
- .debug_abbrev  0x000083dd      0x326 ./BSW/MCAL/BSP/Src/BspFtuPwm.o
- .debug_abbrev  0x00008703      0x31d ./BSW/MCAL/BSP/Src/BspGpio.o
- .debug_abbrev  0x00008a20      0x374 ./BSW/MCAL/BSP/Src/BspInterrupt.o
- .debug_abbrev  0x00008d94      0x2a0 ./BSW/MCAL/BSP/Src/BspPtimer.o
- .debug_abbrev  0x00009034      0x2bf ./BSW/MCAL/BSP/Src/BspRtc.o
- .debug_abbrev  0x000092f3      0x311 ./BSW/MCAL/BSP/Src/BspSpi.o
- .debug_abbrev  0x00009604      0x270 ./BSW/MCAL/BSP/Src/BspWdg.o
- .debug_abbrev  0x00009874      0x341 ./BSW/ECAL/IoHwAb/Src/IoHwAb_Adc.o
- .debug_abbrev  0x00009bb5      0x259 ./BSW/ECAL/IoHwAb/Src/IoHwAb_Counter.o
- .debug_abbrev  0x00009e0e      0x24c ./BSW/ECAL/IoHwAb/Src/IoHwAb_Dio.o
- .debug_abbrev  0x0000a05a      0x29e ./BSW/ECAL/IoHwAb/Src/IoHwAb_HallCounter.o
- .debug_abbrev  0x0000a2f8      0x2aa ./BSW/ECAL/IoHwAb/Src/IoHwAb_Pwm.o
- .debug_abbrev  0x0000a5a2       0x7c ./BSW/CompatibleInfo/CompatibleInfo.o
- .debug_abbrev  0x0000a61e      0x433 ./BSW/Com/Source/Com.o
- .debug_abbrev  0x0000aa51      0x294 ./BSW/Com/Source/Com_cfg.o
- .debug_abbrev  0x0000ace5      0x278 ./BSW/CDD/SBC/Src/SBC.o
- .debug_abbrev  0x0000af5d      0x29e ./BSW/CDD/SBC/Src/SBC_Cfg.o
- .debug_abbrev  0x0000b1fb      0x2db ./BSW/CDD/SBC/Src/SBC_Diag.o
- .debug_abbrev  0x0000b4d6      0x3df ./BSW/CDD/SBC/Src/SBC_Driver.o
- .debug_abbrev  0x0000b8b5      0x2a5 ./BSW/CDD/MotorDriver/motor_lib/motor_adc.o
- .debug_abbrev  0x0000bb5a      0x3dc ./BSW/CDD/MotorDriver/motor_lib/motor_api.o
- .debug_abbrev  0x0000bf36      0x2a2 ./BSW/CDD/MotorDriver/motor_lib/motor_app.o
- .debug_abbrev  0x0000c1d8       0x64 ./BSW/CDD/MotorDriver/motor_lib/motor_arm_math.o
- .debug_abbrev  0x0000c23c      0x261 ./BSW/CDD/MotorDriver/motor_lib/motor_current.o
- .debug_abbrev  0x0000c49d      0x469 ./BSW/CDD/MotorDriver/motor_lib/motor_encoder.o
- .debug_abbrev  0x0000c906      0x461 ./BSW/CDD/MotorDriver/motor_lib/motor_estimator.o
- .debug_abbrev  0x0000cd67      0x455 ./BSW/CDD/MotorDriver/motor_lib/motor_foc.o
- .debug_abbrev  0x0000d1bc      0x565 ./BSW/CDD/MotorDriver/motor_lib/motor_hall.o
- .debug_abbrev  0x0000d721      0x3a8 ./BSW/CDD/MotorDriver/motor_lib/motor_misc.o
- .debug_abbrev  0x0000dac9       0xfb ./BSW/CDD/MotorDriver/motor_lib/motor_pid.o
- .debug_abbrev  0x0000dbc4      0x46d ./BSW/CDD/MotorDriver/motor_lib/motor_svpwm.o
- .debug_abbrev  0x0000e031      0x44c ./ASW/Spindle_Control.o
- .debug_abbrev  0x0000e47d      0x304 ./ASW/main.o
+ .debug_abbrev  0x000069e4      0x2f8 ./BSW/MCAL/BSP/Src/BspAdc.o
+ .debug_abbrev  0x00006cdc      0x25d ./BSW/MCAL/BSP/Src/BspAontimer.o
+ .debug_abbrev  0x00006f39      0x4f5 ./BSW/MCAL/BSP/Src/BspCan.o
+ .debug_abbrev  0x0000742e      0x312 ./BSW/MCAL/BSP/Src/BspClock.o
+ .debug_abbrev  0x00007740      0x239 ./BSW/MCAL/BSP/Src/BspDma.o
+ .debug_abbrev  0x00007979      0x3d8 ./BSW/MCAL/BSP/Src/BspFlash.o
+ .debug_abbrev  0x00007d51      0x335 ./BSW/MCAL/BSP/Src/BspFtuCounter.o
+ .debug_abbrev  0x00008086      0x36b ./BSW/MCAL/BSP/Src/BspFtuHallCounter.o
+ .debug_abbrev  0x000083f1      0x326 ./BSW/MCAL/BSP/Src/BspFtuPwm.o
+ .debug_abbrev  0x00008717      0x31d ./BSW/MCAL/BSP/Src/BspGpio.o
+ .debug_abbrev  0x00008a34      0x374 ./BSW/MCAL/BSP/Src/BspInterrupt.o
+ .debug_abbrev  0x00008da8      0x2a0 ./BSW/MCAL/BSP/Src/BspPtimer.o
+ .debug_abbrev  0x00009048      0x2bf ./BSW/MCAL/BSP/Src/BspRtc.o
+ .debug_abbrev  0x00009307      0x311 ./BSW/MCAL/BSP/Src/BspSpi.o
+ .debug_abbrev  0x00009618      0x270 ./BSW/MCAL/BSP/Src/BspWdg.o
+ .debug_abbrev  0x00009888      0x341 ./BSW/ECAL/IoHwAb/Src/IoHwAb_Adc.o
+ .debug_abbrev  0x00009bc9      0x259 ./BSW/ECAL/IoHwAb/Src/IoHwAb_Counter.o
+ .debug_abbrev  0x00009e22      0x24c ./BSW/ECAL/IoHwAb/Src/IoHwAb_Dio.o
+ .debug_abbrev  0x0000a06e      0x29e ./BSW/ECAL/IoHwAb/Src/IoHwAb_HallCounter.o
+ .debug_abbrev  0x0000a30c      0x2aa ./BSW/ECAL/IoHwAb/Src/IoHwAb_Pwm.o
+ .debug_abbrev  0x0000a5b6       0x7c ./BSW/CompatibleInfo/CompatibleInfo.o
+ .debug_abbrev  0x0000a632      0x433 ./BSW/Com/Source/Com.o
+ .debug_abbrev  0x0000aa65      0x294 ./BSW/Com/Source/Com_cfg.o
+ .debug_abbrev  0x0000acf9      0x278 ./BSW/CDD/SBC/Src/SBC.o
+ .debug_abbrev  0x0000af71      0x29e ./BSW/CDD/SBC/Src/SBC_Cfg.o
+ .debug_abbrev  0x0000b20f      0x2db ./BSW/CDD/SBC/Src/SBC_Diag.o
+ .debug_abbrev  0x0000b4ea      0x3df ./BSW/CDD/SBC/Src/SBC_Driver.o
+ .debug_abbrev  0x0000b8c9      0x2a5 ./BSW/CDD/MotorDriver/motor_lib/motor_adc.o
+ .debug_abbrev  0x0000bb6e      0x3dc ./BSW/CDD/MotorDriver/motor_lib/motor_api.o
+ .debug_abbrev  0x0000bf4a      0x2a2 ./BSW/CDD/MotorDriver/motor_lib/motor_app.o
+ .debug_abbrev  0x0000c1ec       0x64 ./BSW/CDD/MotorDriver/motor_lib/motor_arm_math.o
+ .debug_abbrev  0x0000c250      0x261 ./BSW/CDD/MotorDriver/motor_lib/motor_current.o
+ .debug_abbrev  0x0000c4b1      0x469 ./BSW/CDD/MotorDriver/motor_lib/motor_encoder.o
+ .debug_abbrev  0x0000c91a      0x461 ./BSW/CDD/MotorDriver/motor_lib/motor_estimator.o
+ .debug_abbrev  0x0000cd7b      0x455 ./BSW/CDD/MotorDriver/motor_lib/motor_foc.o
+ .debug_abbrev  0x0000d1d0      0x565 ./BSW/CDD/MotorDriver/motor_lib/motor_hall.o
+ .debug_abbrev  0x0000d735      0x3a8 ./BSW/CDD/MotorDriver/motor_lib/motor_misc.o
+ .debug_abbrev  0x0000dadd       0xfb ./BSW/CDD/MotorDriver/motor_lib/motor_pid.o
+ .debug_abbrev  0x0000dbd8      0x46d ./BSW/CDD/MotorDriver/motor_lib/motor_svpwm.o
+ .debug_abbrev  0x0000e045      0x44c ./ASW/Spindle_Control.o
+ .debug_abbrev  0x0000e491      0x304 ./ASW/main.o
 
 .debug_loc      0x00000000    0x347c7
  .debug_loc     0x00000000       0xde ./RTE/AllTask.o
@@ -40508,7 +40931,7 @@ OUTPUT(BLDC_Project_PDM_BLDC.elf elf32-littlearm)
  .debug_macro   0x00046077      0xa1c ./ASW/Spindle_Control.o
  .debug_macro   0x00046a93      0xee7 ./ASW/main.o
 
-.debug_line     0x00000000    0xa7e89
+.debug_line     0x00000000    0xa7e8b
  .debug_line    0x00000000     0x2f7e ./RTE/AllTask.o
  .debug_line    0x00002f7e     0x25f9 ./RTE/rte.o
  .debug_line    0x00005577     0x14b5 ./BSW/XCP/XcpBasic.o
@@ -40548,44 +40971,44 @@ OUTPUT(BLDC_Project_PDM_BLDC.elf elf32-littlearm)
  .debug_line    0x0004ee28     0x2524 ./BSW/MCAL/BSP/Src/BspAdc.o
  .debug_line    0x0005134c     0x24d6 ./BSW/MCAL/BSP/Src/BspAontimer.o
  .debug_line    0x00053822     0x340a ./BSW/MCAL/BSP/Src/BspCan.o
- .debug_line    0x00056c2c     0x2588 ./BSW/MCAL/BSP/Src/BspClock.o
- .debug_line    0x000591b4     0x2422 ./BSW/MCAL/BSP/Src/BspDma.o
- .debug_line    0x0005b5d6     0x23c4 ./BSW/MCAL/BSP/Src/BspFlash.o
- .debug_line    0x0005d99a     0x25ca ./BSW/MCAL/BSP/Src/BspFtuCounter.o
- .debug_line    0x0005ff64     0x25c0 ./BSW/MCAL/BSP/Src/BspFtuHallCounter.o
- .debug_line    0x00062524     0x2637 ./BSW/MCAL/BSP/Src/BspFtuPwm.o
- .debug_line    0x00064b5b     0x2d6f ./BSW/MCAL/BSP/Src/BspGpio.o
- .debug_line    0x000678ca     0x2a17 ./BSW/MCAL/BSP/Src/BspInterrupt.o
- .debug_line    0x0006a2e1     0x255a ./BSW/MCAL/BSP/Src/BspPtimer.o
- .debug_line    0x0006c83b     0x24cc ./BSW/MCAL/BSP/Src/BspRtc.o
- .debug_line    0x0006ed07     0x279b ./BSW/MCAL/BSP/Src/BspSpi.o
- .debug_line    0x000714a2     0x2514 ./BSW/MCAL/BSP/Src/BspWdg.o
- .debug_line    0x000739b6     0x27df ./BSW/ECAL/IoHwAb/Src/IoHwAb_Adc.o
- .debug_line    0x00076195     0x254b ./BSW/ECAL/IoHwAb/Src/IoHwAb_Counter.o
- .debug_line    0x000786e0     0x24a5 ./BSW/ECAL/IoHwAb/Src/IoHwAb_Dio.o
- .debug_line    0x0007ab85     0x25ac ./BSW/ECAL/IoHwAb/Src/IoHwAb_HallCounter.o
- .debug_line    0x0007d131     0x24e3 ./BSW/ECAL/IoHwAb/Src/IoHwAb_Pwm.o
- .debug_line    0x0007f614      0x11b ./BSW/CompatibleInfo/CompatibleInfo.o
- .debug_line    0x0007f72f     0x32dc ./BSW/Com/Source/Com.o
- .debug_line    0x00082a0b     0x2561 ./BSW/Com/Source/Com_cfg.o
- .debug_line    0x00084f6c     0x24a5 ./BSW/CDD/SBC/Src/SBC.o
- .debug_line    0x00087411     0x257f ./BSW/CDD/SBC/Src/SBC_Cfg.o
- .debug_line    0x00089990     0x264d ./BSW/CDD/SBC/Src/SBC_Diag.o
- .debug_line    0x0008bfdd     0x27e5 ./BSW/CDD/SBC/Src/SBC_Driver.o
- .debug_line    0x0008e7c2      0x452 ./BSW/CDD/MotorDriver/motor_lib/motor_adc.o
- .debug_line    0x0008ec14     0x29d4 ./BSW/CDD/MotorDriver/motor_lib/motor_api.o
- .debug_line    0x000915e8     0x24e1 ./BSW/CDD/MotorDriver/motor_lib/motor_app.o
- .debug_line    0x00093ac9      0x143 ./BSW/CDD/MotorDriver/motor_lib/motor_arm_math.o
- .debug_line    0x00093c0c      0x448 ./BSW/CDD/MotorDriver/motor_lib/motor_current.o
- .debug_line    0x00094054     0x2b19 ./BSW/CDD/MotorDriver/motor_lib/motor_encoder.o
- .debug_line    0x00096b6d     0x2dd5 ./BSW/CDD/MotorDriver/motor_lib/motor_estimator.o
- .debug_line    0x00099942     0x2c6c ./BSW/CDD/MotorDriver/motor_lib/motor_foc.o
- .debug_line    0x0009c5ae     0x3389 ./BSW/CDD/MotorDriver/motor_lib/motor_hall.o
- .debug_line    0x0009f937      0x8ec ./BSW/CDD/MotorDriver/motor_lib/motor_misc.o
- .debug_line    0x000a0223      0x3a4 ./BSW/CDD/MotorDriver/motor_lib/motor_pid.o
- .debug_line    0x000a05c7     0x2be7 ./BSW/CDD/MotorDriver/motor_lib/motor_svpwm.o
- .debug_line    0x000a31ae     0x24a5 ./ASW/Spindle_Control.o
- .debug_line    0x000a5653     0x2836 ./ASW/main.o
+ .debug_line    0x00056c2c     0x258a ./BSW/MCAL/BSP/Src/BspClock.o
+ .debug_line    0x000591b6     0x2422 ./BSW/MCAL/BSP/Src/BspDma.o
+ .debug_line    0x0005b5d8     0x23c4 ./BSW/MCAL/BSP/Src/BspFlash.o
+ .debug_line    0x0005d99c     0x25ca ./BSW/MCAL/BSP/Src/BspFtuCounter.o
+ .debug_line    0x0005ff66     0x25c0 ./BSW/MCAL/BSP/Src/BspFtuHallCounter.o
+ .debug_line    0x00062526     0x2637 ./BSW/MCAL/BSP/Src/BspFtuPwm.o
+ .debug_line    0x00064b5d     0x2d6f ./BSW/MCAL/BSP/Src/BspGpio.o
+ .debug_line    0x000678cc     0x2a17 ./BSW/MCAL/BSP/Src/BspInterrupt.o
+ .debug_line    0x0006a2e3     0x255a ./BSW/MCAL/BSP/Src/BspPtimer.o
+ .debug_line    0x0006c83d     0x24cc ./BSW/MCAL/BSP/Src/BspRtc.o
+ .debug_line    0x0006ed09     0x279b ./BSW/MCAL/BSP/Src/BspSpi.o
+ .debug_line    0x000714a4     0x2514 ./BSW/MCAL/BSP/Src/BspWdg.o
+ .debug_line    0x000739b8     0x27df ./BSW/ECAL/IoHwAb/Src/IoHwAb_Adc.o
+ .debug_line    0x00076197     0x254b ./BSW/ECAL/IoHwAb/Src/IoHwAb_Counter.o
+ .debug_line    0x000786e2     0x24a5 ./BSW/ECAL/IoHwAb/Src/IoHwAb_Dio.o
+ .debug_line    0x0007ab87     0x25ac ./BSW/ECAL/IoHwAb/Src/IoHwAb_HallCounter.o
+ .debug_line    0x0007d133     0x24e3 ./BSW/ECAL/IoHwAb/Src/IoHwAb_Pwm.o
+ .debug_line    0x0007f616      0x11b ./BSW/CompatibleInfo/CompatibleInfo.o
+ .debug_line    0x0007f731     0x32dc ./BSW/Com/Source/Com.o
+ .debug_line    0x00082a0d     0x2561 ./BSW/Com/Source/Com_cfg.o
+ .debug_line    0x00084f6e     0x24a5 ./BSW/CDD/SBC/Src/SBC.o
+ .debug_line    0x00087413     0x257f ./BSW/CDD/SBC/Src/SBC_Cfg.o
+ .debug_line    0x00089992     0x264d ./BSW/CDD/SBC/Src/SBC_Diag.o
+ .debug_line    0x0008bfdf     0x27e5 ./BSW/CDD/SBC/Src/SBC_Driver.o
+ .debug_line    0x0008e7c4      0x452 ./BSW/CDD/MotorDriver/motor_lib/motor_adc.o
+ .debug_line    0x0008ec16     0x29d4 ./BSW/CDD/MotorDriver/motor_lib/motor_api.o
+ .debug_line    0x000915ea     0x24e1 ./BSW/CDD/MotorDriver/motor_lib/motor_app.o
+ .debug_line    0x00093acb      0x143 ./BSW/CDD/MotorDriver/motor_lib/motor_arm_math.o
+ .debug_line    0x00093c0e      0x448 ./BSW/CDD/MotorDriver/motor_lib/motor_current.o
+ .debug_line    0x00094056     0x2b19 ./BSW/CDD/MotorDriver/motor_lib/motor_encoder.o
+ .debug_line    0x00096b6f     0x2dd5 ./BSW/CDD/MotorDriver/motor_lib/motor_estimator.o
+ .debug_line    0x00099944     0x2c6c ./BSW/CDD/MotorDriver/motor_lib/motor_foc.o
+ .debug_line    0x0009c5b0     0x3389 ./BSW/CDD/MotorDriver/motor_lib/motor_hall.o
+ .debug_line    0x0009f939      0x8ec ./BSW/CDD/MotorDriver/motor_lib/motor_misc.o
+ .debug_line    0x000a0225      0x3a4 ./BSW/CDD/MotorDriver/motor_lib/motor_pid.o
+ .debug_line    0x000a05c9     0x2be7 ./BSW/CDD/MotorDriver/motor_lib/motor_svpwm.o
+ .debug_line    0x000a31b0     0x24a5 ./ASW/Spindle_Control.o
+ .debug_line    0x000a5655     0x2836 ./ASW/main.o
 
 .debug_str      0x00000000    0xbe6d9
  .debug_str     0x00000000    0x9ee3c ./RTE/AllTask.o

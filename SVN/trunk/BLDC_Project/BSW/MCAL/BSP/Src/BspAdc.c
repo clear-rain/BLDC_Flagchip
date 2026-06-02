@@ -84,7 +84,7 @@ static ADC_InitType s_tAdc1InitCfg =
 {
     .eResolution   = ADC_RESOLUTION_12_BIT,       /*!< 12 bit resolution */
     .eAlign        = ADC_ALIGN_RIGHT,             /*!< Align right */
-    .eTriggerMode  = ADC_TRIGMODE_RISING_EDGE,    			/*!< HW trigger */
+    .eTriggerMode  = ADC_TRIGMODE_BOTH_EDGE,    			/*!< HW trigger */
     .bWaitEnable   = false,                       /*!< Enable wait conversion mode */
 #if ((DEVICE_TYPE == MCU_FC4150_1M) || (DEVICE_TYPE == MCU_FC4150_2M))
     .bDifferentialModeEnable = false,             /*!< Disable differential mode */
@@ -100,6 +100,8 @@ static ADC_InitType s_tAdc1InitCfg =
 
     .ePreTriggerSel = ADC_PRETRIGGER_SEL_PTIMER,   	/*!< PTIMER pretrigger selected */
     .eTriggerSel    = ADC_TRIGGER_SEL_PTIMER
+//    .ePreTriggerSel = ADC_PRETRIGGER_SEL_TRGSEL,   	/*!< PTIMER pretrigger selected */
+//    .eTriggerSel    = ADC_TRIGGER_SEL_TRGSEL
 };
 
 static ADC_DmaType s_tAdc0DmaCfg =

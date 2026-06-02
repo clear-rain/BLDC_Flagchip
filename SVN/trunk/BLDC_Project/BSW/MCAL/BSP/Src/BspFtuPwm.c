@@ -176,6 +176,8 @@ static void Bsp_Ftu_Init(struct FtuPwmDriverIf_t *pDev)
 	FTU_PwmModeInit(&g_tFtuPwmHandle, &tPwmModeStruct);
 
 	TRGSEL_SetTargetTriggerSource(TRGSEL_INSTANCE_0, TRGSEL0_TARGET_PTIMER1_TRG0, TRGSEL0_SRC_FTU0_RELOAD_TRG);
+//	TRGSEL_SetTargetTriggerSource(TRGSEL_INSTANCE_0, TRGSEL0_TARGET_ADC1_TRG3, TRGSEL0_SRC_FTU0_RELOAD_TRG);
+
 	FTU_EnableTriggerOutput(&g_tFtuPwmHandle, FTU_TRIG_OUTPUT_MASK_RELOAD);
 
 
