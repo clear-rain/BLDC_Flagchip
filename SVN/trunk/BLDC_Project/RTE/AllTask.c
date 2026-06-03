@@ -52,6 +52,8 @@
 
 #include "../BSW/CompatibleInfo/CompatibleInfo.h"
 
+#include "motor_voltage_injection_inductance.h"
+
 /* Priorities at which the tasks are created. */
 #define BSWTask_1ms_PRIORITY (tskIDLE_PRIORITY + 5)
 #define BSWTask_2ms_PRIORITY (tskIDLE_PRIORITY + 4)
@@ -372,6 +374,8 @@ static void ASWTask_10ms( void *pvParameters )
 	}
 }
 
+uint8 Lmtest = 0;
+uint8 tttest = 1;
 extern  sint32 NvMEncoderStroke[2];
 volatile uint8_t debugStartFlag=0;
 static void ASWTask_100ms( void *pvParameters)
@@ -423,42 +427,69 @@ static void ASWTask_100ms( void *pvParameters)
 
         //  CDD_IMU_WoM_Mode_Set();
         //  Hsm_test();
-        #ifdef CONTROL_DRIVER_TEST
-        static uint8_t timer0=0;
-        if(timer0<=100){
-        	timer0 ++;
-        }
-        if((timer0 == 100&& debugStartFlag !=2) || debugStartFlag==1){
-            if (!MotorAPI_StatusGet())
-            {
-//                 速度环
-//                MotorAPI_ModeSet(MOTOR_CTRL_MODE_SPEED);
-//                MotorAPI_SpeedSetRPM(SPEED_SET);
-//                (void)MotorAPI_StatusSet(true);
-                // 设置速度环的初始积分
-//                 MotorAPI_SpeedPidRuntimeSetSum(1.5f);
 
-//                // // 电流环
-                 MotorAPI_ModeSet(MOTOR_CTRL_MODE_CURRENT);
-                 MotorAPI_CurrentSetDQ(0.0f, 0.3f);
-                 (void)MotorAPI_StatusSet(true);
-
-                // // 固定电压输出
-                // MotorAPI_ModeSet(MOTOR_CTRL_MODE_VOLTAGE);
-                // MotorAPI_VoltageSetDQ(0.0f, 0.5f);
-                // (void)MotorAPI_StatusSet(true);
-            }
-        }
-        else
-        if(debugStartFlag == 2)
+        if(tttest == 0)
         {
-            //Stop
-            if (MotorAPI_StatusGet())
-            {
-                (void)MotorAPI_StatusSet(false);
-            }
+    		SynInitPosDetSetTs();
+    		SynUserPortSetBridgeSection(0);
+    		tttest = 2;
         }
-        #endif
+        else if(tttest == 1)
+        {
+    		SynInitPosDetSetTs();
+    		SynUserPortSetBridgeSection(1);
+    		tttest = 2;
+        }
+
+//        if(Lmtest == 1)
+//        {
+//        	static uint8 tett = 0;
+//        	if(tett==0)
+//        	{
+//
+//        		SynInitPosStart();
+//        		tett++;
+//        	}
+//        }
+//        else
+//        {
+//			#ifdef CONTROL_DRIVER_TEST
+//			static uint8_t timer0=0;
+//			if(timer0<=100){
+//				timer0 ++;
+//			}
+//			if((timer0 == 100&& debugStartFlag !=2) || debugStartFlag==1){
+//				if (!MotorAPI_StatusGet())
+//				{
+//			//                 速度环
+//			//                MotorAPI_ModeSet(MOTOR_CTRL_MODE_SPEED);
+//			//                MotorAPI_SpeedSetRPM(SPEED_SET);
+//			//                (void)MotorAPI_StatusSet(true);
+//					// 设置速度环的初始积分
+//			//                 MotorAPI_SpeedPidRuntimeSetSum(1.5f);
+//
+//			//                // // 电流环
+//					 MotorAPI_ModeSet(MOTOR_CTRL_MODE_CURRENT);
+//					 MotorAPI_CurrentSetDQ(0.0f, 0.3f);
+//					 (void)MotorAPI_StatusSet(true);
+//
+//					// // 固定电压输出
+//					// MotorAPI_ModeSet(MOTOR_CTRL_MODE_VOLTAGE);
+//					// MotorAPI_VoltageSetDQ(0.0f, 0.5f);
+//					// (void)MotorAPI_StatusSet(true);
+//				}
+//			}
+//			else
+//			if(debugStartFlag == 2)
+//			{
+//				//Stop
+//				if (MotorAPI_StatusGet())
+//				{
+//					(void)MotorAPI_StatusSet(false);
+//				}
+//			}
+//			#endif
+//        }
     }
 }
 

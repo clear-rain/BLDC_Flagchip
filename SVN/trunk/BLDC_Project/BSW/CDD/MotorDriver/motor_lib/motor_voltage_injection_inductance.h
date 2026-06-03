@@ -47,10 +47,10 @@ typedef struct
 	Uint  MaxPWMTs;                     // 脉宽搜索上限
 	Uint  SlowStepTs;                   // 接近电流限值时的脉宽步长
 	Uint  FastStepTs;                   // 远低于电流限值时的脉宽步长
-	int   CurFirst;                     // 注入前基准电流，Q12
-	Uint  CurLimit;                     // 电流响应限值，Q12
-	Uint  CurMin;                       // 最小有效电流响应，Q12
-	Uint  Cur[SYNI_CUR_BUF_NUM];        // IU+、IU-、IV+、IV-、IW+、IW- 两轮
+	int32_t    CurFirst;                     // 注入前基准电流，Q12
+	int32_t   CurLimit;                     // 电流响应限值，Q12
+	int32_t   CurMin;                       // 最小有效电流响应，Q12
+	int32_t   Cur[SYNI_CUR_BUF_NUM];        // IU+、IU-、IV+、IV-、IW+、IW- 两轮
 	Uint  LPhase[SYNI_PHASE_NUM];       // 线电感，单位 0.01mH，仿照 MD380
 	float LPhase_H[SYNI_PHASE_NUM];     // 线电感，单位 H
 	float LPhase_mH[SYNI_PHASE_NUM];    // 线电感，单位 mH

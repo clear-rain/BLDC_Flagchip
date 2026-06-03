@@ -65,6 +65,7 @@
 
 /*******************全局变量声明****************************************/
 IPM_INITPOS_PULSE_STR gIPMInitPos;
+uint32_t temp_period = 3000;
 
 static int  SynAbs(int Data);
 static Uint SynFloatToCurQ12(float CurrentA);
@@ -114,73 +115,92 @@ SYNI_WEAK void SynUserPortSetBridgeSection(Uint Section)
 
 	m_Section = Section;
 
-	EALLOW;
+//	EALLOW;
 	switch(m_Section)
 	{
 		case 0:									// A+, B-, C off
-
+			IoHwAb_Dio_WriteChannel(ENA_PDRV_IDX,DIO_STD_LOW);
+			IoHwAb_Dio_WriteChannel(ENB_PDRV_IDX,DIO_STD_LOW);
+			IoHwAb_Dio_WriteChannel(ENC_PDRV_IDX,DIO_STD_LOW);
+			FTU_HWA_SetChannelValue(FTU0, 2, 0);
+			FTU_HWA_SetChannelValue(FTU0, 4, temp_period/2);
+			FTU_HWA_SetChannelValue(FTU0, 6, temp_period/2);
+		    FTU_HWA_GenerateSwSync(FTU0);
+			IoHwAb_Dio_WriteChannel(ENA_PDRV_IDX,DIO_STD_HIGH);
+			IoHwAb_Dio_WriteChannel(ENB_PDRV_IDX,DIO_STD_HIGH);
+			IoHwAb_Dio_WriteChannel(ENC_PDRV_IDX,DIO_STD_LOW);
 			break;
 
 		case 1:									// A-, B+, C off
-			EPwm1Regs.AQCSFRC.all = 0x02;
-			//pPWMForU->AQCSFRC.bit.CSFA = 2;
-			EPwm2Regs.AQCSFRC.all = 0x08;
-			//pPWMForV->AQCSFRC.bit.CSFB = 2;
-			EPwm3Regs.AQCSFRC.all = 0x0A;
-			//pPWMForW->AQCSFRC.bit.CSFB = 2;
+			IoHwAb_Dio_WriteChannel(ENA_PDRV_IDX,DIO_STD_LOW);
+			IoHwAb_Dio_WriteChannel(ENB_PDRV_IDX,DIO_STD_LOW);
+			IoHwAb_Dio_WriteChannel(ENC_PDRV_IDX,DIO_STD_LOW);
+			FTU_HWA_SetChannelValue(FTU0, 2, temp_period/2);
+			FTU_HWA_SetChannelValue(FTU0, 4, 0);
+			FTU_HWA_SetChannelValue(FTU0, 6, temp_period/2);
+		    FTU_HWA_GenerateSwSync(FTU0);
+			IoHwAb_Dio_WriteChannel(ENA_PDRV_IDX,DIO_STD_HIGH);
+			IoHwAb_Dio_WriteChannel(ENB_PDRV_IDX,DIO_STD_HIGH);
+			IoHwAb_Dio_WriteChannel(ENC_PDRV_IDX,DIO_STD_LOW);
 			break;
 
 		case 2:									// B+, C-, A off
-			EPwm1Regs.AQCSFRC.all = 0x0A;
-			//pPWMForU->AQCSFRC.bit.CSFA = 2;
-			EPwm2Regs.AQCSFRC.all = 0x08;
-			//pPWMForV->AQCSFRC.bit.CSFB = 2;
-			EPwm3Regs.AQCSFRC.all = 0x02;
-			//pPWMForW->AQCSFRC.bit.CSFA = 2;
+			IoHwAb_Dio_WriteChannel(ENA_PDRV_IDX,DIO_STD_LOW);
+			IoHwAb_Dio_WriteChannel(ENB_PDRV_IDX,DIO_STD_LOW);
+			IoHwAb_Dio_WriteChannel(ENC_PDRV_IDX,DIO_STD_LOW);
+			FTU_HWA_SetChannelValue(FTU0, 2, temp_period/2);
+			FTU_HWA_SetChannelValue(FTU0, 4, temp_period/2);
+			FTU_HWA_SetChannelValue(FTU0, 6, 0);
+		    FTU_HWA_GenerateSwSync(FTU0);
+			IoHwAb_Dio_WriteChannel(ENA_PDRV_IDX,DIO_STD_LOW);
+			IoHwAb_Dio_WriteChannel(ENB_PDRV_IDX,DIO_STD_HIGH);
+			IoHwAb_Dio_WriteChannel(ENC_PDRV_IDX,DIO_STD_HIGH);
 			break;
 
 		case 3:									// B-, C+, A off
-			EPwm1Regs.AQCSFRC.all = 0x0A;
-			//pPWMForU->AQCSFRC.bit.CSFB = 2;
-			EPwm2Regs.AQCSFRC.all = 0x02;
-			//pPWMForV->AQCSFRC.bit.CSFA = 2;
-			EPwm3Regs.AQCSFRC.all = 0x08;
-			//pPWMForW->AQCSFRC.bit.CSFB = 2;
+			IoHwAb_Dio_WriteChannel(ENA_PDRV_IDX,DIO_STD_LOW);
+			IoHwAb_Dio_WriteChannel(ENB_PDRV_IDX,DIO_STD_LOW);
+			IoHwAb_Dio_WriteChannel(ENC_PDRV_IDX,DIO_STD_LOW);
+			FTU_HWA_SetChannelValue(FTU0, 2, temp_period/2);
+			FTU_HWA_SetChannelValue(FTU0, 4, 0);
+			FTU_HWA_SetChannelValue(FTU0, 6, temp_period/2);
+		    FTU_HWA_GenerateSwSync(FTU0);
+			IoHwAb_Dio_WriteChannel(ENA_PDRV_IDX,DIO_STD_LOW);
+			IoHwAb_Dio_WriteChannel(ENB_PDRV_IDX,DIO_STD_HIGH);
+			IoHwAb_Dio_WriteChannel(ENC_PDRV_IDX,DIO_STD_HIGH);
 			break;
 
 		case 4:									// A-, C+, B off
-			EPwm1Regs.AQCSFRC.all = 0x02;
-			//pPWMForU->AQCSFRC.bit.CSFA = 2;
-			EPwm2Regs.AQCSFRC.all = 0x0A;
-			//pPWMForV->AQCSFRC.bit.CSFA = 2;
-			EPwm3Regs.AQCSFRC.all = 0x08;
-			//pPWMForW->AQCSFRC.bit.CSFB = 2;
+			IoHwAb_Dio_WriteChannel(ENA_PDRV_IDX,DIO_STD_LOW);
+			IoHwAb_Dio_WriteChannel(ENB_PDRV_IDX,DIO_STD_LOW);
+			IoHwAb_Dio_WriteChannel(ENC_PDRV_IDX,DIO_STD_LOW);
+			FTU_HWA_SetChannelValue(FTU0, 2, 0);
+			FTU_HWA_SetChannelValue(FTU0, 4, temp_period/2);
+			FTU_HWA_SetChannelValue(FTU0, 6, temp_period/2);
+		    FTU_HWA_GenerateSwSync(FTU0);
+			IoHwAb_Dio_WriteChannel(ENA_PDRV_IDX,DIO_STD_HIGH);
+			IoHwAb_Dio_WriteChannel(ENB_PDRV_IDX,DIO_STD_LOW);
+			IoHwAb_Dio_WriteChannel(ENC_PDRV_IDX,DIO_STD_HIGH);
 			break;
 
 		case 5:									// A+, C-,B off
-			EPwm1Regs.AQCSFRC.all = 0x08;
-			//pPWMForU->AQCSFRC.bit.CSFB = 2;
-			EPwm2Regs.AQCSFRC.all = 0x0A;
-			//pPWMForV->AQCSFRC.bit.CSFB = 2;
-			EPwm3Regs.AQCSFRC.all = 0x02;
-			//pPWMForW->AQCSFRC.bit.CSFA = 2;
+			IoHwAb_Dio_WriteChannel(ENA_PDRV_IDX,DIO_STD_LOW);
+			IoHwAb_Dio_WriteChannel(ENB_PDRV_IDX,DIO_STD_LOW);
+			IoHwAb_Dio_WriteChannel(ENC_PDRV_IDX,DIO_STD_LOW);
+			FTU_HWA_SetChannelValue(FTU0, 2, temp_period/2);
+			FTU_HWA_SetChannelValue(FTU0, 4, temp_period/2);
+			FTU_HWA_SetChannelValue(FTU0, 6, 0);
+		    FTU_HWA_GenerateSwSync(FTU0);
+			IoHwAb_Dio_WriteChannel(ENA_PDRV_IDX,DIO_STD_HIGH);
+			IoHwAb_Dio_WriteChannel(ENB_PDRV_IDX,DIO_STD_LOW);
+			IoHwAb_Dio_WriteChannel(ENC_PDRV_IDX,DIO_STD_HIGH);
+
 			break;
 
 		case 6:									//恢复PWM模块的寄存器设置
-			EPwm1Regs.DBCTL.all 	= 0x0007;
-			EPwm1Regs.AQCTLA.all 	= 0x0090;
-			EPwm1Regs.AQCTLB.all 	= 0x00;
-			EPwm1Regs.AQCSFRC.all	= 0x00;
-
-			EPwm2Regs.DBCTL.all 	= 0x0007;
-			EPwm2Regs.AQCTLA.all 	= 0x0090;
-			EPwm2Regs.AQCTLB.all 	= 0x00;
-			EPwm2Regs.AQCSFRC.all 	= 0x00;
-
-			EPwm3Regs.DBCTL.all 	= 0x0007;
-			EPwm3Regs.AQCTLA.all 	= 0x0090;
-			EPwm3Regs.AQCTLB.all 	= 0x00;
-			EPwm3Regs.AQCSFRC.all 	= 0x00;
+			IoHwAb_Dio_WriteChannel(ENA_PDRV_IDX,DIO_STD_HIGH);
+			IoHwAb_Dio_WriteChannel(ENB_PDRV_IDX,DIO_STD_HIGH);
+			IoHwAb_Dio_WriteChannel(ENC_PDRV_IDX,DIO_STD_HIGH);
 			break;
 
 		default:								//同步机初始位置角检测初始化寄存器
@@ -190,7 +210,7 @@ SYNI_WEAK void SynUserPortSetBridgeSection(Uint Section)
 			IoHwAb_Dio_WriteChannel(ENC_PDRV_IDX,DIO_STD_LOW);
 			break;
 	}
-	EDIS;
+//	EDIS;
 }
 
 /************************************************************
@@ -200,15 +220,15 @@ SYNI_WEAK void SynUserPortReadIUVW(float *Iu, float *Iv, float *Iw)
 {
 	if(Iu != 0)
 	{
-		*Iu = 0.0f;
+		*Iu = motor_current_0.ia;
 	}
 	if(Iv != 0)
 	{
-		*Iv = 0.0f;
+		*Iv = motor_current_0.ib;
 	}
 	if(Iw != 0)
 	{
-		*Iw = 0.0f;
+		*Iw = -(motor_current_0.ia + motor_current_0.ib);
 	}
 }
 
@@ -369,7 +389,7 @@ void SynInitPosDetect(void)
 				gIPMInitPos.CurMin = SynFloatToCurQ12(gIPMInitPos.CurMinA);
 			}
 
-			SynInitPosDetSetTs();
+//			SynInitPosDetSetTs();
 			SynInitPosDetSetPwm(7);
 			gIPMInitPos.Step++;
 			break;

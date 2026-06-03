@@ -55,6 +55,9 @@
 //    }
 
 #include "motor_voltage_injection_inductance.h"
+#include "motor_app.h"
+#include "motor_current.h"
+#include "motor_foc.h"
 #include <string.h>
 
 #if defined(__GNUC__)
@@ -63,12 +66,16 @@
 #define SYNI_WEAK
 #endif
 
+#define USEC(clk, us)					(uint32_t)((uint64_t)(clk) * (uint64_t)(us) / 1000000u)
 /*******************全局变量声明****************************************/
 IPM_INITPOS_PULSE_STR gIPMInitPos;
+uint32_t temp_period = 3000;
+extern MotorCurrent motor_current_0;
+extern FTU_HandleType	g_tFtuPwmHandle;
 
-static int  SynAbs(int Data);
-static Uint SynFloatToCurQ12(float CurrentA);
-static int  SynReadCurBySection(Uint Section);
+static int32_t   SynAbs(int32_t  Data);
+static int32_t  SynFloatToCurQ12(float CurrentA);
+static int32_t   SynReadCurBySection(Uint Section);
 static void SynInitPosDetFault(Uint Fault);
 
 /************************************************************
@@ -76,7 +83,7 @@ static void SynInitPosDetFault(Uint Fault);
 ************************************************************/
 SYNI_WEAK Uint SynUserPortReady(void)
 {
-	return 0;
+	return 1;
 }
 
 /************************************************************
@@ -110,6 +117,106 @@ SYNI_WEAK void SynUserPortSetPulseWidthUs(float PulseWidthUs)
 SYNI_WEAK void SynUserPortSetBridgeSection(Uint Section)
 {
 	(void)Section;
+	Uint m_Section;
+
+	m_Section = Section;
+
+//	EALLOW;
+	switch(m_Section)
+	{
+		case 0:									// A+, B-, C off
+			IoHwAb_Dio_WriteChannel(ENA_PDRV_IDX,DIO_STD_LOW);
+			IoHwAb_Dio_WriteChannel(ENB_PDRV_IDX,DIO_STD_LOW);
+			IoHwAb_Dio_WriteChannel(ENC_PDRV_IDX,DIO_STD_LOW);
+			FTU_HWA_SetChannelValue(FTU0, 2, 0);
+			FTU_HWA_SetChannelValue(FTU0, 4, gIPMInitPos.PWMTs/2);
+			FTU_HWA_SetChannelValue(FTU0, 6, gIPMInitPos.PWMTs/2);
+		    FTU_HWA_GenerateSwSync(FTU0);
+			IoHwAb_Dio_WriteChannel(ENA_PDRV_IDX,DIO_STD_HIGH);
+			IoHwAb_Dio_WriteChannel(ENB_PDRV_IDX,DIO_STD_HIGH);
+			IoHwAb_Dio_WriteChannel(ENC_PDRV_IDX,DIO_STD_LOW);
+			break;
+
+		case 1:									// A-, B+, C off
+			IoHwAb_Dio_WriteChannel(ENA_PDRV_IDX,DIO_STD_LOW);
+			IoHwAb_Dio_WriteChannel(ENB_PDRV_IDX,DIO_STD_LOW);
+			IoHwAb_Dio_WriteChannel(ENC_PDRV_IDX,DIO_STD_LOW);
+			FTU_HWA_SetChannelValue(FTU0, 2, gIPMInitPos.PWMTs/2);
+			FTU_HWA_SetChannelValue(FTU0, 4, 0);
+			FTU_HWA_SetChannelValue(FTU0, 6, gIPMInitPos.PWMTs/2);
+		    FTU_HWA_GenerateSwSync(FTU0);
+			IoHwAb_Dio_WriteChannel(ENA_PDRV_IDX,DIO_STD_HIGH);
+			IoHwAb_Dio_WriteChannel(ENB_PDRV_IDX,DIO_STD_HIGH);
+			IoHwAb_Dio_WriteChannel(ENC_PDRV_IDX,DIO_STD_LOW);
+			break;
+
+		case 2:									// B+, C-, A off
+			IoHwAb_Dio_WriteChannel(ENA_PDRV_IDX,DIO_STD_LOW);
+			IoHwAb_Dio_WriteChannel(ENB_PDRV_IDX,DIO_STD_LOW);
+			IoHwAb_Dio_WriteChannel(ENC_PDRV_IDX,DIO_STD_LOW);
+			FTU_HWA_SetChannelValue(FTU0, 2, gIPMInitPos.PWMTs/2);
+			FTU_HWA_SetChannelValue(FTU0, 4, 0);
+			FTU_HWA_SetChannelValue(FTU0, 6, gIPMInitPos.PWMTs/2);
+		    FTU_HWA_GenerateSwSync(FTU0);
+			IoHwAb_Dio_WriteChannel(ENA_PDRV_IDX,DIO_STD_LOW);
+			IoHwAb_Dio_WriteChannel(ENB_PDRV_IDX,DIO_STD_HIGH);
+			IoHwAb_Dio_WriteChannel(ENC_PDRV_IDX,DIO_STD_HIGH);
+			break;
+
+		case 3:									// B-, C+, A off
+			IoHwAb_Dio_WriteChannel(ENA_PDRV_IDX,DIO_STD_LOW);
+			IoHwAb_Dio_WriteChannel(ENB_PDRV_IDX,DIO_STD_LOW);
+			IoHwAb_Dio_WriteChannel(ENC_PDRV_IDX,DIO_STD_LOW);
+			FTU_HWA_SetChannelValue(FTU0, 2, gIPMInitPos.PWMTs/2);
+			FTU_HWA_SetChannelValue(FTU0, 4, gIPMInitPos.PWMTs/2);
+			FTU_HWA_SetChannelValue(FTU0, 6, 0);
+		    FTU_HWA_GenerateSwSync(FTU0);
+			IoHwAb_Dio_WriteChannel(ENA_PDRV_IDX,DIO_STD_LOW);
+			IoHwAb_Dio_WriteChannel(ENB_PDRV_IDX,DIO_STD_HIGH);
+			IoHwAb_Dio_WriteChannel(ENC_PDRV_IDX,DIO_STD_HIGH);
+			break;
+
+		case 4:									// A-, C+, B off
+			IoHwAb_Dio_WriteChannel(ENA_PDRV_IDX,DIO_STD_LOW);
+			IoHwAb_Dio_WriteChannel(ENB_PDRV_IDX,DIO_STD_LOW);
+			IoHwAb_Dio_WriteChannel(ENC_PDRV_IDX,DIO_STD_LOW);
+			FTU_HWA_SetChannelValue(FTU0, 2, gIPMInitPos.PWMTs/2);
+			FTU_HWA_SetChannelValue(FTU0, 4, gIPMInitPos.PWMTs/2);
+			FTU_HWA_SetChannelValue(FTU0, 6, 0);
+		    FTU_HWA_GenerateSwSync(FTU0);
+			IoHwAb_Dio_WriteChannel(ENA_PDRV_IDX,DIO_STD_HIGH);
+			IoHwAb_Dio_WriteChannel(ENB_PDRV_IDX,DIO_STD_LOW);
+			IoHwAb_Dio_WriteChannel(ENC_PDRV_IDX,DIO_STD_HIGH);
+			break;
+
+		case 5:									// A+, C-,B off
+			IoHwAb_Dio_WriteChannel(ENA_PDRV_IDX,DIO_STD_LOW);
+			IoHwAb_Dio_WriteChannel(ENB_PDRV_IDX,DIO_STD_LOW);
+			IoHwAb_Dio_WriteChannel(ENC_PDRV_IDX,DIO_STD_LOW);
+			FTU_HWA_SetChannelValue(FTU0, 2, 0);
+			FTU_HWA_SetChannelValue(FTU0, 4, gIPMInitPos.PWMTs/2);
+			FTU_HWA_SetChannelValue(FTU0, 6, gIPMInitPos.PWMTs/2);
+		    FTU_HWA_GenerateSwSync(FTU0);
+			IoHwAb_Dio_WriteChannel(ENA_PDRV_IDX,DIO_STD_HIGH);
+			IoHwAb_Dio_WriteChannel(ENB_PDRV_IDX,DIO_STD_LOW);
+			IoHwAb_Dio_WriteChannel(ENC_PDRV_IDX,DIO_STD_HIGH);
+
+			break;
+
+		case 6:									//恢复PWM模块的寄存器设置
+			IoHwAb_Dio_WriteChannel(ENA_PDRV_IDX,DIO_STD_HIGH);
+			IoHwAb_Dio_WriteChannel(ENB_PDRV_IDX,DIO_STD_HIGH);
+			IoHwAb_Dio_WriteChannel(ENC_PDRV_IDX,DIO_STD_HIGH);
+			break;
+
+		default:								//同步机初始位置角检测初始化寄存器
+
+			IoHwAb_Dio_WriteChannel(ENA_PDRV_IDX,DIO_STD_LOW);
+			IoHwAb_Dio_WriteChannel(ENB_PDRV_IDX,DIO_STD_LOW);
+			IoHwAb_Dio_WriteChannel(ENC_PDRV_IDX,DIO_STD_LOW);
+			break;
+	}
+//	EDIS;
 }
 
 /************************************************************
@@ -119,15 +226,15 @@ SYNI_WEAK void SynUserPortReadIUVW(float *Iu, float *Iv, float *Iw)
 {
 	if(Iu != 0)
 	{
-		*Iu = 0.0f;
+		*Iu = motor_current_0.ia;
 	}
 	if(Iv != 0)
 	{
-		*Iv = 0.0f;
+		*Iv = motor_current_0.ib;
 	}
 	if(Iw != 0)
 	{
-		*Iw = 0.0f;
+		*Iw = -(motor_current_0.ia + motor_current_0.ib);
 	}
 }
 
@@ -150,7 +257,7 @@ SYNI_WEAK void SynUserPortReportFault(Uint Fault)
 /************************************************************
 	返回整数绝对值，保持 MD380 中 abs() 使用习惯
 ************************************************************/
-static int SynAbs(int Data)
+static int32_t  SynAbs(int32_t  Data)
 {
 	return (Data >= 0) ? Data : -Data;
 }
@@ -158,7 +265,7 @@ static int SynAbs(int Data)
 /************************************************************
 	把安培值转换为 Q12 电流值
 ************************************************************/
-static Uint SynFloatToCurQ12(float CurrentA)
+static int32_t  SynFloatToCurQ12(float CurrentA)
 {
 	float m_Temp;
 
@@ -168,18 +275,19 @@ static Uint SynFloatToCurQ12(float CurrentA)
 	}
 
 	m_Temp = CurrentA * SYNI_CUR_Q12;
-	if(m_Temp > 65535.0f)
+	if(m_Temp > (float)INT32_MAX - 0.5f)
 	{
-		m_Temp = 65535.0f;
+		m_Temp = (float)INT32_MAX;
+		return m_Temp;
 	}
 
-	return (Uint)(m_Temp + 0.5f);
+	return (m_Temp + 0.5f);
 }
 
 /************************************************************
 	根据当前桥臂区段读取对应相电流，返回 Q12
 ************************************************************/
-static int SynReadCurBySection(Uint Section)
+static int32_t SynReadCurBySection(Uint Section)
 {
 	float m_Iu;
 	float m_Iv;
@@ -189,15 +297,15 @@ static int SynReadCurBySection(Uint Section)
 
 	if(Section <= 1u)
 	{
-		return (int)(m_Iu * SYNI_CUR_Q12);
+		return (int32_t)(m_Iu * SYNI_CUR_Q12);
 	}
 	else if(Section <= 3u)
 	{
-		return (int)(m_Iv * SYNI_CUR_Q12);
+		return (int32_t)(m_Iv * SYNI_CUR_Q12);
 	}
 	else
 	{
-		return (int)(m_Iw * SYNI_CUR_Q12);
+		return (int32_t)(m_Iw * SYNI_CUR_Q12);
 	}
 }
 
@@ -221,14 +329,14 @@ void SynInitPosParDefault(void)
 {
 	(void)memset(&gIPMInitPos, 0, sizeof(gIPMInitPos));
 
-	gIPMInitPos.InitPWMTs  = (Uint)(50u * DSP_CLOCK);      // 50us
-	gIPMInitPos.MaxPWMTs   = 60000u;
-	gIPMInitPos.SlowStepTs = (Uint)(2u * DSP_CLOCK);       // 2us
-	gIPMInitPos.FastStepTs = (Uint)(20u * DSP_CLOCK);      // 20us
+	gIPMInitPos.InitPWMTs  = (Uint)USEC(60000000, 50u);      // 50us
+	gIPMInitPos.MaxPWMTs   = 60000u;						 // 1000us
+	gIPMInitPos.SlowStepTs = (Uint)USEC(60000000, 2u);       // 2us
+	gIPMInitPos.FastStepTs = (Uint)USEC(60000000, 20u);      // 20us
 	gIPMInitPos.CurLimitA  = 8.0f;
 	gIPMInitPos.CurMinA    = 0.05f;
 	gIPMInitPos.RsOhm      = 0.12f;
-	gIPMInitPos.PulseTimeK = 2.0f;
+	gIPMInitPos.PulseTimeK = 1.0f;
 	gIPMInitPos.CurLimit   = SynFloatToCurQ12(gIPMInitPos.CurLimitA);
 	gIPMInitPos.CurMin     = SynFloatToCurQ12(gIPMInitPos.CurMinA);
 	gIPMInitPos.Status     = SYNI_STATUS_IDLE;
@@ -265,7 +373,7 @@ void SynInitPosStart(void)
 ************************************************************/
 void SynInitPosDetect(void)
 {
-	int  m_Cur;
+	int32_t  m_Cur;
 	Uint m_Index;
 
 	switch(gIPMInitPos.Step)
@@ -314,13 +422,13 @@ void SynInitPosDetect(void)
 					}
 
 					if((gIPMInitPos.PWMTs >= gIPMInitPos.MaxPWMTs)
-						&& ((Uint)m_Cur < gIPMInitPos.CurMin))
+						&& (m_Cur < gIPMInitPos.CurMin))
 					{
 						SynInitPosDetFault(SYNI_FAULT_PULSE_WIDTH);
 						break;
 					}
 
-					if(((Uint)m_Cur > gIPMInitPos.CurLimit)
+					if((m_Cur > gIPMInitPos.CurLimit)
 						|| (gIPMInitPos.PWMTs >= gIPMInitPos.MaxPWMTs))
 					{
 						gIPMInitPos.Section     = 0;
@@ -330,7 +438,7 @@ void SynInitPosDetect(void)
 					}
 					else
 					{
-						if((Uint)m_Cur > (gIPMInitPos.CurLimit >> 1u))
+						if(m_Cur > (gIPMInitPos.CurLimit >> 1u))
 						{
 							gIPMInitPos.PWMTs = (Uint)(gIPMInitPos.PWMTs + gIPMInitPos.SlowStepTs);
 						}
@@ -381,7 +489,7 @@ void SynInitPosDetect(void)
 					m_Index = (Uint)((gIPMInitPos.Step - 3u) * 6u + gIPMInitPos.Section);
 					if(m_Index < SYNI_CUR_BUF_NUM)
 					{
-						gIPMInitPos.Cur[m_Index] = (Uint)SynAbs(m_Cur);
+						gIPMInitPos.Cur[m_Index] = SynAbs(m_Cur);
 					}
 
 					gIPMInitPos.Section++;
@@ -432,9 +540,9 @@ void SynCalLabAndLbc(void)
 {
 	Uint  m_Index;
 	Uint  m_Sel;
-	Uint  m_DetaI;
-	Uint  m_Cur1;
-	Uint  m_Cur2;
+	int32_t   m_DetaI;
+	int32_t   m_Cur1;
+	int32_t   m_Cur2;
 	float m_CurA;
 	float m_UDC;
 	float m_LTemp;
@@ -449,7 +557,7 @@ void SynCalLabAndLbc(void)
 		return;
 	}
 
-	m_TimeS = ((float)gIPMInitPos.PWMTs / (float)DSP_CLOCK) * 0.000001f;
+	m_TimeS = ((float)gIPMInitPos.PWMTs / (float)(USEC(60000000, 1u))) * 0.000001f;
 	m_TimeS = m_TimeS * gIPMInitPos.PulseTimeK;
 	m_Sum = 0.0f;
 
@@ -460,7 +568,7 @@ void SynCalLabAndLbc(void)
 					gIPMInitPos.Cur[m_Sel] : gIPMInitPos.Cur[m_Sel + 1u];
 		m_Cur2 = (gIPMInitPos.Cur[m_Sel + 6u] <= gIPMInitPos.Cur[m_Sel + 7u]) ?
 					gIPMInitPos.Cur[m_Sel + 6u] : gIPMInitPos.Cur[m_Sel + 7u];
-		m_DetaI = (Uint)((m_Cur1 >> 1u) + (m_Cur2 >> 1u));
+		m_DetaI = ((m_Cur1 >> 1u) + (m_Cur2 >> 1u));
 
 		if(m_DetaI <= gIPMInitPos.CurMin)
 		{
@@ -491,10 +599,11 @@ void SynCalLabAndLbc(void)
 ************************************************************/
 void SynInitPosDetSetTs(void)
 {
-	float m_PulseUs;
-
-	m_PulseUs = (float)gIPMInitPos.PWMTs / (float)DSP_CLOCK;
-	SynUserPortSetPulseWidthUs(m_PulseUs);
+//	float m_PulseUs;
+//
+//	m_PulseUs = (float)gIPMInitPos.PWMTs / (float)DSP_CLOCK;
+//	SynUserPortSetPulseWidthUs(m_PulseUs);
+	FTU_PwmUpdatePeriod(&g_tFtuPwmHandle, gIPMInitPos.PWMTs, true);
 }
 
 /************************************************************

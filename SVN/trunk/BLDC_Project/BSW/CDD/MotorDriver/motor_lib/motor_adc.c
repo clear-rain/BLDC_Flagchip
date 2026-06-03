@@ -1,10 +1,12 @@
 #include "motor_adc.h"
 #include "motor_foc.h"
 #include "motor_current.h"
+#include "motor_voltage_injection_inductance.h"
 
 extern MotorCurrent motor_current_0, motor_current_0_before;
 extern MotorCurrentOffset motor_current_offset_0;
 extern MotorFocStruct motor_foc_struct;
+extern uint8 Lmtest;
 
 #if MOTOR_DEBUG_CAPTURE
 volatile uint16_t testIProducerCnt = 0;
@@ -30,7 +32,15 @@ void motor_adc_IrqHandler(uint32_t ia, uint32_t ib)
 //        flag1++;
 //        flag1 %= 100;
 //        if(flag1 == 0){
-            Motor_FocRunning(&motor_current_0, &motor_foc_struct);
+        if(Lmtest==1)
+        {
+        	SynInitPosDetect();
+        }
+        else
+        {
+        	Motor_FocRunning(&motor_current_0, &motor_foc_struct);
+        }
+
 //        }
 
         // TEST 当前监控频率跟不上实际采样频率   需要通过存储采样值来解决

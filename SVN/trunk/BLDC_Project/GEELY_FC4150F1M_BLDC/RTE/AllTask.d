@@ -324,7 +324,8 @@ RTE/AllTask.o: ../RTE/AllTask.c \
  D:\Project\all_Project\BLDC\SVN\trunk\BLDC_Project\ASW/Spindle_Control.h \
  D:\Project\all_Project\BLDC\SVN\trunk\BLDC_Project\BSW\CDD\MotorDriver\motor_lib/motor_encoder.h \
  D:\Project\all_Project\BLDC\SVN\trunk\BLDC_Project\BSW\CDD\MotorDriver\motor_lib/motor_foc.h \
- ../RTE/../BSW/CompatibleInfo/CompatibleInfo.h
+ ../RTE/../BSW/CompatibleInfo/CompatibleInfo.h \
+ D:\Project\all_Project\BLDC\SVN\trunk\BLDC_Project\BSW\CDD\MotorDriver\motor_lib/motor_voltage_injection_inductance.h
 
 D:\Project\all_Project\BLDC\SVN\trunk\BLDC_Project\BSW\OS\FreeRTOS\Include/FreeRTOS.h:
 
@@ -977,3 +978,5 @@ D:\Project\all_Project\BLDC\SVN\trunk\BLDC_Project\BSW\CDD\MotorDriver\motor_lib
 D:\Project\all_Project\BLDC\SVN\trunk\BLDC_Project\BSW\CDD\MotorDriver\motor_lib/motor_foc.h:
 
 ../RTE/../BSW/CompatibleInfo/CompatibleInfo.h:
+
+D:\Project\all_Project\BLDC\SVN\trunk\BLDC_Project\BSW\CDD\MotorDriver\motor_lib/motor_voltage_injection_inductance.h:

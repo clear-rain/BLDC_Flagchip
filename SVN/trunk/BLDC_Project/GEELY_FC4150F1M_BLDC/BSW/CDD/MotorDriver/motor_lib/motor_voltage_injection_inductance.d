@@ -257,7 +257,21 @@ BSW/CDD/MotorDriver/motor_lib/motor_voltage_injection_inductance.o: \
  D:\Project\all_Project\BLDC\SVN\trunk\BLDC_Project\BSW\MCAL\HwA\Include/HwA_wku.h \
  D:\Project\all_Project\BLDC\SVN\trunk\BLDC_Project\BSW\MCAL\Driver\Include/module_driver_aontimer.h \
  D:\Project\all_Project\BLDC\SVN\trunk\BLDC_Project\BSW\MCAL\HwA\Include/HwA_aontimer.h \
- D:\Project\all_Project\BLDC\SVN\trunk\BLDC_Project\BSW\MCAL\Driver\Include/module_driver_smisc.h
+ D:\Project\all_Project\BLDC\SVN\trunk\BLDC_Project\BSW\MCAL\Driver\Include/module_driver_smisc.h \
+ ../BSW/CDD/MotorDriver/motor_lib/motor_app.h \
+ ../BSW/CDD/MotorDriver/motor_lib/motor_protect.h \
+ D:\Project\all_Project\BLDC\SVN\trunk\BLDC_Project\BSW\MCAL\BSP\Inc/main.h \
+ ../BSW/CDD/MotorDriver/motor_lib/motor_config.h \
+ ../BSW/CDD/MotorDriver/motor_lib/motor_math.h \
+ D:\Project\all_Project\BLDC\SVN\trunk\BLDC_Project\BSW\MCAL\Device/compiler.h \
+ ../BSW/CDD/MotorDriver/motor_lib/motor_foc.h \
+ ../BSW/CDD/MotorDriver/motor_lib/motor_estimator.h \
+ ../BSW/CDD/MotorDriver/motor_lib/motor_misc.h \
+ ../BSW/CDD/MotorDriver/motor_lib/motor_arm_math.h \
+ ../BSW/CDD/MotorDriver/motor_lib/motor_pid.h \
+ ../BSW/CDD/MotorDriver/motor_lib/motor_svpwm.h \
+ ../BSW/CDD/MotorDriver/motor_lib/motor_api.h \
+ ../BSW/CDD/MotorDriver/motor_lib/motor_current.h
 
 ../BSW/CDD/MotorDriver/motor_lib/motor_voltage_injection_inductance.h:
 
@@ -774,3 +788,31 @@ D:\Project\all_Project\BLDC\SVN\trunk\BLDC_Project\BSW\MCAL\Driver\Include/modul
 D:\Project\all_Project\BLDC\SVN\trunk\BLDC_Project\BSW\MCAL\HwA\Include/HwA_aontimer.h:
 
 D:\Project\all_Project\BLDC\SVN\trunk\BLDC_Project\BSW\MCAL\Driver\Include/module_driver_smisc.h:
+
+../BSW/CDD/MotorDriver/motor_lib/motor_app.h:
+
+../BSW/CDD/MotorDriver/motor_lib/motor_protect.h:
+
+D:\Project\all_Project\BLDC\SVN\trunk\BLDC_Project\BSW\MCAL\BSP\Inc/main.h:
+
+../BSW/CDD/MotorDriver/motor_lib/motor_config.h:
+
+../BSW/CDD/MotorDriver/motor_lib/motor_math.h:
+
+D:\Project\all_Project\BLDC\SVN\trunk\BLDC_Project\BSW\MCAL\Device/compiler.h:
+
+../BSW/CDD/MotorDriver/motor_lib/motor_foc.h:
+
+../BSW/CDD/MotorDriver/motor_lib/motor_estimator.h:
+
+../BSW/CDD/MotorDriver/motor_lib/motor_misc.h:
+
+../BSW/CDD/MotorDriver/motor_lib/motor_arm_math.h:
+
+../BSW/CDD/MotorDriver/motor_lib/motor_pid.h:
+
+../BSW/CDD/MotorDriver/motor_lib/motor_svpwm.h:
+
+../BSW/CDD/MotorDriver/motor_lib/motor_api.h:
+
+../BSW/CDD/MotorDriver/motor_lib/motor_current.h:
