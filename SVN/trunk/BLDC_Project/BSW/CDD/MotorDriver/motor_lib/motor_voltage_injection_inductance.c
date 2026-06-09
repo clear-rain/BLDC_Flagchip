@@ -98,6 +98,7 @@ SYNI_WEAK void EnableDrive(void)
 ************************************************************/
 SYNI_WEAK void DisableDrive(void)
 {
+	IoHwAb_Dio_WriteChannel(NSLEEP_PDRV_IDX,DIO_STD_LOW);
 }
 
 /************************************************************
@@ -128,9 +129,11 @@ SYNI_WEAK void SynUserPortSetBridgeSection(Uint Section)
 			IoHwAb_Dio_WriteChannel(ENA_PDRV_IDX,DIO_STD_LOW);
 			IoHwAb_Dio_WriteChannel(ENB_PDRV_IDX,DIO_STD_LOW);
 			IoHwAb_Dio_WriteChannel(ENC_PDRV_IDX,DIO_STD_LOW);
-			FTU_HWA_SetChannelValue(FTU0, 2, 0);
-			FTU_HWA_SetChannelValue(FTU0, 4, gIPMInitPos.PWMTs/2);
-			FTU_HWA_SetChannelValue(FTU0, 6, gIPMInitPos.PWMTs/2);
+			FTU_HWA_SetChannelValue(FTU0, 2, 30000);
+//			FTU_HWA_SetChannelValue(FTU0, 4, gIPMInitPos.PWMTs/2);
+//			FTU_HWA_SetChannelValue(FTU0, 6, gIPMInitPos.PWMTs/2);
+			FTU_HWA_SetChannelValue(FTU0, 4, 0);
+			FTU_HWA_SetChannelValue(FTU0, 6, 30000);
 		    FTU_HWA_GenerateSwSync(FTU0);
 			IoHwAb_Dio_WriteChannel(ENA_PDRV_IDX,DIO_STD_HIGH);
 			IoHwAb_Dio_WriteChannel(ENB_PDRV_IDX,DIO_STD_HIGH);
@@ -141,9 +144,11 @@ SYNI_WEAK void SynUserPortSetBridgeSection(Uint Section)
 			IoHwAb_Dio_WriteChannel(ENA_PDRV_IDX,DIO_STD_LOW);
 			IoHwAb_Dio_WriteChannel(ENB_PDRV_IDX,DIO_STD_LOW);
 			IoHwAb_Dio_WriteChannel(ENC_PDRV_IDX,DIO_STD_LOW);
-			FTU_HWA_SetChannelValue(FTU0, 2, gIPMInitPos.PWMTs/2);
-			FTU_HWA_SetChannelValue(FTU0, 4, 0);
-			FTU_HWA_SetChannelValue(FTU0, 6, gIPMInitPos.PWMTs/2);
+//			FTU_HWA_SetChannelValue(FTU0, 2, gIPMInitPos.PWMTs/2);
+			FTU_HWA_SetChannelValue(FTU0, 2, 0);
+			FTU_HWA_SetChannelValue(FTU0, 4, 30000);
+//			FTU_HWA_SetChannelValue(FTU0, 6, gIPMInitPos.PWMTs/2);
+			FTU_HWA_SetChannelValue(FTU0, 6, 30000);
 		    FTU_HWA_GenerateSwSync(FTU0);
 			IoHwAb_Dio_WriteChannel(ENA_PDRV_IDX,DIO_STD_HIGH);
 			IoHwAb_Dio_WriteChannel(ENB_PDRV_IDX,DIO_STD_HIGH);
@@ -154,9 +159,11 @@ SYNI_WEAK void SynUserPortSetBridgeSection(Uint Section)
 			IoHwAb_Dio_WriteChannel(ENA_PDRV_IDX,DIO_STD_LOW);
 			IoHwAb_Dio_WriteChannel(ENB_PDRV_IDX,DIO_STD_LOW);
 			IoHwAb_Dio_WriteChannel(ENC_PDRV_IDX,DIO_STD_LOW);
-			FTU_HWA_SetChannelValue(FTU0, 2, gIPMInitPos.PWMTs/2);
-			FTU_HWA_SetChannelValue(FTU0, 4, 0);
-			FTU_HWA_SetChannelValue(FTU0, 6, gIPMInitPos.PWMTs/2);
+//			FTU_HWA_SetChannelValue(FTU0, 2, gIPMInitPos.PWMTs/2);
+			FTU_HWA_SetChannelValue(FTU0, 2, 30000);
+			FTU_HWA_SetChannelValue(FTU0, 4, 30000);
+//			FTU_HWA_SetChannelValue(FTU0, 6, gIPMInitPos.PWMTs/2);
+			FTU_HWA_SetChannelValue(FTU0, 6, 0);
 		    FTU_HWA_GenerateSwSync(FTU0);
 			IoHwAb_Dio_WriteChannel(ENA_PDRV_IDX,DIO_STD_LOW);
 			IoHwAb_Dio_WriteChannel(ENB_PDRV_IDX,DIO_STD_HIGH);
@@ -167,9 +174,11 @@ SYNI_WEAK void SynUserPortSetBridgeSection(Uint Section)
 			IoHwAb_Dio_WriteChannel(ENA_PDRV_IDX,DIO_STD_LOW);
 			IoHwAb_Dio_WriteChannel(ENB_PDRV_IDX,DIO_STD_LOW);
 			IoHwAb_Dio_WriteChannel(ENC_PDRV_IDX,DIO_STD_LOW);
-			FTU_HWA_SetChannelValue(FTU0, 2, gIPMInitPos.PWMTs/2);
-			FTU_HWA_SetChannelValue(FTU0, 4, gIPMInitPos.PWMTs/2);
-			FTU_HWA_SetChannelValue(FTU0, 6, 0);
+//			FTU_HWA_SetChannelValue(FTU0, 2, gIPMInitPos.PWMTs/2);
+//			FTU_HWA_SetChannelValue(FTU0, 4, gIPMInitPos.PWMTs/2);
+			FTU_HWA_SetChannelValue(FTU0, 2, 30000);
+			FTU_HWA_SetChannelValue(FTU0, 4, 0);
+			FTU_HWA_SetChannelValue(FTU0, 6, 30000);
 		    FTU_HWA_GenerateSwSync(FTU0);
 			IoHwAb_Dio_WriteChannel(ENA_PDRV_IDX,DIO_STD_LOW);
 			IoHwAb_Dio_WriteChannel(ENB_PDRV_IDX,DIO_STD_HIGH);
@@ -180,9 +189,11 @@ SYNI_WEAK void SynUserPortSetBridgeSection(Uint Section)
 			IoHwAb_Dio_WriteChannel(ENA_PDRV_IDX,DIO_STD_LOW);
 			IoHwAb_Dio_WriteChannel(ENB_PDRV_IDX,DIO_STD_LOW);
 			IoHwAb_Dio_WriteChannel(ENC_PDRV_IDX,DIO_STD_LOW);
-			FTU_HWA_SetChannelValue(FTU0, 2, gIPMInitPos.PWMTs/2);
-			FTU_HWA_SetChannelValue(FTU0, 4, gIPMInitPos.PWMTs/2);
-			FTU_HWA_SetChannelValue(FTU0, 6, 0);
+//			FTU_HWA_SetChannelValue(FTU0, 2, gIPMInitPos.PWMTs/2);
+//			FTU_HWA_SetChannelValue(FTU0, 4, gIPMInitPos.PWMTs/2);
+			FTU_HWA_SetChannelValue(FTU0, 2, 0);
+			FTU_HWA_SetChannelValue(FTU0, 4, 30000);
+			FTU_HWA_SetChannelValue(FTU0, 6, 30000);
 		    FTU_HWA_GenerateSwSync(FTU0);
 			IoHwAb_Dio_WriteChannel(ENA_PDRV_IDX,DIO_STD_HIGH);
 			IoHwAb_Dio_WriteChannel(ENB_PDRV_IDX,DIO_STD_LOW);
@@ -193,9 +204,11 @@ SYNI_WEAK void SynUserPortSetBridgeSection(Uint Section)
 			IoHwAb_Dio_WriteChannel(ENA_PDRV_IDX,DIO_STD_LOW);
 			IoHwAb_Dio_WriteChannel(ENB_PDRV_IDX,DIO_STD_LOW);
 			IoHwAb_Dio_WriteChannel(ENC_PDRV_IDX,DIO_STD_LOW);
-			FTU_HWA_SetChannelValue(FTU0, 2, 0);
-			FTU_HWA_SetChannelValue(FTU0, 4, gIPMInitPos.PWMTs/2);
-			FTU_HWA_SetChannelValue(FTU0, 6, gIPMInitPos.PWMTs/2);
+			FTU_HWA_SetChannelValue(FTU0, 2, 30000);
+//			FTU_HWA_SetChannelValue(FTU0, 4, gIPMInitPos.PWMTs/2);
+//			FTU_HWA_SetChannelValue(FTU0, 6, gIPMInitPos.PWMTs/2);
+			FTU_HWA_SetChannelValue(FTU0, 4, 30000);
+			FTU_HWA_SetChannelValue(FTU0, 6, 0);
 		    FTU_HWA_GenerateSwSync(FTU0);
 			IoHwAb_Dio_WriteChannel(ENA_PDRV_IDX,DIO_STD_HIGH);
 			IoHwAb_Dio_WriteChannel(ENB_PDRV_IDX,DIO_STD_LOW);
@@ -214,6 +227,13 @@ SYNI_WEAK void SynUserPortSetBridgeSection(Uint Section)
 			IoHwAb_Dio_WriteChannel(ENA_PDRV_IDX,DIO_STD_LOW);
 			IoHwAb_Dio_WriteChannel(ENB_PDRV_IDX,DIO_STD_LOW);
 			IoHwAb_Dio_WriteChannel(ENC_PDRV_IDX,DIO_STD_LOW);
+//			FTU_HWA_SetChannelValue(FTU0, 2, gIPMInitPos.PWMTs/2);
+//			FTU_HWA_SetChannelValue(FTU0, 4, gIPMInitPos.PWMTs/2);
+//			FTU_HWA_SetChannelValue(FTU0, 6, gIPMInitPos.PWMTs/2);
+			FTU_HWA_SetChannelValue(FTU0, 2, 30000);
+			FTU_HWA_SetChannelValue(FTU0, 4, 30000);
+			FTU_HWA_SetChannelValue(FTU0, 6, 30000);
+			FTU_HWA_GenerateSwSync(FTU0);
 			break;
 	}
 //	EDIS;
@@ -222,20 +242,42 @@ SYNI_WEAK void SynUserPortSetBridgeSection(Uint Section)
 /************************************************************
 	USER_PORT：读取三相电流，单位 A
 ************************************************************/
+//SYNI_WEAK void SynUserPortReadIUVW(float *Iu, float *Iv, float *Iw)
+//{
+//	if(Iu != 0)
+//	{
+//		*Iu = motor_current_0.ia;
+//	}
+//	if(Iv != 0)
+//	{
+//		*Iv = motor_current_0.ib;
+//	}
+//	if(Iw != 0)
+//	{
+//		*Iw = -(motor_current_0.ia + motor_current_0.ib);
+//	}
+//}
 SYNI_WEAK void SynUserPortReadIUVW(float *Iu, float *Iv, float *Iw)
 {
-	if(Iu != 0)
-	{
-		*Iu = motor_current_0.ia;
-	}
-	if(Iv != 0)
-	{
-		*Iv = motor_current_0.ib;
-	}
-	if(Iw != 0)
-	{
-		*Iw = -(motor_current_0.ia + motor_current_0.ib);
-	}
+    if(Iu != 0)
+    {
+        *Iu = motor_current_0.ia;   // U相低边采样
+    }
+
+    if(Iv != 0)
+    {
+        *Iv = motor_current_0.ib;   // V相低边采样
+    }
+
+    if(Iw != 0)
+    {
+        /*
+         * 注意：
+         * 如果没有真实W相低边ADC，这个值不能用于强制注入时的W-电流判断。
+         * -(ia + ib) 只适合三相相电流重构，不适合当前这种低边强制导通采样。
+         */
+        *Iw = 0;
+    }
 }
 
 /************************************************************
@@ -243,7 +285,7 @@ SYNI_WEAK void SynUserPortReadIUVW(float *Iu, float *Iv, float *Iw)
 ************************************************************/
 SYNI_WEAK float SynUserPortReadUDC(void)
 {
-	return 0.0f;
+	return 9.7f;
 }
 
 /************************************************************
@@ -287,26 +329,59 @@ static int32_t  SynFloatToCurQ12(float CurrentA)
 /************************************************************
 	根据当前桥臂区段读取对应相电流，返回 Q12
 ************************************************************/
+//static int32_t SynReadCurBySection(Uint Section)
+//{
+//	float m_Iu;
+//	float m_Iv;
+//	float m_Iw;
+//
+//	SynUserPortReadIUVW(&m_Iu, &m_Iv, &m_Iw);
+//
+//	if(Section <= 1u)
+//	{
+//		return (int32_t)(m_Iu * SYNI_CUR_Q12);
+//	}
+//	else if(Section <= 3u)
+//	{
+//		return (int32_t)(m_Iv * SYNI_CUR_Q12);
+//	}
+//	else
+//	{
+//		return (int32_t)(m_Iw * SYNI_CUR_Q12);
+//	}
+//}
+
 static int32_t SynReadCurBySection(Uint Section)
 {
-	float m_Iu;
-	float m_Iv;
-	float m_Iw;
+    float m_Iu = 0.0f;
+    float m_Iv = 0.0f;
+    float m_Iw = 0.0f;
 
-	SynUserPortReadIUVW(&m_Iu, &m_Iv, &m_Iw);
+    SynUserPortReadIUVW(&m_Iu, &m_Iv, &m_Iw);
 
-	if(Section <= 1u)
-	{
-		return (int32_t)(m_Iu * SYNI_CUR_Q12);
-	}
-	else if(Section <= 3u)
-	{
-		return (int32_t)(m_Iv * SYNI_CUR_Q12);
-	}
-	else
-	{
-		return (int32_t)(m_Iw * SYNI_CUR_Q12);
-	}
+    switch(Section)
+    {
+        case 0:     // U+, V-, W off -> 电流经过V下管
+            return (int32_t)(m_Iv * SYNI_CUR_Q12);
+
+        case 1:     // U-, V+, W off -> 电流经过U下管
+            return (int32_t)(m_Iu * SYNI_CUR_Q12);
+
+        case 2:     // V+, W-, U off -> 电流经过W下管
+            return (int32_t)(m_Iw * SYNI_CUR_Q12);
+
+        case 3:     // V-, W+, U off -> 电流经过V下管
+            return (int32_t)(m_Iv * SYNI_CUR_Q12);
+
+        case 4:     // U-, W+, V off -> 电流经过U下管
+            return (int32_t)(m_Iu * SYNI_CUR_Q12);
+
+        case 5:     // U+, W-, V off -> 电流经过W下管
+            return (int32_t)(m_Iw * SYNI_CUR_Q12);
+
+        default:
+            return 0;
+    }
 }
 
 /************************************************************
@@ -333,9 +408,9 @@ void SynInitPosParDefault(void)
 	gIPMInitPos.MaxPWMTs   = 60000u;						 // 1000us
 	gIPMInitPos.SlowStepTs = (Uint)USEC(60000000, 2u);       // 2us
 	gIPMInitPos.FastStepTs = (Uint)USEC(60000000, 20u);      // 20us
-	gIPMInitPos.CurLimitA  = 8.0f;
+	gIPMInitPos.CurLimitA  = 10.0f;
 	gIPMInitPos.CurMinA    = 0.05f;
-	gIPMInitPos.RsOhm      = 0.12f;
+	gIPMInitPos.RsOhm      = 0.16f;
 	gIPMInitPos.PulseTimeK = 1.0f;
 	gIPMInitPos.CurLimit   = SynFloatToCurQ12(gIPMInitPos.CurLimitA);
 	gIPMInitPos.CurMin     = SynFloatToCurQ12(gIPMInitPos.CurMinA);
@@ -371,6 +446,16 @@ void SynInitPosStart(void)
 	电压脉冲注入电感测量状态机
 	该函数格式和状态顺序尽量贴近 MD380 的 SynInitPosDetect()
 ************************************************************/
+int32_t current[50] = {0};
+int32_t current1[50] = {0};
+Uint PWMin[50] = {0};
+uint16 indexx = 0;
+int32_t current_next = 0;
+int32_t current_0 = 0;
+int32_t current_1 = 0;
+int32_t current_2 = 0;
+int32_t current_3 = 0;
+int32_t current_4 = 0;
 void SynInitPosDetect(void)
 {
 	int32_t  m_Cur;
@@ -399,12 +484,104 @@ void SynInitPosDetect(void)
 			SynInitPosDetSetTs();
 			SynInitPosDetSetPwm(7);
 			gIPMInitPos.Step++;
+//			gIPMInitPos.Step = 3;//test
+			gIPMInitPos.PeriodCnt = 1;
+//			gIPMInitPos.PeriodCnt = 0;//test
 			break;
 
+//		case 2:							                    //检测合适的脉冲宽度
+//			EnableDrive();
+//			gIPMInitPos.PeriodCnt++;
+//			if(gIPMInitPos.PeriodCnt >= 10u)
+//			{
+//				gIPMInitPos.PeriodCnt = 0;
+//			}
+//
+//			switch(gIPMInitPos.PeriodCnt)
+//			{
+//				case 0:
+//					SynInitPosDetSetPwm(7);
+//					m_Cur = SynAbs(SynReadCurBySection(gIPMInitPos.Section));
+//					current[indexx] = m_Cur;
+////					IoHwAb_Dio_FlipChannel(VBAT_HALL_CTRL_IDX);
+//					if(m_Cur < SynAbs(gIPMInitPos.CurFirst))
+//					{
+//						m_Cur = SynAbs(gIPMInitPos.CurFirst);
+//					}
+//
+//					PWMin[indexx] = gIPMInitPos.PWMTs;
+//					indexx++;
+//					indexx%=100;
+//
+//					if(((gIPMInitPos.PWMTs >= gIPMInitPos.MaxPWMTs)
+//						&& (m_Cur < gIPMInitPos.CurMin)))//||(gIPMInitPos.PWMTs>3000))//test
+//					{
+//						SynInitPosDetFault(SYNI_FAULT_PULSE_WIDTH);
+//						break;
+//					}
+//
+//					if((m_Cur > gIPMInitPos.CurLimit)
+//						|| (gIPMInitPos.PWMTs >= gIPMInitPos.MaxPWMTs))
+//					{
+////						gIPMInitPos.Section     = 0;
+////						gIPMInitPos.PeriodCnt   = 0;
+//						gIPMInitPos.InitPWMTs   = gIPMInitPos.PWMTs;
+////						gIPMInitPos.Step        = 3;
+//						SynInitPosDetFault(SYNI_FAULT_PULSE_WIDTH);//test
+//						break;
+//					}
+//					else
+//					{
+//						if(m_Cur > (gIPMInitPos.CurLimit >> 1u))
+//						{
+//							gIPMInitPos.PWMTs = (Uint)(gIPMInitPos.PWMTs + gIPMInitPos.SlowStepTs);
+//						}
+//						else
+//						{
+//							gIPMInitPos.PWMTs = (Uint)(gIPMInitPos.PWMTs + gIPMInitPos.FastStepTs);
+//						}
+//
+//						if(gIPMInitPos.PWMTs > gIPMInitPos.MaxPWMTs)
+//						{
+//							gIPMInitPos.PWMTs = gIPMInitPos.MaxPWMTs;
+//						}
+//						SynInitPosDetSetTs();
+//					}
+//					break;
+//
+//				case 1:
+//					SynInitPosDetSetPwm(7);
+//					gIPMInitPos.Section = (gIPMInitPos.Section + 1u) & 0x01u;
+//					break;
+//
+//				case 5:
+//					SynInitPosDetSetPwm(7);
+//					gIPMInitPos.CurFirst = SynReadCurBySection(gIPMInitPos.Section);
+//					gIPMInitPos.Section = (gIPMInitPos.Section + 1u) & 0x01u;
+//
+//					current1[indexx] = gIPMInitPos.CurFirst;
+////					IoHwAb_Dio_FlipChannel(VBAT_HALL_CTRL_IDX);
+//					break;
+//
+//				case 6:
+//					SynInitPosDetSetPwm(7);
+//					break;
+//
+//				case 2:
+//					SynInitPosDetSetPwm(gIPMInitPos.Section);
+//					break;
+//				case 7:
+//					SynInitPosDetSetPwm(gIPMInitPos.Section);
+//					break;
+//
+//				default:
+//					break;
+//			}
+//			break;
 		case 2:							                    //检测合适的脉冲宽度
 			EnableDrive();
 			gIPMInitPos.PeriodCnt++;
-			if(gIPMInitPos.PeriodCnt >= 6u)
+			if(gIPMInitPos.PeriodCnt >= 12u)
 			{
 				gIPMInitPos.PeriodCnt = 0;
 			}
@@ -413,16 +590,20 @@ void SynInitPosDetect(void)
 			{
 				case 0:
 					SynInitPosDetSetPwm(7);
-					gIPMInitPos.Section = (gIPMInitPos.Section + 1u) & 0x01u;
-
-					m_Cur = SynAbs(SynReadCurBySection(0));
+					m_Cur = SynAbs(SynReadCurBySection(gIPMInitPos.Section));
+					current[indexx] = m_Cur;
+//					IoHwAb_Dio_FlipChannel(VBAT_HALL_CTRL_IDX);
 					if(m_Cur < SynAbs(gIPMInitPos.CurFirst))
 					{
 						m_Cur = SynAbs(gIPMInitPos.CurFirst);
 					}
 
-					if((gIPMInitPos.PWMTs >= gIPMInitPos.MaxPWMTs)
-						&& (m_Cur < gIPMInitPos.CurMin))
+					PWMin[indexx] = gIPMInitPos.PWMTs;
+					indexx++;
+					indexx%=50;
+
+					if(((gIPMInitPos.PWMTs >= gIPMInitPos.MaxPWMTs)
+						&& (m_Cur < gIPMInitPos.CurMin)))//||(gIPMInitPos.PWMTs>3000))//test
 					{
 						SynInitPosDetFault(SYNI_FAULT_PULSE_WIDTH);
 						break;
@@ -434,7 +615,11 @@ void SynInitPosDetect(void)
 						gIPMInitPos.Section     = 0;
 						gIPMInitPos.PeriodCnt   = 0;
 						gIPMInitPos.InitPWMTs   = gIPMInitPos.PWMTs;
+//						gIPMInitPos.PWMTs = gIPMInitPos.PWMTs/2;//test
+						gIPMInitPos.PWMTs = gIPMInitPos.PWMTs/3;//test
 						gIPMInitPos.Step        = 3;
+//						SynInitPosDetFault(SYNI_FAULT_PULSE_WIDTH);//test
+						break;
 					}
 					else
 					{
@@ -455,14 +640,28 @@ void SynInitPosDetect(void)
 					}
 					break;
 
-				case 3:
+				case 1:
 					SynInitPosDetSetPwm(7);
 					gIPMInitPos.Section = (gIPMInitPos.Section + 1u) & 0x01u;
-					gIPMInitPos.CurFirst = SynReadCurBySection(0);
 					break;
 
-				case 1:
-				case 4:
+				case 6:
+					SynInitPosDetSetPwm(7);
+					gIPMInitPos.CurFirst = SynReadCurBySection(gIPMInitPos.Section);
+					gIPMInitPos.Section = (gIPMInitPos.Section + 1u) & 0x01u;
+
+					current1[indexx] = gIPMInitPos.CurFirst;
+//					IoHwAb_Dio_FlipChannel(VBAT_HALL_CTRL_IDX);
+					break;
+
+				case 7:
+					SynInitPosDetSetPwm(7);
+					break;
+
+				case 3:
+					SynInitPosDetSetPwm(gIPMInitPos.Section);
+					break;
+				case 9:
 					SynInitPosDetSetPwm(gIPMInitPos.Section);
 					break;
 
@@ -470,30 +669,79 @@ void SynInitPosDetect(void)
 					break;
 			}
 			break;
-
 		case 3:
 		case 4:
 			gIPMInitPos.PeriodCnt++;
-			if(gIPMInitPos.PeriodCnt >= 3u)
+			if(gIPMInitPos.PeriodCnt >= 11u)
 			{
 				gIPMInitPos.PeriodCnt = 0;
 			}
 
 			m_Cur = SynReadCurBySection(gIPMInitPos.Section);
 
+//			switch(gIPMInitPos.PeriodCnt)
+//			{
+//				case 0:
+//					SynInitPosDetSetPwm(7);
+//					current_next = SynReadCurBySection(gIPMInitPos.Section);
+//					m_Cur = m_Cur - gIPMInitPos.CurFirst;
+//					m_Index = (Uint)((gIPMInitPos.Step - 3u) * 6u + gIPMInitPos.Section);
+//					if(m_Index < SYNI_CUR_BUF_NUM)
+//					{
+//						gIPMInitPos.Cur[m_Index] = SynAbs(m_Cur);
+//					}
+//
+//					gIPMInitPos.Section++;
+////					if(gIPMInitPos.Section == 6u)
+//					if(gIPMInitPos.Section == 2u)//test
+//					{
+//						gIPMInitPos.Section = 0;
+//						gIPMInitPos.Step++;
+//					}
+//					break;
+//
+//				case 1:
+//					SynInitPosDetSetPwm(7);
+//					current_4 = SynReadCurBySection(0);
+//					break;
+//
+//				case 2:
+//					SynInitPosDetSetTs();//test
+//					SynInitPosDetSetPwm(7);
+//					break;
+//
+//				case 5:
+//					SynInitPosDetSetPwm(gIPMInitPos.Section);
+//					break;
+//
+//				case 6:
+////					gIPMInitPos.CurFirst = m_Cur;
+//					current_0 = m_Cur;
+//					break;
+//
+//				case 7:
+////					gIPMInitPos.CurFirst = m_Cur;
+//					current_1 = m_Cur;
+//					break;
+//
+//				case 8:
+//					gIPMInitPos.CurFirst = m_Cur;
+//					break;
+//
+//				default:
+//					break;
+//			}
+//			break;
+
 			switch(gIPMInitPos.PeriodCnt)
 			{
 				case 0:
 					SynInitPosDetSetPwm(7);
-					m_Cur = m_Cur - gIPMInitPos.CurFirst;
-					m_Index = (Uint)((gIPMInitPos.Step - 3u) * 6u + gIPMInitPos.Section);
-					if(m_Index < SYNI_CUR_BUF_NUM)
-					{
-						gIPMInitPos.Cur[m_Index] = SynAbs(m_Cur);
-					}
+					current_3 = m_Cur;
 
 					gIPMInitPos.Section++;
-					if(gIPMInitPos.Section == 6u)
+//					if(gIPMInitPos.Section == 6u)
+					if(gIPMInitPos.Section == 2u)//test
 					{
 						gIPMInitPos.Section = 0;
 						gIPMInitPos.Step++;
@@ -501,11 +749,46 @@ void SynInitPosDetect(void)
 					break;
 
 				case 1:
-					SynInitPosDetSetPwm(gIPMInitPos.Section);
+					SynInitPosDetSetPwm(7);
+					current_4 = SynReadCurBySection(0);
 					break;
 
 				case 2:
+					SynInitPosDetSetTs();//test
+					SynInitPosDetSetPwm(7);
+					break;
+
+				case 5:
+					SynInitPosDetSetPwm(gIPMInitPos.Section);
+					break;
+
+				case 6:
+//					gIPMInitPos.CurFirst = m_Cur;
+					current_0 = m_Cur;
+					break;
+
+				case 7:
+//					gIPMInitPos.CurFirst = m_Cur;
+					current_1 = m_Cur;
+					break;
+
+				case 8:
+//					gIPMInitPos.CurFirst = m_Cur;
+					current_2 = m_Cur;
+					break;
+				case 9:
 					gIPMInitPos.CurFirst = m_Cur;
+					IoHwAb_Dio_FlipChannel(VBAT_HALL_CTRL_IDX);
+					break;
+				case 10:
+					current_next = SynReadCurBySection(gIPMInitPos.Section);
+					IoHwAb_Dio_FlipChannel(VBAT_HALL_CTRL_IDX);
+					m_Cur = m_Cur - gIPMInitPos.CurFirst;
+					m_Index = (Uint)((gIPMInitPos.Step - 3u) * 6u + gIPMInitPos.Section);
+					if(m_Index < SYNI_CUR_BUF_NUM)
+					{
+						gIPMInitPos.Cur[m_Index] = SynAbs(m_Cur);
+					}
 					break;
 
 				default:
@@ -515,6 +798,8 @@ void SynInitPosDetect(void)
 
 		case 5:							                    //结束检测
 			DisableDrive();
+			current_4=SynReadCurBySection(0);//(gIPMInitPos.Section);
+//			SynInitPosDetFault(SYNI_FAULT_PULSE_WIDTH);//test
 			SynInitPosDetSetPwm(6);
 			SynCalLabAndLbc();
 			if(gIPMInitPos.Status != SYNI_STATUS_FAULT)
@@ -536,6 +821,8 @@ void SynInitPosDetect(void)
 	gIPMInitPos.Cur 保存：IU+、IU-、IV+、IV-、IW+、IW-、
 	                       IU+、IU-、IV+、IV-、IW+、IW-
 ************************************************************/
+//int32_t   m_Cur1;
+//int32_t   m_Cur2;
 void SynCalLabAndLbc(void)
 {
 	Uint  m_Index;
@@ -558,16 +845,19 @@ void SynCalLabAndLbc(void)
 	}
 
 	m_TimeS = ((float)gIPMInitPos.PWMTs / (float)(USEC(60000000, 1u))) * 0.000001f;
+//	m_TimeS = ((float)gIPMInitPos.PWMTs / (float)(USEC(60000000, 1u))) * 0.000001f / 2;//test
 	m_TimeS = m_TimeS * gIPMInitPos.PulseTimeK;
 	m_Sum = 0.0f;
 
 	for(m_Index = 0; m_Index < SYNI_PHASE_NUM; m_Index++)
 	{
 		m_Sel = (Uint)(m_Index << 1u);
-		m_Cur1 = (gIPMInitPos.Cur[m_Sel] <= gIPMInitPos.Cur[m_Sel + 1u]) ?
+		m_Cur1 = (gIPMInitPos.Cur[m_Sel] >= gIPMInitPos.Cur[m_Sel + 1u]) ?
 					gIPMInitPos.Cur[m_Sel] : gIPMInitPos.Cur[m_Sel + 1u];
-		m_Cur2 = (gIPMInitPos.Cur[m_Sel + 6u] <= gIPMInitPos.Cur[m_Sel + 7u]) ?
+		m_Cur2 = (gIPMInitPos.Cur[m_Sel + 6u] >= gIPMInitPos.Cur[m_Sel + 7u]) ?
 					gIPMInitPos.Cur[m_Sel + 6u] : gIPMInitPos.Cur[m_Sel + 7u];
+//		m_Cur1 = (gIPMInitPos.Cur[m_Sel] + gIPMInitPos.Cur[m_Sel + 1u])/2;
+//		m_Cur2 = (gIPMInitPos.Cur[m_Sel + 6u] + gIPMInitPos.Cur[m_Sel + 7u])/2;
 		m_DetaI = ((m_Cur1 >> 1u) + (m_Cur2 >> 1u));
 
 		if(m_DetaI <= gIPMInitPos.CurMin)
@@ -577,7 +867,7 @@ void SynCalLabAndLbc(void)
 		}
 
 		m_CurA = (float)m_DetaI / SYNI_CUR_Q12;
-		m_LTemp = m_UDC - m_CurA * gIPMInitPos.RsOhm;
+		m_LTemp = m_UDC - m_CurA * gIPMInitPos.RsOhm * 2;
 		if(m_LTemp < 0.0f)
 		{
 			m_LTemp = 0.0f;
@@ -599,7 +889,7 @@ void SynCalLabAndLbc(void)
 ************************************************************/
 void SynInitPosDetSetTs(void)
 {
-	gIPMInitPos.PWMTs = 3000;
+//	gIPMInitPos.PWMTs = 3000;
 //	float m_PulseUs;
 //
 //	m_PulseUs = (float)gIPMInitPos.PWMTs / (float)DSP_CLOCK;

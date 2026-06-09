@@ -59,8 +59,19 @@ static void ADC1_DmaCallBackHandler(struct _ADC_HandleType *pHandle, const uint3
     //  adcCnt++;
     //  adcCnt%=100;
 
+    static uint8 tetttt = 0;
+    if(tetttt==0)
+    {
+
+    }
+    else
+    {
+    	motor_adc_IrqHandler(g_aui32Adc1ConvBuf[1], g_aui32Adc1ConvBuf[0]);
+    }
+    tetttt++;
+    tetttt%=2;
     // IoHwAb_Dio_WriteChannel(VBAT_ENCODER_CTRL_IDX, 0);
-    motor_adc_IrqHandler(g_aui32Adc1ConvBuf[1], g_aui32Adc1ConvBuf[0]);
+
     // IoHwAb_Dio_WriteChannel(VBAT_ENCODER_CTRL_IDX, 1);
     // IoHwAb_Dio_FlipChannel(VBAT_ENCODER_CTRL_IDX);
 //	g_aCurrentIn50Us[g_ui8CurrentArrayIndex] = (g_aCurrentIn50Us[g_ui8CurrentArrayIndex]*2+g_aui32Adc1ConvBuf[0]*8)/10;

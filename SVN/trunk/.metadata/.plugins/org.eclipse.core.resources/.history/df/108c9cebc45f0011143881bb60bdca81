@@ -1,0 +1,140 @@
+/*
+ * BspPtimer.c
+ *
+ *  Created on: 2024年11月11日
+ *      Author: 14013
+ */
+
+#include "BspPtimer.h"
+#include "BspAdc.h"
+#include "IoHwAb_Dio.h"
+
+#define PTIMER1_CHN_NUM_EN 5
+//#define PTIMER1_CHN_NUM_EN 4
+
+PTIMER_HandleType   g_tPtimerHandle;
+static PTIMER_ChannelCfgType s_aPtimer1ChannelCfg[PTIMER1_CHN_NUM_EN] = {
+    {
+//        .u16DelayCnt = 360U,
+    	.u16DelayCnt = 0U,
+        .bPreTriggerEnable = true,
+        .bPreTriggerOutputEnable = true,
+        .bPreTriggerBackToBackEnable = false,
+    },
+    {
+        .u16DelayCnt = 369U,
+        .bPreTriggerEnable = true,
+        .bPreTriggerOutputEnable = true,
+        .bPreTriggerBackToBackEnable = false,
+    },
+    {
+        .u16DelayCnt = 40U,
+        .bPreTriggerEnable = false,
+        .bPreTriggerOutputEnable = false,
+        .bPreTriggerBackToBackEnable = false,
+    },
+    {
+        .u16DelayCnt = 60U,
+        .bPreTriggerEnable = false,
+        .bPreTriggerOutputEnable = false,
+        .bPreTriggerBackToBackEnable = false,
+    },
+    {
+        .u16DelayCnt = 80U,
+        .bPreTriggerEnable = false,
+        .bPreTriggerOutputEnable = false,
+        .bPreTriggerBackToBackEnable = false,
+    },
+};
+
+//static const uint32_t u32DelayUs[5]=
+//			{
+//					0U,
+//					2U,
+//					4U,
+//					6U,
+//					8U,
+//			};
+
+static const uint32_t u32DelayUs[5]=
+{
+		19U,
+		20U,
+		21U,
+		22U,
+		23U,
+};
+
+uint32 g_ui32PtimerCntMax = 625;
+uint16 g_ui16PtimerCntNow = 125;
+uint16 g_ui16PtimerCntNow2 = 137;
+uint16 g_ui16PtimerCntNow3 = 149;
+uint16 g_ui16PtimerCntNow4 = 161;
+uint8 g_ui8PtimerCntAdd = 12;
+static void Bsp_Ptimer1_HandleDelayInterrupt(PTIMER_HandleType *pHandle)
+{
+    PROCESS_UNUSED_VAR(pHandle);
+//    PTIMER_SetDelayForChannel0(&g_tPtimerHandle, g_ui16PtimerCntNow, g_ui16PtimerCntNow2, g_ui16PtimerCntNow3, g_ui16PtimerCntNow4);
+    g_ui16PtimerCntNow += g_ui8PtimerCntAdd;
+    g_ui16PtimerCntNow %= g_ui32PtimerCntMax;
+    g_ui16PtimerCntNow2 += g_ui8PtimerCntAdd;
+    g_ui16PtimerCntNow2 %= g_ui32PtimerCntMax;
+    g_ui16PtimerCntNow3 += g_ui8PtimerCntAdd;
+    g_ui16PtimerCntNow3 %= g_ui32PtimerCntMax;
+    g_ui16PtimerCntNow4 += g_ui8PtimerCntAdd;
+    g_ui16PtimerCntNow4 %= g_ui32PtimerCntMax;
+//    IoHwAb_Dio_FlipChannel(VBAT_ENCODER_CTRL_IDX);
+//    IoHwAb_Dio_WriteChannel(VBAT_ENCODER_CTRL_IDX, 1);
+//    IoHwAb_Dio_FlipChannel(VBAT_ENCODER_CTRL_IDX);
+//    IoHwAb_Dio_FlipChannel(EN_LDO_IDX);
+//    PTIMER_HWA_SetChannelDelay(pPtimer, (uint8_t)(u8ChnIdx + PTIMER_DELAY_START_INDEX), aChannelCfg[u8ChnIdx].u16DelayCnt);
+}
+
+void Bsp_Ptimer_Init(void)
+{
+    PTIMER_InitType tPtimer1InitCfg;
+    uint32_t u32SysFreq;
+    g_tPtimerHandle.eInstance                         = PTIMER_INSTANCE_1;
+    PTIMER_InitStructure(&tPtimer1InitCfg);
+    tPtimer1InitCfg.eLoadValueMode							= PTIMER_LOAD_VAL_IMMEDIATELY;
+    tPtimer1InitCfg.eClkPreDiv							 	= PTIMER_PRE_DIVIDE_BY_8;
+    tPtimer1InitCfg.eClkPreMultFactor					 	= PTIMER_PRE_DIVIDER_MULTIPLY_BY_1;
+    tPtimer1InitCfg.eTriggerInput           		 	 	= PTIMER_TRGSRC_TRGSEL;
+    tPtimer1InitCfg.bContinuousModeEnable 					= false;
+    tPtimer1InitCfg.bDmaEnable	 							= false;
+    tPtimer1InitCfg.bInstanceBackToBackEnable		 		= false;
+    tPtimer1InitCfg.bDelayIntEnable 						= true;
+    tPtimer1InitCfg.u16IntDelayPeriod 						= 360U;
+    tPtimer1InitCfg.pIntNotify 								= Bsp_Ptimer1_HandleDelayInterrupt;
+
+    PTIMER_Init(&g_tPtimerHandle, &tPtimer1InitCfg);
+    PTIMER_Enable(&g_tPtimerHandle);
+    PTIMER_SetPeriod(&g_tPtimerHandle, 2000U);
+
+//     u32SysFreq = SCG_GetScgClockFreq(SCG_CORE_CLK);
+//     uint32_t u32PdbFreqUs = u32SysFreq / 1000000U;
+//     for(uint8 i = 0;i<PTIMER1_CHN_NUM_EN;i++)
+//     {
+// //    	now eClkPreDiv * eClkPreMultFactor = 8
+//     	s_aPtimer1ChannelCfg[i].u16DelayCnt = (uint16_t)(u32DelayUs[i] * u32PdbFreqUs / 8);
+//     }
+    PTIMER_InitChannel(&g_tPtimerHandle, s_aPtimer1ChannelCfg, PTIMER1_CHN_NUM_EN);
+    PTIMER_LoadValue(&g_tPtimerHandle);
+}
+
+void Bsp_Ptimer_Start(void)
+{
+	 PTIMER_LoadValue(&g_tPtimerHandle);
+}
+
+void Bsp_Ptimer_TriggerStart(void)
+{
+    PTIMER_GenerateSWTrigger(&g_tPtimerHandle);
+}
+
+
+void Bsp_PTIMER_DeInit(void)
+{
+	PTIMER_Disable(&g_tPtimerHandle);
+	PTIMER_DeInit(&g_tPtimerHandle);
+}

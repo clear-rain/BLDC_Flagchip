@@ -8,6 +8,15 @@
 		<item key="caseSensitive" value="false"/>
 		<item key="searchFlags" value="227191"/>
 		<list key="previousPatterns">
+			<item value="LPhaseAvg_mH"/>
+			<item value="LPhase"/>
+			<item value="Step"/>
+			<item value="offset_done"/>
+			<item value="motor_current_0ia"/>
+			<item value="Lmtest"/>
+			<item value="VBAT_HALL_CTRL_IDX"/>
+			<item value="g_aui32Adc1VoltBuf"/>
+			<item value="g_aui32Adc1ConvBuf"/>
 			<item value="FTU_CHANNEL_PWM_HIGH_TRUE"/>
 			<item value="FTU_PWM_HIGH_TRUE_PULSE"/>
 			<item value="FTU_HWA_SetModuleCompareValue"/>
@@ -41,5 +50,7 @@
 		<item key="DIALOG_WIDTH" value="912"/>
 		<item key="DIALOG_HEIGHT" value="575"/>
 		<item key="DIALOG_FONT_NAME" value="1|Microsoft YaHei UI|9.0|0|WINDOWS|1|-15|0|0|0|400|0|0|0|1|0|0|0|0|Microsoft YaHei UI"/>
+	</section>
+	<section name="CResourceRenameRefactoringInputPage">
 	</section>
 </section>

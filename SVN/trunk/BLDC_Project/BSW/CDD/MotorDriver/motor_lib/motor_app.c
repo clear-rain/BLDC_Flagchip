@@ -3,7 +3,7 @@
 #include "motor_current.h"
 #include "motor_foc.h"
 
-#define CURRENT_OFFSET_SAMPLE_COUNT 128
+#define CURRENT_OFFSET_SAMPLE_COUNT 1280
 
 MotorCurrent motor_current_0, motor_current_0_before;
 MotorCurrentOffset motor_current_offset_0;

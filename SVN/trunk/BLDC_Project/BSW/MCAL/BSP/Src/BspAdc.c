@@ -33,7 +33,7 @@ ADC_HandleType g_tAdc0Handle =
     .eInstance = ADC_INSTANCE_0,
 
     .tSettings.u8ChnCnt = ADC0_CHN_NUM_EN,
-    .tSettings.bConversionCompleteIntEn = true,
+    .tSettings.bConversionCompleteIntEn = false,
     .tSettings.bOverRunIntEn 			= false,
     .tSettings.bAnalogCmpIntEn			= false,
     .tSettings.pConvCompleteCallback	= NULL,
@@ -62,7 +62,7 @@ static ADC_InitType s_tAdc0InitCfg =
 {
     .eResolution   = ADC_RESOLUTION_12_BIT,       /*!< 12 bit resolution */
     .eAlign        = ADC_ALIGN_RIGHT,             /*!< Align right */
-    .eTriggerMode  = ADC_TRIGMODE_RISING_EDGE,    /*!< HW trigger */
+    .eTriggerMode  = ADC_TRIGMODE_SW,    /*!< HW trigger */
     .bWaitEnable   = false,                       /*!< Enable wait conversion mode */
 #if ((DEVICE_TYPE == MCU_FC4150_1M) || (DEVICE_TYPE == MCU_FC4150_2M))
     .bDifferentialModeEnable = false,             /*!< Disable differential mode */

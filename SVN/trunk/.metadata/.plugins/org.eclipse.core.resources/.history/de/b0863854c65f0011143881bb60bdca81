@@ -1,0 +1,276 @@
+/**
+ * @file Adc.c
+ * @brief
+ * @author  BSW ENGINEER (Jin-Tech)
+ * @copyright Jin-Tech Technologies
+ * @par 修改日志:
+ * <table>
+ * <tr><th>Date       <th>Version         <th>Author           <th>Description
+ * <tr><td>2024-09-06 <td>m00.a00.b01     <td>ChenRui          <td>1.Initialization Version
+ * </table>
+ */
+
+#include "string.h"
+#include "BspAdc.h"
+#include "BspDma.h"
+#include "BspGpio.h"
+#include "BspGpio.h"
+#include "string.h"
+#include <IoHwAb_Dio.h>
+
+//ADC_HandleType  g_tAdc0Handle;
+//ADC_HandleType  g_tAdc1Handle;
+
+extern DMA_HandleType g_tAdcDmaHandle[2];
+
+static void FCADC_Start(struct AdcGroupCfg_t *pDev);
+static void FCADC_Init(struct AdcGroupCfg_t *pDev);
+struct AdcGroupCfg_t * BSP_AdcGetDevice(char *name);
+
+
+ADC_HandleType g_tAdc0Handle =
+{
+    .eInstance = ADC_INSTANCE_0,
+
+    .tSettings.u8ChnCnt = ADC0_CHN_NUM_EN,
+    .tSettings.bConversionCompleteIntEn = true,
+    .tSettings.bOverRunIntEn 			= false,
+    .tSettings.bAnalogCmpIntEn			= false,
+    .tSettings.pConvCompleteCallback	= NULL,
+    .tSettings.pOverRunCallback			= NULL,
+    .tSettings.pCompareCallback			= NULL,
+    .tSettings.pAdcResultBuffer			= NULL
+};
+
+ADC_HandleType g_tAdc1Handle =
+{
+	.eInstance = ADC_INSTANCE_1,
+
+	.tSettings.u8ChnCnt = ADC1_CHN_NUM_EN,
+	.tSettings.bConversionCompleteIntEn = false,
+	.tSettings.bOverRunIntEn 			= false,
+	.tSettings.bAnalogCmpIntEn			= false,
+	.tSettings.pConvCompleteCallback	= NULL,
+	.tSettings.pOverRunCallback			= NULL,
+	.tSettings.pCompareCallback			= NULL,
+	.tSettings.pAdcResultBuffer			= NULL
+};
+
+
+/* ADC Init Type for SW Trigger */
+static ADC_InitType s_tAdc0InitCfg =
+{
+    .eResolution   = ADC_RESOLUTION_12_BIT,       /*!< 12 bit resolution */
+    .eAlign        = ADC_ALIGN_RIGHT,             /*!< Align right */
+    .eTriggerMode  = ADC_TRIGMODE_RISING_EDGE,    /*!< HW trigger */
+    .bWaitEnable   = false,                       /*!< Enable wait conversion mode */
+#if ((DEVICE_TYPE == MCU_FC4150_1M) || (DEVICE_TYPE == MCU_FC4150_2M))
+    .bDifferentialModeEnable = false,             /*!< Disable differential mode */
+    .eClockDivider = ADC_CLOCK_DIV_1,             /*!< Adc clock divided by 1 */
+#endif
+    .eSequenceMode = ADC_SEQMODE_SINGLE, 	/*!<  Discontinous mode 1 */
+    .eOverrunMode  = ADC_OVERRUN_MODE_PRESERVE,   	/*!< When overrun occurred, the old conversion data are preserved */
+
+    .eVoltageRef   = ADC_REF_INTERNAL,          	/*!< Use internal reference */
+    .bHwAvgEnable  = false,                     	/*!< Disable averaging functionality */
+    .eHwAverage    = ADC_AVERAGE_4,             	/*!< Selection for number of samples used for averaging */
+    .aSampleTimes  = {4U, 10U, 40U, 80U},       	/*!< ADC channel sample time options */
+
+    .ePreTriggerSel = ADC_PRETRIGGER_SEL_TRGSEL,   	/*!< PTIMER pretrigger selected */
+    .eTriggerSel    = ADC_TRIGGER_SEL_TRGSEL       	/*!< PTIMER trigger selected */
+};
+/* ADC Init Type for HW Trigger */
+static ADC_InitType s_tAdc1InitCfg =
+{
+    .eResolution   = ADC_RESOLUTION_12_BIT,       /*!< 12 bit resolution */
+    .eAlign        = ADC_ALIGN_RIGHT,             /*!< Align right */
+    .eTriggerMode  = ADC_TRIGMODE_BOTH_EDGE,    			/*!< HW trigger */
+    .bWaitEnable   = false,                       /*!< Enable wait conversion mode */
+#if ((DEVICE_TYPE == MCU_FC4150_1M) || (DEVICE_TYPE == MCU_FC4150_2M))
+    .bDifferentialModeEnable = false,             /*!< Disable differential mode */
+    .eClockDivider = ADC_CLOCK_DIV_1,             /*!< Adc clock divided by 1 */
+#endif
+    .eSequenceMode = ADC_SEQMODE_DISCONTINUOUS_1, 			/*!<  Discontinous mode 1 */
+    .eOverrunMode  = ADC_OVERRUN_MODE_PRESERVE,   	/*!< When overrun occurred, the old conversion data are preserved */
+
+    .eVoltageRef   = ADC_REF_INTERNAL,          	/*!< Use internal reference */
+    .bHwAvgEnable  = false,                     	/*!< Disable averaging functionality */
+    .eHwAverage    = ADC_AVERAGE_4,             	/*!< Selection for number of samples used for averaging */
+    .aSampleTimes  = {4U, 10U, 40U, 80U},       	/*!< ADC channel sample time options */
+
+    .ePreTriggerSel = ADC_PRETRIGGER_SEL_PTIMER,   	/*!< PTIMER pretrigger selected */
+    .eTriggerSel    = ADC_TRIGGER_SEL_PTIMER
+//    .ePreTriggerSel = ADC_PRETRIGGER_SEL_TRGSEL,   	/*!< PTIMER pretrigger selected */
+//    .eTriggerSel    = ADC_TRIGGER_SEL_TRGSEL
+};
+
+static ADC_DmaType s_tAdc0DmaCfg =
+{
+    .bDmaEnable          = true,
+    .u8DmaChannel        = ADC0_DMA_CHANNEL,
+    .u8ChannelPriority   = (uint8_t)ADC0_DMA_CHANNEL,
+    .pResultBuffer       = NULL,//s_aAdc0ResultBuf,
+	.bDmaIntEnable       = true,
+    .pConvCompleteCallback = NULL,//Bsp_ADC0_HandleResult
+};
+static ADC_DmaType s_tAdc1DmaCfg =
+{
+    .bDmaEnable          = true,
+    .u8DmaChannel        = ADC1_DMA_CHANNEL,
+    .u8ChannelPriority   = (uint8_t)ADC1_DMA_CHANNEL,
+    .pResultBuffer       = NULL,//s_aAdc1ResultBuf,
+	.bDmaIntEnable       = true,
+    .pConvCompleteCallback = NULL,//Bsp_ADC1_HandleResult
+};
+#ifndef ECU_ADDRESS_BLDC
+static const ADC_ChannelCfgType s_Adc0Channels[ADC0_CHN_NUM_EN] =
+{
+    {
+        .eChannel = ADC_CHANNEL_23,
+        .eSampleTimeOption = ADC_SAMPLE_TIME_OPTION_1
+    },
+    {
+        .eChannel = ADC_CHANNEL_10,
+        .eSampleTimeOption = ADC_SAMPLE_TIME_OPTION_1
+    }
+};
+
+static const ADC_ChannelCfgType s_Adc1Channels[ADC1_CHN_NUM_EN] =
+{
+    {
+        .eChannel = ADC_CHANNEL_12,
+        .eSampleTimeOption = ADC_SAMPLE_TIME_OPTION_1
+    },
+    {
+        .eChannel = ADC_CHANNEL_13,
+        .eSampleTimeOption = ADC_SAMPLE_TIME_OPTION_1
+    },
+    {
+        .eChannel = ADC_CHANNEL_15,
+        .eSampleTimeOption = ADC_SAMPLE_TIME_OPTION_1
+    },
+    {
+        .eChannel = ADC_CHANNEL_24,
+        .eSampleTimeOption = ADC_SAMPLE_TIME_OPTION_1
+    }
+};
+
+#else
+static const ADC_ChannelCfgType s_Adc0Channels[ADC0_CHN_NUM_EN] =
+{
+    {
+        .eChannel = ADC_CHANNEL_1,
+        .eSampleTimeOption = ADC_SAMPLE_TIME_OPTION_0
+    },
+	{
+		.eChannel = ADC_CHANNEL_4,
+		.eSampleTimeOption = ADC_SAMPLE_TIME_OPTION_0
+	},
+	{
+		.eChannel = ADC_CHANNEL_10,
+		.eSampleTimeOption = ADC_SAMPLE_TIME_OPTION_0
+	},
+	{
+		.eChannel = ADC_CHANNEL_24,
+		.eSampleTimeOption = ADC_SAMPLE_TIME_OPTION_0
+	},
+    {
+        .eChannel = ADC_CHANNEL_29,
+        .eSampleTimeOption = ADC_SAMPLE_TIME_OPTION_0
+    }
+};
+
+static const ADC_ChannelCfgType s_Adc1Channels[ADC1_CHN_NUM_EN] =
+{
+    {
+        .eChannel = ADC_CHANNEL_5,
+        .eSampleTimeOption = ADC_SAMPLE_TIME_OPTION_0
+    },
+    {
+        .eChannel = ADC_CHANNEL_1,
+        .eSampleTimeOption = ADC_SAMPLE_TIME_OPTION_0
+    },
+    {
+        .eChannel = ADC_CHANNEL_15,
+        .eSampleTimeOption = ADC_SAMPLE_TIME_OPTION_0
+    },
+	{
+		.eChannel = ADC_CHANNEL_9,
+		.eSampleTimeOption = ADC_SAMPLE_TIME_OPTION_0
+	},
+    {
+        .eChannel = ADC_CHANNEL_24,
+        .eSampleTimeOption = ADC_SAMPLE_TIME_OPTION_0
+    }
+};
+#endif /*ECU_ADDRESS_BLDC*/
+
+static void FCADC_Init(struct AdcGroupCfg_t *pDev)
+{
+   ADC_InitType  *tAdcInitCfg;
+
+   tAdcInitCfg =  pDev->pAdcInitCfg;
+   tAdcInitCfg->u3AdcFuncClk = PCC_GetPccFunctionClock(pDev->eAdcClkName);
+   ADC_Init(pDev->g_tAdcHandle, tAdcInitCfg);
+
+//	   ADC_InitType  tAdcInitCfg;
+//	   ADC_InitStructure(&tAdcInitCfg);
+//
+//	   tAdcInitCfg.u3AdcFuncClk = PCC_GetPccFunctionClock(pDev->eAdcClkName);
+//	   ADC_Init(pDev->g_tAdcHandle, &tAdcInitCfg);
+   ADC_InitChannel(pDev->g_tAdcHandle, pDev->pAdcChnl, pDev->g_tAdcHandle->tSettings.u8ChnCnt);
+   ADC_InitDmaChannel(pDev->ptDmaHandle, pDev->g_tAdcHandle, pDev->pAdcDmaCfg);
+   ADC_Enable(pDev->g_tAdcHandle);
+}
+
+static void FCADC_Start(struct AdcGroupCfg_t *pDev)
+{
+    ADC_Start(pDev->g_tAdcHandle);
+}
+
+static struct AdcGroupCfg_t s_AdcGroupCfgBuf[SYS_ADC_GROUP_NUM] =
+{
+    {
+        .name = "Adc0",
+        .eAdcClkName = PCC_CLK_ADC0,
+        .pAdcInitCfg = &s_tAdc0InitCfg,
+        .g_tAdcHandle = &g_tAdc0Handle,
+		.ptDmaHandle = &g_tAdcDmaHandle[0],
+        .pAdcDmaCfg = &s_tAdc0DmaCfg,
+        .pAdcChnl = s_Adc0Channels,
+        .pf_AdcInit = FCADC_Init,
+        .pf_AdcStart = FCADC_Start
+    },
+    {
+        .name = "Adc1",
+		.eAdcClkName = PCC_CLK_ADC1,
+        .pAdcInitCfg = &s_tAdc1InitCfg,
+		.g_tAdcHandle = &g_tAdc1Handle,
+		.ptDmaHandle = &g_tAdcDmaHandle[1],
+        .pAdcDmaCfg = &s_tAdc1DmaCfg,
+        .pAdcChnl = s_Adc1Channels,
+        .pf_AdcInit = FCADC_Init,
+        .pf_AdcStart = FCADC_Start
+    },
+};
+
+struct AdcGroupCfg_t * BSP_AdcGetDevice(char *name)
+{
+	uint8_t i;
+	for (i = 0; i < SYS_ADC_GROUP_NUM; i++)
+	{
+		if (0 == strcmp(s_AdcGroupCfgBuf[i].name, name))
+		{
+			return &s_AdcGroupCfgBuf[i];
+		}
+	}
+	return NULL;
+}
+
+
+void Bsp_ADC_DeInit(void){
+//	ADC_Disable(&g_tAdc0Handle);
+	ADC_DeInit(&g_tAdc0Handle);
+//	ADC_Disable(&g_tAdc0Handle);
+	ADC_DeInit(&g_tAdc1Handle);
+}

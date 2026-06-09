@@ -12,34 +12,41 @@
 #define PTIMER1_CHN_NUM_EN 5
 //#define PTIMER1_CHN_NUM_EN 4
 
+//15tick_per_us * 50us = 750tick
+
 PTIMER_HandleType   g_tPtimerHandle;
 static PTIMER_ChannelCfgType s_aPtimer1ChannelCfg[PTIMER1_CHN_NUM_EN] = {
     {
-        .u16DelayCnt = 360U,
+//        .u16DelayCnt = 360U,
+    	.u16DelayCnt = 0U,
         .bPreTriggerEnable = true,
         .bPreTriggerOutputEnable = true,
         .bPreTriggerBackToBackEnable = false,
     },
     {
-        .u16DelayCnt = 369U,
+//        .u16DelayCnt = 369U,
+    	.u16DelayCnt = 40U,
         .bPreTriggerEnable = true,
         .bPreTriggerOutputEnable = true,
         .bPreTriggerBackToBackEnable = false,
     },
     {
-        .u16DelayCnt = 40U,
+//        .u16DelayCnt = 40U,
+    	.u16DelayCnt = 80U,
         .bPreTriggerEnable = false,
         .bPreTriggerOutputEnable = false,
         .bPreTriggerBackToBackEnable = false,
     },
     {
-        .u16DelayCnt = 60U,
+//        .u16DelayCnt = 60U,
+    		.u16DelayCnt = 120U,
         .bPreTriggerEnable = false,
         .bPreTriggerOutputEnable = false,
         .bPreTriggerBackToBackEnable = false,
     },
     {
-        .u16DelayCnt = 80U,
+//        .u16DelayCnt = 80U,
+    		.u16DelayCnt = 160U,
         .bPreTriggerEnable = false,
         .bPreTriggerOutputEnable = false,
         .bPreTriggerBackToBackEnable = false,
@@ -88,11 +95,11 @@ static void Bsp_Ptimer1_HandleDelayInterrupt(PTIMER_HandleType *pHandle)
 //    IoHwAb_Dio_FlipChannel(EN_LDO_IDX);
 //    PTIMER_HWA_SetChannelDelay(pPtimer, (uint8_t)(u8ChnIdx + PTIMER_DELAY_START_INDEX), aChannelCfg[u8ChnIdx].u16DelayCnt);
 }
-
+uint32_t u32SysFreq;
 void Bsp_Ptimer_Init(void)
 {
     PTIMER_InitType tPtimer1InitCfg;
-    uint32_t u32SysFreq;
+
     g_tPtimerHandle.eInstance                         = PTIMER_INSTANCE_1;
     PTIMER_InitStructure(&tPtimer1InitCfg);
     tPtimer1InitCfg.eLoadValueMode							= PTIMER_LOAD_VAL_IMMEDIATELY;
@@ -102,7 +109,7 @@ void Bsp_Ptimer_Init(void)
     tPtimer1InitCfg.bContinuousModeEnable 					= false;
     tPtimer1InitCfg.bDmaEnable	 							= false;
     tPtimer1InitCfg.bInstanceBackToBackEnable		 		= false;
-    tPtimer1InitCfg.bDelayIntEnable 						= true;
+    tPtimer1InitCfg.bDelayIntEnable 						= false;
     tPtimer1InitCfg.u16IntDelayPeriod 						= 360U;
     tPtimer1InitCfg.pIntNotify 								= Bsp_Ptimer1_HandleDelayInterrupt;
 
@@ -110,7 +117,7 @@ void Bsp_Ptimer_Init(void)
     PTIMER_Enable(&g_tPtimerHandle);
     PTIMER_SetPeriod(&g_tPtimerHandle, 2000U);
 
-//     u32SysFreq = SCG_GetScgClockFreq(SCG_CORE_CLK);
+     u32SysFreq = SCG_GetScgClockFreq(SCG_CORE_CLK);
 //     uint32_t u32PdbFreqUs = u32SysFreq / 1000000U;
 //     for(uint8 i = 0;i<PTIMER1_CHN_NUM_EN;i++)
 //     {
